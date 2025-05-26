@@ -1,3 +1,35 @@
-[gd_scene load_steps=0 format=3 uid="uid://butqwx8kw70u3"]
+[gd_scene load_steps=5 format=3 uid="uid://butqwx8kw70u3"]
+
+[ext_resource type="Texture2D" uid="uid://5g0my1odxui1" path="res://assets/BUTTONS PACK/sci_fi_buttons.png" id="1_bn56d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pos1t"]
+atlas = ExtResource("1_bn56d")
+region = Rect2(2, 75, 73, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w54mp"]
+atlas = ExtResource("1_bn56d")
+region = Rect2(75, 75, 73, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dij54"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pos1t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w54mp")
+}],
+"loop": true,
+"name": &"start",
+"speed": 5.0
+}]
 
 [node name="Starting page" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(398.1, 166)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dij54")
+animation = &"start"
+frame_progress = 0.39777
