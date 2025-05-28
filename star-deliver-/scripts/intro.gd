@@ -26,7 +26,7 @@ func _update_sprite():
 	$Slide.texture = load(image_paths[current_index])
 
 func _start_timer():
-	await get_tree().create_timer(7.25).timeout
+	await get_tree().create_timer(7.75).timeout
 	current_index = (current_index + 1) % image_paths.size()
 	_update_sprite()
 	_start_timer()  # repeat loop

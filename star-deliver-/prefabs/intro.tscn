@@ -20,7 +20,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_enl3u"]
 resource_name = "fade in "
-length = 10.0
+length = 8.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
