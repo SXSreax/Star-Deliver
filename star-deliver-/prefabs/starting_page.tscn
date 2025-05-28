@@ -1,35 +1,201 @@
-[gd_scene load_steps=5 format=3 uid="uid://butqwx8kw70u3"]
+[gd_scene load_steps=18 format=3 uid="uid://butqwx8kw70u3"]
 
 [ext_resource type="Texture2D" uid="uid://5g0my1odxui1" path="res://assets/BUTTONS PACK/sci_fi_buttons.png" id="1_bn56d"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pos1t"]
-atlas = ExtResource("1_bn56d")
-region = Rect2(2, 75, 73, 37)
+[ext_resource type="Script" uid="uid://crkhlw2hn33ck" path="res://scripts/starting_page.gd" id="1_pos1t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w54mp"]
 atlas = ExtResource("1_bn56d")
-region = Rect2(75, 75, 73, 37)
+region = Rect2(2, 76, 73, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dij54"]
+atlas = ExtResource("1_bn56d")
+region = Rect2(75, 76, 73, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmrpl"]
+atlas = ExtResource("1_bn56d")
+region = Rect2(148, 76, 73, 35)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dij54"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w54mp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dij54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmrpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w54mp")
+}],
+"loop": false,
+"name": &"start",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abqyy"]
+atlas = ExtResource("1_bn56d")
+region = Rect2(3, 212, 58, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40ov8"]
+atlas = ExtResource("1_bn56d")
+region = Rect2(61, 212, 58, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qos8d"]
+atlas = ExtResource("1_bn56d")
+region = Rect2(119, 212, 58, 35)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qmrpl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abqyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40ov8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qos8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abqyy")
+}],
+"loop": false,
+"name": &"exit",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pos1t"]
+atlas = ExtResource("1_bn56d")
+region = Rect2(2, 110, 106, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bbeh"]
+atlas = ExtResource("1_bn56d")
+region = Rect2(108, 110, 106, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w53pk"]
+atlas = ExtResource("1_bn56d")
+region = Rect2(214, 110, 106, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ggao"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pos1t")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w54mp")
+"texture": SubResource("AtlasTexture_5bbeh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w53pk")
 }],
 "loop": true,
-"name": &"start",
+"name": &"Setting",
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_pos1t"]
+resource_name = "Fade out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.43333, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_w54mp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dij54"]
+_data = {
+&"Fade out": SubResource("Animation_pos1t"),
+&"RESET": SubResource("Animation_w54mp")
+}
+
 [node name="Starting page" type="Node2D"]
+position = Vector2(571, 248)
+script = ExtResource("1_pos1t")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(398.1, 166)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Start" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dij54")
 animation = &"start"
-frame_progress = 0.39777
+frame = 3
+frame_progress = 1.0
+metadata/_edit_group_ = true
+
+[node name="Start" type="Button" parent="Start"]
+show_behind_parent = true
+offset_left = -36.0
+offset_top = -15.0
+offset_right = 35.0
+offset_bottom = 15.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Exit" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 44)
+sprite_frames = SubResource("SpriteFrames_qmrpl")
+animation = &"exit"
+frame = 3
+frame_progress = 1.0
+metadata/_edit_group_ = true
+
+[node name="Exit" type="Button" parent="Exit"]
+show_behind_parent = true
+offset_left = -28.0
+offset_top = -14.0
+offset_right = 27.0
+offset_bottom = 15.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D" type="Camera2D" parent="Exit"]
+
+[node name="Setting" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 90)
+sprite_frames = SubResource("SpriteFrames_2ggao")
+animation = &"Setting"
+metadata/_edit_group_ = true
+
+[node name="Setting" type="Button" parent="Setting"]
+show_behind_parent = true
+offset_left = -52.0
+offset_top = -15.0
+offset_right = 52.0
+offset_bottom = 16.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dij54")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -601.0
+offset_top = -296.0
+offset_right = 591.0
+offset_bottom = 393.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="Start/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Exit/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Setting/Setting" to="." method="_on_setting_pressed"]
