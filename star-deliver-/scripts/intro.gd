@@ -7,10 +7,12 @@ var image_paths = [
 	"res://assets/Intro Slides/03.png",
 	"res://assets/Intro Slides/04.png",
 	"res://assets/Intro Slides/05.png",
-	"res://assets/Intro Slides/06.png"
+	"res://assets/Intro Slides/06.png",
+	"res://assets/Intro Slides/07.png"
 ]
 
 var current_index = 0
+var end_scene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,11 +28,13 @@ func _update_sprite():
 	$Slide.texture = load(image_paths[current_index])
 
 func _start_timer():
-	await get_tree().create_timer(7.75).timeout
+	await get_tree().create_timer(8.5).timeout
 	current_index = (current_index + 1) % image_paths.size()
 	_update_sprite()
 	_start_timer()  # repeat loop
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if current_index == 6: 
+		await get_tree().create_timer(8.5).timeout
+		get_tree().change_scene_to_file("res://prefabs/home.tscn")
