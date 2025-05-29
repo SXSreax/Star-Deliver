@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://butqwx8kw70u3"]
+[gd_scene load_steps=19 format=3 uid="uid://butqwx8kw70u3"]
 
 [ext_resource type="Texture2D" uid="uid://5g0my1odxui1" path="res://assets/BUTTONS PACK/sci_fi_buttons.png" id="1_bn56d"]
 [ext_resource type="Script" uid="uid://crkhlw2hn33ck" path="res://scripts/starting_page.gd" id="1_pos1t"]
+[ext_resource type="Texture2D" uid="uid://b6rrbukgln7hp" path="res://assets/Starting menu/starting page.jpeg" id="3_w54mp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w54mp"]
 atlas = ExtResource("1_bn56d")
@@ -189,12 +190,18 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -601.0
-offset_top = -296.0
-offset_right = 591.0
-offset_bottom = 393.0
+offset_left = -701.0
+offset_top = -326.0
+offset_right = 641.0
+offset_bottom = 469.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Background" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(-0.46522, 43)
+scale = Vector2(0.860811, 0.854167)
+texture = ExtResource("3_w54mp")
 
 [connection signal="pressed" from="Start/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Exit/Exit" to="." method="_on_exit_pressed"]
