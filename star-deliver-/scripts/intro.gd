@@ -37,4 +37,11 @@ func _start_timer():
 func _process(delta: float) -> void:
 	if current_index == 6: 
 		await get_tree().create_timer(8.5).timeout
-		get_tree().change_scene_to_file("res://prefabs/home.tscn")
+		get_tree().change_scene_to_file("res://prefabs/Maps/home.tscn")
+		
+	if Input.is_action_just_pressed("ESC"): 
+		_on_skip_pressed()
+
+
+func _on_skip_pressed() -> void:
+	get_tree().change_scene_to_file("res://prefabs/Maps/home.tscn")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cb7xh3swpuvtq"]
+[gd_scene load_steps=7 format=3 uid="uid://cb7xh3swpuvtq"]
 
 [ext_resource type="Script" uid="uid://frppxwoqublk" path="res://scripts/intro.gd" id="1_wsccq"]
 [ext_resource type="Texture2D" uid="uid://b3e3rbn1a6sk" path="res://assets/Intro Slides/01.png" id="2_rpf0p"]
+[ext_resource type="Texture2D" uid="uid://cibckolrg2ow3" path="res://assets/ownmadebutton/ESC SKIP(White in a line).png" id="3_syu3n"]
 
 [sub_resource type="Animation" id="Animation_wsccq"]
 length = 0.001
@@ -62,3 +63,13 @@ color = Color(0, 0, 0, 0)
 libraries = {
 &"": SubResource("AnimationLibrary_rpf0p")
 }
+
+[node name="Skip" type="Button" parent="."]
+offset_left = 845.0
+offset_top = 519.0
+offset_right = 1877.0
+offset_bottom = 735.0
+scale = Vector2(0.1, 0.1)
+icon = ExtResource("3_syu3n")
+
+[connection signal="pressed" from="Skip" to="." method="_on_skip_pressed"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckl4cegcs4mle"
-path="res://.godot/imported/green-slime-spritesheet.png-aa7c5509751f20212db8a150543a0104.ctex"
+uid="uid://bkb2ihdn7ucf4"
+path="res://.godot/imported/Skull_Slime_Attack_Angry.png-3599fb5fcfd8ebd0fb10284a0f2ab47f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/green-slime-spritesheet.png"
-dest_files=["res://.godot/imported/green-slime-spritesheet.png-aa7c5509751f20212db8a150543a0104.ctex"]
+source_file="res://assets/ItchIo G.Lerf 2.0 Slime Pack/ItchIo G.Lerf 2.0 Slime Pack/Spritesheets_OriginalSize/Angry with skull/Skull_Slime_Attack_Angry.png"
+dest_files=["res://.godot/imported/Skull_Slime_Attack_Angry.png-3599fb5fcfd8ebd0fb10284a0f2ab47f.ctex"]
 
 [params]
 
