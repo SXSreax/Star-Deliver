@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://gubf6bk7cc7p"]
+[gd_scene load_steps=9 format=3 uid="uid://gubf6bk7cc7p"]
 
+[ext_resource type="Script" uid="uid://drn8f38thmp87" path="res://scripts/slime.gd" id="1_76br0"]
 [ext_resource type="Texture2D" uid="uid://cajvcv63yk62q" path="res://assets/ItchIo G.Lerf 2.0 Slime Pack/ItchIo G.Lerf 2.0 Slime Pack/Spritesheets_OriginalSize/Neutral slime/Slime_Idle.png" id="1_s77ef"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_76br0"]
@@ -38,9 +39,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s77ef"]
+size = Vector2(21, 17)
+
+[node name="Slime" type="CharacterBody2D"]
+script = ExtResource("1_76br0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kuyny")
 animation = &"idle"
 frame_progress = 0.423557
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 7.5)
+shape = SubResource("RectangleShape2D_s77ef")
