@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ce1gvot4t5w3c"]
+[gd_scene load_steps=7 format=3 uid="uid://ce1gvot4t5w3c"]
 
 [ext_resource type="Texture2D" uid="uid://bd0kr33rrbsj2" path="res://assets/AxulArt's_BasicPlains-Tileset_ver.2_by_AxulArt/AxulArt's_BasicPlains-Tileset_ver.2_by_AxulArt/BasicPlains-tileset-Ver.2_by_AxulArt.png" id="1_155g7"]
 [ext_resource type="PackedScene" uid="uid://do5kivmwr3bw1" path="res://prefabs/Sprite/player.tscn" id="2_lvpto"]
 [ext_resource type="PackedScene" uid="uid://gubf6bk7cc7p" path="res://prefabs/Sprite/Slime.tscn" id="3_sr52v"]
+[ext_resource type="PackedScene" uid="uid://bahb2f8kt0l1k" path="res://prefabs/Sprite/skeleton.tscn" id="4_sr52v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_60ia5"]
 texture = ExtResource("1_155g7")
@@ -74,6 +75,7 @@ texture = ExtResource("1_155g7")
 sources/0 = SubResource("TileSetAtlasSource_60ia5")
 
 [node name="Plain Planet – “Selari Fields”" type="Node2D"]
+position = Vector2(0, -1)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_lvpto")
@@ -88,3 +90,6 @@ position = Vector2(171, 114)
 
 [node name="Slime" parent="." instance=ExtResource("3_sr52v")]
 position = Vector2(366, 342)
+
+[node name="Skeleton" parent="." instance=ExtResource("4_sr52v")]
+position = Vector2(288, 250)
