@@ -1,13 +1,15 @@
 extends CharacterBody2D
-@onready var target=$"../Player"
+
+@onready var ray_cast_2d: RayCast2D = $AnimatedSprite2D/RayCast2D
 
 var speed = 150
 
 func _physics_process(delta: float) -> void:
-	var direction = (target.position-position).normalized()
-	velocity = direction * speed
-	#look_at(target.position)
-	move_and_slide()
+	#var direction = (target.position-position).normalized()
+	#velocity = direction * speed
+	##look_at(target.position)
+	#move_and_slide()
+	print(ray_cast_2d.is_colliding())
 
 #const SPEED = 300.0
 #const JUMP_VELOCITY = -400.0
@@ -31,3 +33,13 @@ func _physics_process(delta: float) -> void:
 		#velocity.x = move_toward(velocity.x, 0, SPEED)
 #
 	#move_and_slide()
+	
+
+	
+@onready var timer: Timer = $Timer
+@onready var target=$"../Player"
+
+
+
+func _on_timer_timeout() -> void:
+	pass # Replace with function body.
