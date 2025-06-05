@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ce1gvot4t5w3c"]
+[gd_scene load_steps=19 format=3 uid="uid://ce1gvot4t5w3c"]
 
 [ext_resource type="Texture2D" uid="uid://cjvcxyhsbqpgj" path="res://assets/Cute_Fantasy_Free/Cute_Fantasy_Free/Tiles/Water_Tile.png" id="1_wso2v"]
 [ext_resource type="Texture2D" uid="uid://dqgaso3plccil" path="res://assets/Cute_Fantasy_Free/Cute_Fantasy_Free/Tiles/Beach_Tile.png" id="2_2pewx"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b5y3ihgdbi1rt" path="res://assets/Cute_Fantasy_Free/Cute_Fantasy_Free/Tiles/Path_Middle.png" id="6_b6o2p"]
 [ext_resource type="Texture2D" uid="uid://dh6gdryrufkn7" path="res://assets/Cute_Fantasy_Free/Cute_Fantasy_Free/Tiles/Path_Tile.png" id="7_owdy1"]
 [ext_resource type="Texture2D" uid="uid://ceucf5kxhwj8n" path="res://assets/Cute_Fantasy_Free/Cute_Fantasy_Free/Tiles/Water_Middle.png" id="8_nrkne"]
+[ext_resource type="PackedScene" uid="uid://do5kivmwr3bw1" path="res://prefabs/Sprite/player.tscn" id="9_2pewx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2sjjl"]
 texture = ExtResource("1_wso2v")
@@ -480,3 +481,6 @@ layer_1/tile_data = PackedInt32Array(196611, 65544, 1, 131075, 65544, 1, 65539, 
 layer_2/name = "objects"
 layer_3/name = "wall"
 layer_3/z_index = 1
+
+[node name="Player" parent="." instance=ExtResource("9_2pewx")]
+position = Vector2(88, -13)
