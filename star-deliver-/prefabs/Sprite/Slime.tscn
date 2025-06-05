@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://gubf6bk7cc7p"]
+[gd_scene load_steps=10 format=3 uid="uid://gubf6bk7cc7p"]
 
 [ext_resource type="Script" uid="uid://drn8f38thmp87" path="res://scripts/slime.gd" id="1_76br0"]
 [ext_resource type="Texture2D" uid="uid://cajvcv63yk62q" path="res://assets/ItchIo G.Lerf 2.0 Slime Pack/ItchIo G.Lerf 2.0 Slime Pack/Spritesheets_OriginalSize/Neutral slime/Slime_Idle.png" id="1_s77ef"]
+[ext_resource type="PackedScene" uid="uid://do5kivmwr3bw1" path="res://prefabs/Sprite/player.tscn" id="3_12nfs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_76br0"]
 atlas = ExtResource("1_s77ef")
@@ -65,4 +66,8 @@ shape = SubResource("RectangleShape2D_s77ef")
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="Player" parent="." instance=ExtResource("3_12nfs")]
+position = Vector2(-135, 7)
+
+[connection signal="tree_entered" from="AnimatedSprite2D/RayCast2D" to="." method="_on_ray_cast_2d_tree_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

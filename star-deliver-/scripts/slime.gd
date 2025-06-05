@@ -15,6 +15,7 @@ func _physics_process(delta: float) -> void:
 	##look_at(target.position)
 	#move_and_slide()
 	print(raycast.is_colliding())
+	
 
 #const SPEED = 300.0
 #const JUMP_VELOCITY = -400.0
