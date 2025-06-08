@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bqe27ejnxj0o6" path="res://icon.svg" id="1_oxa7u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xpfnd"]
-size = Vector2(121, 120)
+size = Vector2(61, 65)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w7p7q"]
 animations = [{
@@ -19,9 +19,11 @@ animations = [{
 [node name="Skeleton" type="CharacterBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.5, 0)
+position = Vector2(-28.5, 27.5)
 shape = SubResource("RectangleShape2D_xpfnd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 0.160784, 0, 1)
+position = Vector2(-29, 26.5)
+scale = Vector2(0.546875, 0.585938)
 sprite_frames = SubResource("SpriteFrames_w7p7q")

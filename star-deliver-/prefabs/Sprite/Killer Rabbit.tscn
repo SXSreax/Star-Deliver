@@ -1,5 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://cdo2kemb6nus5"]
+[gd_scene load_steps=26 format=3 uid="uid://cdo2kemb6nus5"]
 
+[ext_resource type="Script" uid="uid://ksphs2x8jspt" path="res://scripts/killer_rabbit.gd" id="1_ag87b"]
 [ext_resource type="Texture2D" uid="uid://d2rqbvrj55wkj" path="res://assets/AllBunniesFree/AllBunniesFree/DemonicBunny/Running.png" id="1_hbm8f"]
 [ext_resource type="Texture2D" uid="uid://ccoxmew8fnjfh" path="res://assets/AllBunniesFree/AllBunniesFree/DemonicBunny/Idle.png" id="1_xlckp"]
 
@@ -161,6 +162,7 @@ radius = 7.0
 height = 20.0
 
 [node name="KillerRabbit" type="CharacterBody2D"]
+script = ExtResource("1_ag87b")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

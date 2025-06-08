@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://ttk7hvoen5xk"]
+
+[ext_resource type="PackedScene" uid="uid://b2pfpmm65bioe" path="res://prefabs/Sprite/player.tscn" id="1_mmk46"]
+[ext_resource type="PackedScene" uid="uid://gubf6bk7cc7p" path="res://prefabs/Sprite/Slime.tscn" id="2_4o6v2"]
+[ext_resource type="PackedScene" uid="uid://bahb2f8kt0l1k" path="res://prefabs/Sprite/skeleton.tscn" id="3_4o6v2"]
+[ext_resource type="PackedScene" uid="uid://cdo2kemb6nus5" path="res://prefabs/Sprite/Killer Rabbit.tscn" id="4_m8xlg"]
+
+[node name="test" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_mmk46")]
+position = Vector2(357, 147)
+
+[node name="Slime" parent="." instance=ExtResource("2_4o6v2")]
+position = Vector2(526, 186)
+
+[node name="Skeleton" parent="." instance=ExtResource("3_4o6v2")]
+position = Vector2(514, 106)
+
+[node name="KillerRabbit" parent="." instance=ExtResource("4_m8xlg")]
+position = Vector2(471, 256)
