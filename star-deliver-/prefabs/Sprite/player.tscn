@@ -15,20 +15,19 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2abrm"]
-size = Vector2(120, 115)
+size = Vector2(24, 23)
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(28, -18)
+position = Vector2(41, -29)
 script = ExtResource("1_qw7p6")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1.5, -1.50001)
-scale = Vector2(0.976563, 1.02344)
+position = Vector2(0.500008, 0.816502)
+scale = Vector2(0.210938, 0.200258)
 sprite_frames = SubResource("SpriteFrames_qw7p6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4.5)
+position = Vector2(3.05176e-05, 1.13284)
 shape = SubResource("RectangleShape2D_2abrm")
 
 [node name="Camera2D2" type="Camera2D" parent="."]

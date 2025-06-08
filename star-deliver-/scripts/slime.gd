@@ -9,6 +9,7 @@ func _physics_process(delta: float) -> void:
 	var direction = (player.global_position - raycast.global_position).normalized()
 	var length = 500  # Set your desired ray length here
 	raycast.target_position = direction * length
+
 	
 	if raycast.is_colliding(): 
 		print("chase")
@@ -19,7 +20,6 @@ func _physics_process(delta: float) -> void:
 			move_and_slide()
 	else:
 		print("dont chase")
-
 #const SPEED = 300.0
 #const JUMP_VELOCITY = -400.0
 #
