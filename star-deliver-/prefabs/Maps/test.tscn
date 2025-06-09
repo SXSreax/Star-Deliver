@@ -8,13 +8,13 @@
 [node name="test" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_mmk46")]
-position = Vector2(357, 147)
-
-[node name="Slime" parent="." instance=ExtResource("2_4o6v2")]
-position = Vector2(526, 186)
+position = Vector2(483, 149)
 
 [node name="Skeleton" parent="." instance=ExtResource("3_4o6v2")]
-position = Vector2(514, 106)
+position = Vector2(536, 118)
 
 [node name="KillerRabbit" parent="." instance=ExtResource("4_m8xlg")]
-position = Vector2(471, 256)
+position = Vector2(489, 182)
+
+[node name="Slime" parent="." instance=ExtResource("2_4o6v2")]
+position = Vector2(500, 111)

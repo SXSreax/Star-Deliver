@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var player = $"../Player"
-@onready var raycast = $AnimatedSprite2D/RayCast2D
+@onready var raycast: RayCast2D = $AnimatedSprite2D/RayCast2D
 
 var speed = 100
 

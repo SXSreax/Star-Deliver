@@ -1,9 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bahb2f8kt0l1k"]
+[gd_scene load_steps=5 format=3 uid="uid://bahb2f8kt0l1k"]
 
 [ext_resource type="Texture2D" uid="uid://bqe27ejnxj0o6" path="res://icon.svg" id="1_oxa7u"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpfnd"]
-size = Vector2(61, 65)
+[ext_resource type="Script" uid="uid://dowh4ayepxk5b" path="res://scripts/skeleton.gd" id="1_xpfnd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w7p7q"]
 animations = [{
@@ -16,14 +14,27 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Skeleton" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpfnd"]
+size = Vector2(19.5, 17.5)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-28.5, 27.5)
-shape = SubResource("RectangleShape2D_xpfnd")
+[node name="Skeleton" type="CharacterBody2D"]
+script = ExtResource("1_xpfnd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 0.160784, 0, 1)
-position = Vector2(-29, 26.5)
-scale = Vector2(0.546875, 0.585938)
+position = Vector2(-9.53674e-07, 0)
+scale = Vector2(0.160156, 0.14481)
 sprite_frames = SubResource("SpriteFrames_w7p7q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.25, -0.75)
+shape = SubResource("RectangleShape2D_xpfnd")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+debug_path_custom_color = Color(0.733002, 2.75549e-06, 6.73831e-07, 1)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

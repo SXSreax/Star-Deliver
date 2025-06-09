@@ -162,17 +162,21 @@ radius = 7.0
 height = 20.0
 
 [node name="KillerRabbit" type="CharacterBody2D"]
+position = Vector2(4, -2)
 script = ExtResource("1_ag87b")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, -5)
+position = Vector2(-4, -5)
 scale = Vector2(0.8125, 0.875)
 sprite_frames = SubResource("SpriteFrames_yee43")
 animation = &"idle"
 frame_progress = 0.613697
 
+[node name="RayCast2D" type="RayCast2D" parent="AnimatedSprite2D"]
+position = Vector2(0, 9.14286)
+target_position = Vector2(-59.0769, 5.96046e-07)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 2)
+position = Vector2(-4, 2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_xlckp")
