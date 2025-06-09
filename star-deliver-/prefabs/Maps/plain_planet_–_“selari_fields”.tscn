@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://ce1gvot4t5w3c"]
+[gd_scene load_steps=35 format=3 uid="uid://ce1gvot4t5w3c"]
 
 [ext_resource type="Texture2D" uid="uid://c6g3grgcq3sxo" path="res://assets/Cute_Fantasy_Free/Cute_Fantasy_Free/Outdoor decoration/Fences.png" id="1_2pewx"]
 [ext_resource type="Texture2D" uid="uid://cjvcxyhsbqpgj" path="res://assets/Cute_Fantasy_Free/Cute_Fantasy_Free/Tiles/Water_Tile.png" id="1_wso2v"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://ceucf5kxhwj8n" path="res://assets/Cute_Fantasy_Free/Cute_Fantasy_Free/Tiles/Water_Middle.png" id="8_nrkne"]
 [ext_resource type="PackedScene" uid="uid://b2pfpmm65bioe" path="res://prefabs/Sprite/player.tscn" id="14_owdy1"]
 [ext_resource type="PackedScene" uid="uid://gubf6bk7cc7p" path="res://prefabs/Sprite/Slime.tscn" id="15_nrkne"]
+[ext_resource type="PackedScene" uid="uid://cdo2kemb6nus5" path="res://prefabs/Sprite/Killer Rabbit.tscn" id="16_2sjjl"]
+[ext_resource type="PackedScene" uid="uid://bahb2f8kt0l1k" path="res://prefabs/Sprite/skeleton.tscn" id="17_kgex7"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_nrkne"]
 tile_data = PackedInt32Array(0, 12, 0, 65536, 12, 1, 131072, 12, 2, 196608, 12, 3, 1, 65548, 0, 65537, 65548, 1, 131073, 65548, 2, 196609, 65548, 3, 2, 131084, 0, 65538, 131084, 1, 131074, 131084, 2, 196610, 131084, 3, 3, 196620, 0, 65539, 196620, 1, 131075, 196620, 2, 196611, 196620, 3)
@@ -975,55 +977,127 @@ layer_4/tile_data = PackedInt32Array(8388565, 65540, 1, 8323029, 65540, 1, 82574
 position = Vector2(40, 33)
 
 [node name="Slime" parent="." instance=ExtResource("15_nrkne")]
-position = Vector2(792, 1393)
+position = Vector2(784, 1401)
 
 [node name="Slime2" parent="." instance=ExtResource("15_nrkne")]
-position = Vector2(776, 1361)
+position = Vector2(-104, 665)
 
 [node name="Slime3" parent="." instance=ExtResource("15_nrkne")]
-position = Vector2(1848, 1201)
+position = Vector2(2048, 2017)
 
 [node name="Slime4" parent="." instance=ExtResource("15_nrkne")]
 position = Vector2(1832, 1177)
 
 [node name="Slime5" parent="." instance=ExtResource("15_nrkne")]
-position = Vector2(1816, 1201)
+position = Vector2(1088, 2273)
 
 [node name="Slime6" parent="." instance=ExtResource("15_nrkne")]
-position = Vector2(1848, 1233)
+position = Vector2(2608, 449)
 
 [node name="Slime7" parent="." instance=ExtResource("15_nrkne")]
-position = Vector2(1816, 1225)
+position = Vector2(2792, 1577)
 
 [node name="Slime8" parent="." instance=ExtResource("15_nrkne")]
-position = Vector2(760, 569)
+position = Vector2(1352, 769)
 
 [node name="Slime9" parent="." instance=ExtResource("15_nrkne")]
-position = Vector2(760, 601)
+position = Vector2(800, -95)
 
 [node name="Slime10" parent="." instance=ExtResource("15_nrkne")]
 position = Vector2(712, 577)
 
 [node name="Slime11" parent="." instance=ExtResource("15_nrkne")]
-position = Vector2(2568, 905)
+position = Vector2(2568, 929)
 
 [node name="Slime12" parent="." instance=ExtResource("15_nrkne")]
 position = Vector2(864, 1889)
 
 [node name="Slime13" parent="." instance=ExtResource("15_nrkne")]
-position = Vector2(872, 1913)
+position = Vector2(-56, 2009)
 
 [node name="Slime14" parent="." instance=ExtResource("15_nrkne")]
-position = Vector2(864, 1865)
+position = Vector2(-8, 1353)
 
 [node name="Slime15" parent="." instance=ExtResource("15_nrkne")]
-position = Vector2(800, 1369)
+position = Vector2(968, 977)
 
 [node name="Slime16" parent="." instance=ExtResource("15_nrkne")]
-position = Vector2(2352, -71)
+position = Vector2(1832, 449)
 
 [node name="Slime17" parent="." instance=ExtResource("15_nrkne")]
 position = Vector2(2328, -95)
 
 [node name="Slime18" parent="." instance=ExtResource("15_nrkne")]
-position = Vector2(2320, -71)
+position = Vector2(3256, -239)
+
+[node name="Slime19" parent="." instance=ExtResource("15_nrkne")]
+position = Vector2(3840, 121)
+
+[node name="Slime20" parent="." instance=ExtResource("15_nrkne")]
+position = Vector2(3136, 313)
+
+[node name="Slime21" parent="." instance=ExtResource("15_nrkne")]
+position = Vector2(4024, 1249)
+
+[node name="Slime22" parent="." instance=ExtResource("15_nrkne")]
+position = Vector2(3584, 2433)
+
+[node name="Slime23" parent="." instance=ExtResource("15_nrkne")]
+position = Vector2(3208, 1257)
+
+[node name="KillerRabbit" parent="." instance=ExtResource("16_2sjjl")]
+position = Vector2(3640, 561)
+
+[node name="KillerRabbit2" parent="." instance=ExtResource("16_2sjjl")]
+position = Vector2(2904, -311)
+
+[node name="KillerRabbit3" parent="." instance=ExtResource("16_2sjjl")]
+position = Vector2(1736, 33)
+
+[node name="KillerRabbit4" parent="." instance=ExtResource("16_2sjjl")]
+position = Vector2(2200, 489)
+
+[node name="KillerRabbit5" parent="." instance=ExtResource("16_2sjjl")]
+position = Vector2(2056, 945)
+
+[node name="KillerRabbit6" parent="." instance=ExtResource("16_2sjjl")]
+position = Vector2(1528, 2033)
+
+[node name="KillerRabbit7" parent="." instance=ExtResource("16_2sjjl")]
+position = Vector2(664, 1937)
+
+[node name="KillerRabbit8" parent="." instance=ExtResource("16_2sjjl")]
+position = Vector2(544, 2281)
+
+[node name="KillerRabbit9" parent="." instance=ExtResource("16_2sjjl")]
+position = Vector2(816, 1377)
+
+[node name="KillerRabbit10" parent="." instance=ExtResource("16_2sjjl")]
+position = Vector2(1408, 737)
+
+[node name="KillerRabbit11" parent="." instance=ExtResource("16_2sjjl")]
+position = Vector2(984, 929)
+
+[node name="KillerRabbit12" parent="." instance=ExtResource("16_2sjjl")]
+position = Vector2(88, 1249)
+
+[node name="KillerRabbit13" parent="." instance=ExtResource("16_2sjjl")]
+position = Vector2(1088, -231)
+
+[node name="KillerRabbit14" parent="." instance=ExtResource("16_2sjjl")]
+position = Vector2(736, 609)
+
+[node name="KillerRabbit15" parent="." instance=ExtResource("16_2sjjl")]
+position = Vector2(200, 465)
+
+[node name="KillerRabbit16" parent="." instance=ExtResource("16_2sjjl")]
+position = Vector2(3248, 1193)
+
+[node name="KillerRabbit17" parent="." instance=ExtResource("16_2sjjl")]
+position = Vector2(2792, 2441)
+
+[node name="KillerRabbit18" parent="." instance=ExtResource("16_2sjjl")]
+position = Vector2(3776, 1593)
+
+[node name="Skeleton" parent="." instance=ExtResource("17_kgex7")]
+position = Vector2(200, 57)
