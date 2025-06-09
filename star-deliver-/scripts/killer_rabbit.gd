@@ -37,12 +37,12 @@ func _physics_process(delta: float) -> void:
 
 	
 	if raycast.is_colliding(): 
-		print("chase")
+		#print("chase")
 		var collider = raycast.get_collider()
 		var collider_name = collider.name
-		print("rabiit is detecting ",collider_name)
+		#print("rabiit is detecting ",collider_name)
 		if collider_name == "Player":
 			velocity = direction * speed
 			move_and_slide()
-	else:
-		print("dont chase")
+	#else:
+		#print("dont chase")
