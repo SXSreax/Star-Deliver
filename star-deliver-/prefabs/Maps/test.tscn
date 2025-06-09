@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ttk7hvoen5xk"]
+[gd_scene load_steps=5 format=3 uid="uid://dqqdev51yri61"]
 
 [ext_resource type="PackedScene" uid="uid://b2pfpmm65bioe" path="res://prefabs/Sprite/player.tscn" id="1_mmk46"]
 [ext_resource type="PackedScene" uid="uid://gubf6bk7cc7p" path="res://prefabs/Sprite/Slime.tscn" id="2_4o6v2"]
