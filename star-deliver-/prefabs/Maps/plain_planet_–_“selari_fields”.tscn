@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://ce1gvot4t5w3c"]
+[gd_scene load_steps=34 format=3 uid="uid://ce1gvot4t5w3c"]
 
 [ext_resource type="Texture2D" uid="uid://c6g3grgcq3sxo" path="res://assets/Cute_Fantasy_Free/Cute_Fantasy_Free/Outdoor decoration/Fences.png" id="1_2pewx"]
 [ext_resource type="Texture2D" uid="uid://cjvcxyhsbqpgj" path="res://assets/Cute_Fantasy_Free/Cute_Fantasy_Free/Tiles/Water_Tile.png" id="1_wso2v"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://b2pfpmm65bioe" path="res://prefabs/Sprite/player.tscn" id="14_owdy1"]
 [ext_resource type="PackedScene" uid="uid://gubf6bk7cc7p" path="res://prefabs/Sprite/Slime.tscn" id="15_nrkne"]
 [ext_resource type="PackedScene" uid="uid://cdo2kemb6nus5" path="res://prefabs/Sprite/Killer Rabbit.tscn" id="16_2sjjl"]
-[ext_resource type="PackedScene" uid="uid://bahb2f8kt0l1k" path="res://prefabs/Sprite/skeleton.tscn" id="17_kgex7"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_nrkne"]
 tile_data = PackedInt32Array(0, 12, 0, 65536, 12, 1, 131072, 12, 2, 196608, 12, 3, 1, 65548, 0, 65537, 65548, 1, 131073, 65548, 2, 196609, 65548, 3, 2, 131084, 0, 65538, 131084, 1, 131074, 131084, 2, 196610, 131084, 3, 3, 196620, 0, 65539, 196620, 1, 131075, 196620, 2, 196611, 196620, 3)
@@ -1098,6 +1097,3 @@ position = Vector2(2792, 2441)
 
 [node name="KillerRabbit18" parent="." instance=ExtResource("16_2sjjl")]
 position = Vector2(3776, 1593)
-
-[node name="Skeleton" parent="." instance=ExtResource("17_kgex7")]
-position = Vector2(200, 57)
