@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ttk7hvoen5xk"]
+[gd_scene load_steps=8 format=3 uid="uid://ttk7hvoen5xk"]
 
 [ext_resource type="PackedScene" uid="uid://b2pfpmm65bioe" path="res://prefabs/Sprite/player.tscn" id="1_mmk46"]
 [ext_resource type="PackedScene" uid="uid://bahb2f8kt0l1k" path="res://prefabs/Sprite/skeleton.tscn" id="3_4o6v2"]
 [ext_resource type="Texture2D" uid="uid://bqe27ejnxj0o6" path="res://icon.svg" id="3_m8xlg"]
+[ext_resource type="PackedScene" uid="uid://bcomkmoo8hoxj" path="res://prefabs/Sprite/crab.tscn" id="4_m8xlg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fqj0d"]
 texture = ExtResource("3_m8xlg")
@@ -95,3 +96,6 @@ layer_0/tile_data = PackedInt32Array(327694, 327680, 2, 327695, 327680, 2, 32769
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_4o6v2")
+
+[node name="Crab" parent="." instance=ExtResource("4_m8xlg")]
+position = Vector2(838, 76)
