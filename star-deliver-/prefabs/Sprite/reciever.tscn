@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6oj5vlti06dx"]
+
+[ext_resource type="Script" uid="uid://texx7ouqbvtv" path="res://scripts/reciever.gd" id="1_i05yc"]
+[ext_resource type="Texture2D" uid="uid://bqe27ejnxj0o6" path="res://icon.svg" id="1_mhrpi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i05yc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mhrpi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhrpi"]
+size = Vector2(40, 40)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i05yc"]
+radius = 40.0125
+
+[node name="Reciever" type="CharacterBody2D"]
+script = ExtResource("1_i05yc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.38419e-07, -4.76837e-07)
+scale = Vector2(0.320313, 0.320313)
+sprite_frames = SubResource("SpriteFrames_i05yc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mhrpi")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_i05yc")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
