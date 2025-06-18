@@ -1,4 +1,5 @@
 extends CharacterBody2D
+@onready var hotbar: HBoxContainer = $UI/Hotbar
 
 @export var speed = 400
 
@@ -9,3 +10,6 @@ func get_input():
 func _physics_process(delta: float) -> void:
 	get_input()
 	move_and_slide()
+
+func add_items(stats):
+	hotbar.add_item(stats)

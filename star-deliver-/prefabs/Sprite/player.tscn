@@ -1,7 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2pfpmm65bioe"]
+[gd_scene load_steps=14 format=3 uid="uid://b2pfpmm65bioe"]
 
 [ext_resource type="Texture2D" uid="uid://bqe27ejnxj0o6" path="res://icon.svg" id="1_ofsg0"]
 [ext_resource type="Script" uid="uid://dsffd0se3kl7p" path="res://scripts/player.gd" id="1_qw7p6"]
+[ext_resource type="PackedScene" uid="uid://cx2uxnmxjiph7" path="res://prefabs/slot.tscn" id="3_2abrm"]
+[ext_resource type="Script" uid="uid://b48m1uyg7tgs7" path="res://scripts/hotbar.gd" id="3_2mm8h"]
+[ext_resource type="Texture2D" uid="uid://n88y7n1vcjla" path="res://assets/gun.png" id="3_ghd2t"]
+[ext_resource type="Texture2D" uid="uid://cbosyowlmm0tc" path="res://assets/package.png" id="4_6hmkf"]
+[ext_resource type="Resource" uid="uid://bx5lnupn3ivrb" path="res://Resources/Items/Sword.tres" id="4_mso1w"]
+[ext_resource type="Texture2D" uid="uid://cit2mh0q8olne" path="res://assets/sword.png" id="5_dufd5"]
+[ext_resource type="Resource" uid="uid://ka132iryx76a" path="res://Resources/Items/Gun.tres" id="6_j7tl3"]
+[ext_resource type="Resource" uid="uid://ym8um1ut0d26" path="res://Resources/Items/Package.tres" id="7_b4kkd"]
+[ext_resource type="Resource" uid="uid://qus28y0tv74y" path="res://Resources/Items/Medicines.tres" id="8_ytkp7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qw7p6"]
 animations = [{
@@ -11,6 +20,30 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ghd2t")
+}],
+"loop": true,
+"name": &"gun",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_6hmkf")
+}],
+"loop": true,
+"name": &"package",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_dufd5")
+}],
+"loop": true,
+"name": &"sword",
 "speed": 5.0
 }]
 
@@ -23,7 +56,7 @@ script = ExtResource("1_qw7p6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-5, 6)
-scale = Vector2(0.117188, 0.111254)
+scale = Vector2(0.0122072, 0.011589)
 sprite_frames = SubResource("SpriteFrames_qw7p6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -32,3 +65,37 @@ shape = SubResource("RectangleShape2D_2abrm")
 
 [node name="Camera2D2" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Hotbar" type="HBoxContainer" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("3_2mm8h")
+metadata/_edit_use_anchors_ = true
+
+[node name="slot" parent="UI/Hotbar" instance=ExtResource("3_2abrm")]
+layout_mode = 2
+stats = ExtResource("4_mso1w")
+
+[node name="slot2" parent="UI/Hotbar" instance=ExtResource("3_2abrm")]
+layout_mode = 2
+stats = ExtResource("6_j7tl3")
+
+[node name="slot3" parent="UI/Hotbar" instance=ExtResource("3_2abrm")]
+layout_mode = 2
+stats = ExtResource("7_b4kkd")
+
+[node name="slot4" parent="UI/Hotbar" instance=ExtResource("3_2abrm")]
+layout_mode = 2
+stats = ExtResource("8_ytkp7")
+
+[node name="Weapons" type="Node2D" parent="."]
