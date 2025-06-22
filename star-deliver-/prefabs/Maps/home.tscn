@@ -1832,7 +1832,7 @@ texture = ExtResource("1_mpl3c")
 [sub_resource type="TileSet" id="TileSet_xmurc"]
 sources/1 = SubResource("TileSetAtlasSource_2vnre")
 
-[node name="Node2D" type="Node2D"]
+[node name="spaceship" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_xmurc")

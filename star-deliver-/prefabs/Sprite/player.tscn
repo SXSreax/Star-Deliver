@@ -1166,8 +1166,9 @@ height = 12.0
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(41, -29)
 script = ExtResource("1_qw7p6")
+metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="player" type="AnimatedSprite2D" parent="."]
 position = Vector2(-0.5, 0)
 scale = Vector2(0.464437, 0.440917)
 sprite_frames = SubResource("SpriteFrames_qw7p6")
