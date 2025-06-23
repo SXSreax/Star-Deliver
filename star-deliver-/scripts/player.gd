@@ -61,6 +61,7 @@ func get_input():
 			player.play("spear walk right down")
 		else:
 			player.play("walk right down")
+		
 		last_direction = "right down"
 	elif input_direction.x < 0 and input_direction.y < 0:
 		if selected_slot == 1:
@@ -74,18 +75,18 @@ func get_input():
 		else:
 			player.play("walk left down")#
 		last_direction = "left down"
-	elif input_direction.x > 0:
+	elif input_direction.x > 0 and input_direction.y == 0:
 		if selected_slot == 1:
 			player.play("spear walk right down")
 		else:
-			player.play("walk right down")#
-		last_direction = "right down"
-	elif input_direction.x < 0:
+			player.play("walk right down")
+		last_direction = "right"
+	elif input_direction.x < 0 and input_direction.y == 0:
 		if selected_slot == 1:
 			player.play("spear walk left down")
 		else:
-			player.play("walk left down")#
-		last_direction = "left down"
+			player.play("walk left down")
+		last_direction = "left"
 	elif input_direction.y > 0:
 		if selected_slot == 1:
 			player.play("spear walk down")
@@ -101,7 +102,8 @@ func get_input():
 		last_direction = "up"
 		
 	if Input.is_action_just_pressed("attack"):
-		shoot()
+		if selected_slot == 2:
+			shoot()
 
 
 func _physics_process(delta: float) -> void:
@@ -113,8 +115,30 @@ func add_items(stats):
 
 func shoot():
 	var bullet_1 = bullet.instantiate()
-	bullet_1.dir = rotation
-	bullet_1.pos = $".".global_position 	
-	bullet_1.rota = global_rotation
-	get_parent().add_child(bullet_1)
 	
+	# Determine direction vector based on last_direction
+	var dir_vec = Vector2.RIGHT
+	match last_direction:
+		"right up":
+			dir_vec = Vector2(1, -1).normalized()
+		"right down":
+			dir_vec = Vector2(1, 1).normalized()
+		"left up":
+			dir_vec = Vector2(-1, -1).normalized()
+		"left down":
+			dir_vec = Vector2(-1, 1).normalized()
+		"right":
+			dir_vec = Vector2(1, 0)
+		"left":
+			dir_vec = Vector2(-1, 0)
+		"up":
+			dir_vec = Vector2(0, -1)
+		"down":
+			dir_vec = Vector2(0, 1)
+	
+	# Spawn bullet in front of player
+	var spawn_offset = dir_vec * 32 # 32 pixels in front, adjust as needed
+	bullet_1.pos = global_position + spawn_offset
+	bullet_1.dir = dir_vec.angle()
+	bullet_1.rota = bullet_1.dir
+	get_parent().add_child(bullet_1)

@@ -2498,8 +2498,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1t5oy"]
-radius = 3.0
-height = 12.0
+radius = 7.0
+height = 26.0
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-4, 0)
@@ -2507,9 +2507,9 @@ script = ExtResource("1_qw7p6")
 
 [node name="player" type="AnimatedSprite2D" parent="."]
 position = Vector2(4, 0)
-scale = Vector2(0.464437, 0.440917)
+scale = Vector2(1.00305, 0.952255)
 sprite_frames = SubResource("SpriteFrames_qw7p6")
-animation = &"idle spear left down"
+animation = &"idle right down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 0)
