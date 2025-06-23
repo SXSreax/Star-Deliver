@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var speed = 400
 var last_direction =  "right up"
 var bullet = preload("res://prefabs/bullet.tscn")
+var hp = 100 
 
 
 func get_input():
