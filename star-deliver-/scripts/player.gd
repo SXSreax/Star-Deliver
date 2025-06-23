@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var slots = $UI/Hotbar.get_children()
 @export var speed = 400
 var last_direction =  "right up"
+var bullet = preload("res://prefabs/bullet.tscn")
 
 
 func get_input():
@@ -85,6 +86,7 @@ func get_input():
 			player.play("run gun right down")
 		else:
 			player.play("walk right down")
+		
 		last_direction = "right down"
 
 	elif input_direction.x < 0 and input_direction.y < 0:
@@ -106,26 +108,26 @@ func get_input():
 		else:
 			player.play("walk left down")#
 		last_direction = "left down"
+	elif input_direction.x > 0 and input_direction.y == 0:
 
-	elif input_direction.x > 0:
-		# Moving right only
 		if selected_slot == 1:
 			player.play("spear walk right down")
 		elif  selected_slot == 2:
 			player.play("run gun right down")
 		else:
-			player.play("walk right down")#
-		last_direction = "right down"
 
-	elif input_direction.x < 0:
-		# Moving left only
+			player.play("walk right down")
+		last_direction = "right"
+	elif input_direction.x < 0 and input_direction.y == 0:
+
 		if selected_slot == 1:
 			player.play("spear walk left down")
 		elif  selected_slot == 2:
 			player.play("run gun left down")
 		else:
-			player.play("walk left down")#
-		last_direction = "left down"
+
+			player.play("walk left down")
+		last_direction = "left"
 
 	elif input_direction.y > 0:
 		# Moving down only
@@ -144,6 +146,10 @@ func get_input():
 		else:
 			player.play("walk up")
 		last_direction = "up"
+		
+	if Input.is_action_just_pressed("attack"):
+		if selected_slot == 2:
+			shoot()
 
 
 
@@ -153,3 +159,33 @@ func _physics_process(delta: float) -> void:
 
 func add_items(stats):
 	hotbar.add_item(stats)
+
+func shoot():
+	var bullet_1 = bullet.instantiate()
+	
+	# Determine direction vector based on last_direction
+	var dir_vec = Vector2.RIGHT
+	match last_direction:
+		"right up":
+			dir_vec = Vector2(1, -1).normalized()
+		"right down":
+			dir_vec = Vector2(1, 1).normalized()
+		"left up":
+			dir_vec = Vector2(-1, -1).normalized()
+		"left down":
+			dir_vec = Vector2(-1, 1).normalized()
+		"right":
+			dir_vec = Vector2(1, 0)
+		"left":
+			dir_vec = Vector2(-1, 0)
+		"up":
+			dir_vec = Vector2(0, -1)
+		"down":
+			dir_vec = Vector2(0, 1)
+	
+	# Spawn bullet in front of player
+	var spawn_offset = dir_vec * 32 # 32 pixels in front, adjust as needed
+	bullet_1.pos = global_position + spawn_offset
+	bullet_1.dir = dir_vec.angle()
+	bullet_1.rota = bullet_1.dir
+	get_parent().add_child(bullet_1)
