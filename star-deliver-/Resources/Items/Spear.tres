@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bx5lnupn3ivrb"]
+
+[ext_resource type="Texture2D" uid="uid://cnvrp25i2qm3o" path="res://assets/spear.png" id="1_h2wxk"]
+[ext_resource type="Script" uid="uid://bsgvgcqaylgvf" path="res://scripts/item.gd" id="2_q12ou"]
+
+[resource]
+script = ExtResource("2_q12ou")
+icon = ExtResource("1_h2wxk")
+name = "Sword"
+type = "Weapon"
+description = "Does Slash Damage"
+metadata/_custom_type_script = "uid://bsgvgcqaylgvf"

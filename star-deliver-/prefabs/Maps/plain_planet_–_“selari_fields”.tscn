@@ -952,7 +952,7 @@ pattern_0 = SubResource("TileMapPattern_nrkne")
 pattern_1 = SubResource("TileMapPattern_2sjjl")
 
 [node name="Plain Planet – “Selari Fields”" type="Node2D"]
-position = Vector2(0, -2)
+position = Vector2(14, -8)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_lvpto")
