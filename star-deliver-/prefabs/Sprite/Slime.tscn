@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://gubf6bk7cc7p"]
+[gd_scene load_steps=11 format=3 uid="uid://gubf6bk7cc7p"]
 
 [ext_resource type="Script" uid="uid://drn8f38thmp87" path="res://scripts/slime.gd" id="1_76br0"]
 [ext_resource type="Texture2D" uid="uid://cajvcv63yk62q" path="res://assets/ItchIo G.Lerf 2.0 Slime Pack/ItchIo G.Lerf 2.0 Slime Pack/Spritesheets_OriginalSize/Neutral slime/Slime_Idle.png" id="1_s77ef"]
@@ -44,14 +44,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s77ef"]
-size = Vector2(21, 17)
+[sub_resource type="CircleShape2D" id="CircleShape2D_76br0"]
+radius = 11.1803
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_12nfs"]
+radius = 11.0
+height = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1pedr"]
 
 [node name="Slime" type="CharacterBody2D"]
 script = ExtResource("1_76br0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_kuyny")
 animation = &"idle"
 
@@ -60,10 +66,24 @@ position = Vector2(0, 7)
 target_position = Vector2(-75, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
-shape = SubResource("RectangleShape2D_s77ef")
+shape = SubResource("CircleShape2D_76br0")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="hit box" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="hit box" type="CollisionShape2D" parent="hit box"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_12nfs")
+
+[node name="hurt box" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="hurt box" type="CollisionShape2D" parent="hurt box"]
+shape = SubResource("CircleShape2D_1pedr")
 
 [connection signal="tree_entered" from="AnimatedSprite2D/RayCast2D" to="." method="_on_ray_cast_2d_tree_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

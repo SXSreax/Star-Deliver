@@ -1,4 +1,4 @@
-[gd_scene load_steps=368 format=3 uid="uid://b2pfpmm65bioe"]
+[gd_scene load_steps=369 format=3 uid="uid://b2pfpmm65bioe"]
 
 [ext_resource type="Script" uid="uid://dsffd0se3kl7p" path="res://scripts/player.gd" id="1_qw7p6"]
 [ext_resource type="Texture2D" uid="uid://d2vg0i8o8vrd" path="res://assets/player/player/Attack/Spear/attack_spear.png" id="2_s3rk2"]
@@ -2501,6 +2501,10 @@ animations = [{
 radius = 7.0
 height = 26.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xo08b"]
+radius = 6.0
+height = 22.0
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-4, 0)
 script = ExtResource("1_qw7p6")
@@ -2553,3 +2557,9 @@ stats = ExtResource("8_ytkp7")
 
 [node name="Weapons" type="Node2D" parent="."]
 position = Vector2(4, 0)
+
+[node name="hurt box" type="Area2D" parent="."]
+
+[node name="hurt box" type="CollisionShape2D" parent="hurt box"]
+position = Vector2(4, 0)
+shape = SubResource("CapsuleShape2D_xo08b")

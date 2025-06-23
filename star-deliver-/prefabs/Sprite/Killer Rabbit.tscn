@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cdo2kemb6nus5"]
+[gd_scene load_steps=28 format=3 uid="uid://cdo2kemb6nus5"]
 
 [ext_resource type="Script" uid="uid://ksphs2x8jspt" path="res://scripts/killer_rabbit.gd" id="1_ag87b"]
 [ext_resource type="Texture2D" uid="uid://d2rqbvrj55wkj" path="res://assets/AllBunniesFree/AllBunniesFree/DemonicBunny/Running.png" id="1_hbm8f"]
@@ -159,7 +159,14 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xlckp"]
 radius = 7.0
+height = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ag87b"]
+radius = 8.0
 height = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6pw5o"]
+radius = 7.0
 
 [node name="KillerRabbit" type="CharacterBody2D"]
 position = Vector2(4, -2)
@@ -177,6 +184,25 @@ position = Vector2(0, 9.14286)
 target_position = Vector2(-59.0769, 5.96046e-07)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 2)
+position = Vector2(-5, 3)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_xlckp")
+
+[node name="hit box" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="hit box" type="CollisionShape2D" parent="hit box"]
+position = Vector2(-5, 3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ag87b")
+
+[node name="hurt box" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="hurt box2" type="CollisionShape2D" parent="hurt box"]
+position = Vector2(-4, 3)
+shape = SubResource("CircleShape2D_6pw5o")
+
+[connection signal="body_entered" from="hurt box" to="." method="_on_hurt_box_body_entered"]
