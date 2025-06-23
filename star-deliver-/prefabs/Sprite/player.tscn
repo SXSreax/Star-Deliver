@@ -2502,21 +2502,21 @@ radius = 3.0
 height = 12.0
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(41, -29)
+position = Vector2(-4, 0)
 script = ExtResource("1_qw7p6")
-metadata/_edit_group_ = true
 
 [node name="player" type="AnimatedSprite2D" parent="."]
-position = Vector2(-0.5, 0)
+position = Vector2(4, 0)
 scale = Vector2(0.464437, 0.440917)
 sprite_frames = SubResource("SpriteFrames_qw7p6")
 animation = &"idle spear left down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(9.53674e-07, 0)
+position = Vector2(4, 0)
 shape = SubResource("CapsuleShape2D_1t5oy")
 
 [node name="Camera2D2" type="Camera2D" parent="."]
+position = Vector2(4, 0)
 zoom = Vector2(5, 5)
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -2552,3 +2552,4 @@ layout_mode = 2
 stats = ExtResource("8_ytkp7")
 
 [node name="Weapons" type="Node2D" parent="."]
+position = Vector2(4, 0)

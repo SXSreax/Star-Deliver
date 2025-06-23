@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var slots = $UI/Hotbar.get_children()
 @export var speed = 400
 var last_direction =  "right up"
+var bullet = preload("res://prefabs/bullet.tscn")
 
 
 func get_input():
@@ -98,6 +99,9 @@ func get_input():
 		else:
 			player.play("walk up")
 		last_direction = "up"
+		
+	if Input.is_action_just_pressed("attack"):
+		shoot()
 
 
 func _physics_process(delta: float) -> void:
@@ -106,3 +110,11 @@ func _physics_process(delta: float) -> void:
 
 func add_items(stats):
 	hotbar.add_item(stats)
+
+func shoot():
+	var bullet_1 = bullet.instantiate()
+	bullet_1.dir = rotation
+	bullet_1.pos = $".".global_position 	
+	bullet_1.rota = global_rotation
+	get_parent().add_child(bullet_1)
+	
