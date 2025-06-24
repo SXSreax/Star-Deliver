@@ -1,31 +1,36 @@
-extends CharacterBody2D
+extends Node2D
 
-var did_player_enter = false
-var counter = 0
+var cd = true
+var is_ = false
+
 @onready var mission_label = $Label
+
+func _physics_process(delta: float) -> void:
+	if is_: 
+		if cd:
+			if Input.is_action_just_pressed("interact"):
+				cd_()
+				show_mission_message()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		did_player_enter = true
-		print("you entered")
+		is_ = true
+
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
-		did_player_enter = false
+		is_ = false
+		
 
-func _physics_process(delta: float) -> void:
-	if did_player_enter and Input.is_action_just_pressed("interact"):
-		show_mission_complete_message()
+func cd_():
+	cd = false
+	await get_tree().create_timer(3).timeout
+	cd = true
 
-func show_mission_complete_message():
+func show_mission_message():
 	mission_label.visible = true
 	mission_label.modulate.a = 0.0
-	await fade_mission_label(3)
-	mission_label.visible = false
-	counter += 1
-	if counter == 1: 
-		await get_tree().create_timer(1).timeout
-		get_tree().change_scene_to_file("res://prefabs/Maps/home.tscn")
+	fade_mission_label(3)
 
 func fade_mission_label(times):
 	var duration = 0.5
@@ -35,3 +40,4 @@ func fade_mission_label(times):
 		var tween = create_tween()
 		tween.tween_property(mission_label, "modulate:a", to_alpha, duration)
 		await tween.finished
+	mission_label.visible = false

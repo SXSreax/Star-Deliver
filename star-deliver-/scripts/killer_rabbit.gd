@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var raycast: RayCast2D = $AnimatedSprite2D/RayCast2D
 
 var speed = 100
-var hp = 50
+var hp = 30
 
 func _physics_process(delta: float) -> void:
 	if hp == 0:
@@ -15,16 +15,15 @@ func _physics_process(delta: float) -> void:
 	raycast.target_position = direction * length 
 	
 	if raycast.is_colliding(): 
-		#print("chase")
 		var collider = raycast.get_collider()
-		var collider_name = collider.name # Gets the collider name
-		# If the colider name is equal to the player, moves
-		if collider_name == "Player":
-			velocity = direction * speed
-			move_and_slide()
+		if collider != null:
+			var collider_name = collider.name # Gets the collider name
+			# If the collider name is equal to the player, moves
+			if collider_name == "Player":
+				velocity = direction * speed
+				move_and_slide()
 
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:
-	print(body.name)
-	if body.name == "bullet":
-		hp = 10
+	if body.is_in_group("bullets"):
+		hp -= 10

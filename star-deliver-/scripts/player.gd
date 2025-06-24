@@ -6,6 +6,7 @@ extends CharacterBody2D
 var last_direction =  "right up"
 var bullet = preload("res://prefabs/bullet.tscn")
 var hp = 100 
+var cd = true
 
 
 func get_input():
@@ -148,7 +149,7 @@ func get_input():
 			player.play("walk up")
 		last_direction = "up"
 		
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack") or Input.is_action_pressed("attack"):
 		if selected_slot == 2:
 			shoot()
 
@@ -162,31 +163,64 @@ func add_items(stats):
 	hotbar.add_item(stats)
 
 func shoot():
-	var bullet_1 = bullet.instantiate()
-	
-	# Determine direction vector based on last_direction
-	var dir_vec = Vector2.RIGHT
-	match last_direction:
-		"right up":
-			dir_vec = Vector2(1, -1).normalized()
-		"right down":
-			dir_vec = Vector2(1, 1).normalized()
-		"left up":
-			dir_vec = Vector2(-1, -1).normalized()
-		"left down":
-			dir_vec = Vector2(-1, 1).normalized()
-		"right":
-			dir_vec = Vector2(1, 0)
-		"left":
-			dir_vec = Vector2(-1, 0)
-		"up":
-			dir_vec = Vector2(0, -1)
-		"down":
-			dir_vec = Vector2(0, 1)
-	
-	# Spawn bullet in front of player
-	var spawn_offset = dir_vec * 32 # 32 pixels in front, adjust as needed
-	bullet_1.pos = global_position + spawn_offset
-	bullet_1.dir = dir_vec.angle()
-	bullet_1.rota = bullet_1.dir
-	get_parent().add_child(bullet_1)
+	if cd:
+		var bullet_1 = bullet.instantiate()
+		cd = false
+
+		# Get mouse position in world coordinates
+		var mouse_pos = get_global_mouse_position()
+		var to_mouse = (mouse_pos - global_position).normalized()
+		var angle = to_mouse.angle()
+
+		# Map angle to 8 directions for player animation only
+		var dir_vec = Vector2.RIGHT
+		var direction = angle_to_direction(angle)
+		match direction:
+			"right":
+				dir_vec = Vector2(1, 0)
+			"right down":
+				dir_vec = Vector2(0.707, 0.707)
+			"down":
+				dir_vec = Vector2(0, 1)
+			"left down":
+				dir_vec = Vector2(-0.707, 0.707)
+			"left":
+				dir_vec = Vector2(-1, 0)
+			"left up":
+				dir_vec = Vector2(-0.707, -0.707)
+			"up":
+				dir_vec = Vector2(0, -1)
+			"right up":
+				dir_vec = Vector2(0.707, -0.707)
+
+		last_direction = direction
+
+		# Spawn bullet in front of player (use mouse direction for offset)
+		var spawn_offset = to_mouse * 32
+		bullet_1.pos = global_position + spawn_offset
+		bullet_1.dir = to_mouse.angle() # exact angle to mouse
+		bullet_1.rota = bullet_1.dir
+		get_parent().add_child(bullet_1)
+		cd_gun()
+
+func angle_to_direction(angle: float) -> String:
+	# 8 directions, each 45 degrees (PI/4 radians)
+	var directions = [
+		"right",        # -22.5 to 22.5 deg
+		"right down",   # 22.5 to 67.5 deg
+		"down",         # 67.5 to 112.5 deg
+		"left down",    # 112.5 to 157.5 deg
+		"left",         # 157.5 to -157.5 deg
+		"left up",      # -157.5 to -112.5 deg
+		"up",           # -112.5 to -67.5 deg
+		"right up"      # -67.5 to -22.5 deg
+	]
+	var deg = rad_to_deg(angle)
+	if deg < 0:
+		deg += 360
+	var index = int(round(deg / 45.0)) % 8
+	return directions[index]
+
+func cd_gun():
+	await get_tree().create_timer(0.05).timeout
+	cd = true

@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dx4c5mtdjbxmm"]
+[gd_scene load_steps=7 format=3 uid="uid://sj281iiv1ntb"]
 
-[ext_resource type="Script" uid="uid://bsytnwgwy0dwi" path="res://scripts/mission_hub.gd" id="1_3ywut"]
-[ext_resource type="Texture2D" uid="uid://cli8iuah5iqmq" path="res://assets/TileMap_SF/TileMap_SF/tileset_sf.png" id="2_xni81"]
+[ext_resource type="Texture2D" uid="uid://cli8iuah5iqmq" path="res://assets/TileMap_SF/TileMap_SF/tileset_sf.png" id="1_3dc3l"]
+[ext_resource type="Script" uid="uid://bc72rtmjqi0ah" path="res://scripts/package_pickup.gd" id="1_fu5tm"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3ywut"]
-texture = ExtResource("2_xni81")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fu5tm"]
+texture = ExtResource("1_3dc3l")
 1:0/0 = 0
 2:0/0 = 0
 5:0/0 = 0
@@ -1829,41 +1829,40 @@ texture = ExtResource("2_xni81")
 42:67/0 = 0
 43:67/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_sdus1"]
-sources/0 = SubResource("TileSetAtlasSource_3ywut")
+[sub_resource type="TileSet" id="TileSet_oxgou"]
+sources/0 = SubResource("TileSetAtlasSource_fu5tm")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbke8"]
-size = Vector2(136, 80)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofpsb"]
+size = Vector2(35, 63)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_432wp"]
-size = Vector2(117, 45)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2nc3r"]
+size = Vector2(24, 40)
 
-[node name="mission hub" type="CharacterBody2D"]
-script = ExtResource("1_3ywut")
+[node name="package pickup" type="CharacterBody2D"]
+script = ExtResource("1_fu5tm")
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_sdus1")
+tile_set = SubResource("TileSet_oxgou")
 format = 2
-layer_0/tile_data = PackedInt32Array(-65540, 2359296, 64, -4, 2359296, 65, 65532, 2359296, 66, 131068, 2359296, 67, -65539, 2424832, 64, -3, 2424832, 65, 65533, 2424832, 66, 131069, 2424832, 67, -65538, 2490368, 64, -2, 2490368, 65, 65534, 2490368, 66, 131070, 2490368, 67, -65537, 2555904, 64, -1, 2555904, 65, 65535, 2555904, 66, 131071, 2555904, 67, -131072, 2621440, 64, -65536, 2621440, 65, 0, 2621440, 66, 65536, 2621440, 67, -131071, 2686976, 64, -65535, 2686976, 65, 1, 2686976, 66, 65537, 2686976, 67, -131070, 2752512, 64, -65534, 2752512, 65, 2, 2752512, 66, 65538, 2752512, 67, -131069, 2818048, 64, -65533, 2818048, 65, 3, 2818048, 66, 65539, 2818048, 67)
+layer_0/tile_data = PackedInt32Array(-65537, 2686976, 56, -1, 2686976, 57, 65535, 2686976, 58, 131071, 2686976, 59, -131072, 2752512, 56, -65536, 2752512, 57, 0, 2752512, 58, 65536, 2752512, 59)
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_xbke8")
+position = Vector2(-1.5, -8.5)
+shape = SubResource("RectangleShape2D_ofpsb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -9.5)
-shape = SubResource("RectangleShape2D_432wp")
+position = Vector2(-1, -12)
+shape = SubResource("RectangleShape2D_2nc3r")
 
-[node name="Label" type="Label" parent="."]
+[node name="TeleportLabel" type="Label" parent="."]
 visible = false
-offset_left = -62.0
-offset_top = -12.0
-offset_right = 66.0
-offset_bottom = 11.0
-text = "Mission Acquire!"
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_left = -54.0
+offset_top = -15.0
+offset_right = 53.0
+offset_bottom = 8.0
+text = "TELEPORTING"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

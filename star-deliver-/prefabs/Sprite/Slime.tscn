@@ -87,3 +87,4 @@ shape = SubResource("CircleShape2D_1pedr")
 
 [connection signal="tree_entered" from="AnimatedSprite2D/RayCast2D" to="." method="_on_ray_cast_2d_tree_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="hurt box" to="." method="_on_hurt_box_body_entered"]

@@ -36,4 +36,16 @@ shape = SubResource("RectangleShape2D_mhrpi")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_i05yc")
 
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -115.0
+offset_top = -72.0
+offset_right = 113.0
+offset_bottom = -23.0
+text = "MISSION COMPLETE! 
+TP BACK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

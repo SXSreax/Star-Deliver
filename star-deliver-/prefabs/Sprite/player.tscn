@@ -1,6 +1,4 @@
-
-[gd_scene load_steps=369 format=3 uid="uid://b2pfpmm65bioe"]
-
+[gd_scene load_steps=486 format=3 uid="uid://b2pfpmm65bioe"]
 
 [ext_resource type="Script" uid="uid://dsffd0se3kl7p" path="res://scripts/player.gd" id="1_qw7p6"]
 [ext_resource type="Texture2D" uid="uid://d2vg0i8o8vrd" path="res://assets/player/player/Attack/Spear/attack_spear.png" id="2_s3rk2"]
@@ -3321,9 +3319,7 @@ script = ExtResource("1_qw7p6")
 position = Vector2(4, 0)
 scale = Vector2(1.00305, 0.952255)
 sprite_frames = SubResource("SpriteFrames_qw7p6")
-
 animation = &"idle right down"
-
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 0)
@@ -3331,7 +3327,7 @@ shape = SubResource("CapsuleShape2D_1t5oy")
 
 [node name="Camera2D2" type="Camera2D" parent="."]
 position = Vector2(4, 0)
-zoom = Vector2(5, 5)
+zoom = Vector2(3.5, 3.5)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
