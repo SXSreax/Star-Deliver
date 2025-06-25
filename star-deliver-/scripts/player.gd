@@ -2,11 +2,19 @@ extends CharacterBody2D
 @onready var hotbar: HBoxContainer = $UI/Hotbar
 @onready var player: AnimatedSprite2D = $player
 @onready var slots = $UI/Hotbar.get_children()
-@export var speed = 400
+@export var speed = 200
 var last_direction =  "right up"
 var bullet = preload("res://prefabs/bullet.tscn")
 var hp = 100 
 var cd = true
+
+
+func _physics_process(delta: float) -> void:
+	if hp == 0: 
+		queue_free()
+		get_tree().change_scene_to_file("res://prefabs/losing.tscn")
+	get_input()
+	move_and_slide()
 
 
 func get_input():
@@ -154,11 +162,6 @@ func get_input():
 			shoot()
 
 
-
-func _physics_process(delta: float) -> void:
-	get_input()
-	move_and_slide()
-
 func add_items(stats):
 	hotbar.add_item(stats)
 
@@ -187,7 +190,7 @@ func shoot():
 			"left":
 				dir_vec = Vector2(-1, 0)
 			"left up":
-				dir_vec = Vector2(-0.707, -0.707)
+				dir_vec = Vector2(-0.707, -0.707) 
 			"up":
 				dir_vec = Vector2(0, -1)
 			"right up":
@@ -224,3 +227,11 @@ func angle_to_direction(angle: float) -> String:
 func cd_gun():
 	await get_tree().create_timer(0.05).timeout
 	cd = true
+
+
+func _on_hurt_box_body_entered(body: Node2D) -> void:
+	print(body.name)
+
+
+func _on_hurt_box_body_exited(body: Node2D) -> void:
+	pass # Replace with function body.
