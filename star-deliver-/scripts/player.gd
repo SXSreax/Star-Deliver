@@ -1,61 +1,70 @@
 extends CharacterBody2D
+
 @onready var hotbar: HBoxContainer = $UI/Hotbar
 @onready var player: AnimatedSprite2D = $player
 @onready var slots = $UI/Hotbar.get_children()
 @export var speed = 400
-var last_direction =  "right up"
+var last_direction = "right up"
 var bullet = preload("res://prefabs/bullet.tscn")
-var hp = 100 
+var hp = 100
 var cd = true
 
+# Track if an attack animation is playing
+var is_attacking = false
+
+func _ready():
+	# Connect animation finished signal to reset attack state
+	player.connect("animation_finished", Callable(self, "_on_animation_finished"))
 
 func get_input():
+	# Only handle movement/idle animations if not attacking
+	if is_attacking:
+		return
+
 	# Get directional input from keyboard: left/right/up/down
-	var input_direction = Input.get_vector("left","right","up","down")
-	
+	var input_direction = Input.get_vector("left", "right", "up", "down")
+
 	# Get the currently selected item slot from the hotbar (e.g., sword, gun)
 	var selected_slot = hotbar.current_index
-	
+
 	# Set player velocity based on input direction and movement speed
-	# This will later be used to move the player
 	velocity = input_direction * speed
 
 	# If there's no input, play an idle animation depending on last direction faced
 	if input_direction == Vector2.ZERO:
-		# Check what the last direction was to decide which idle animation to play
+		# Play idle animations based on last direction and item equipped
 		if last_direction == "right up":
-			# Play idle animations based on item equipped (spear/gun/empty)
 			if selected_slot == 1:
 				player.play("idle spear right up")
-			elif  selected_slot == 2:
+			elif selected_slot == 2:
 				player.play("idle gun up")
 			else:
 				player.play("idle right up")
 		elif last_direction == "left up":
 			if selected_slot == 1:
 				player.play("idle spear left up")
-			elif  selected_slot == 2:
+			elif selected_slot == 2:
 				player.play("idle gun left up")
 			else:
 				player.play("idle left up")
 		elif last_direction == "left down":
 			if selected_slot == 1:
 				player.play("idle spear left down")
-			elif  selected_slot == 2:
+			elif selected_slot == 2:
 				player.play("idle gun left")
 			else:
 				player.play("idle left down")
 		elif last_direction == "right down":
 			if selected_slot == 1:
 				player.play("idle spear right down")
-			elif  selected_slot == 2:
+			elif selected_slot == 2:
 				player.play("idle gun right down")
 			else:
 				player.play("idle right down")
 		elif last_direction == "up":
 			if selected_slot == 1:
 				player.play("idle spear up")
-			elif  selected_slot == 2:
+			elif selected_slot == 2:
 				player.play("idle gun up")
 			else:
 				player.play("idle up")
@@ -63,84 +72,71 @@ func get_input():
 			# Default fallback for when facing down or direction is not tracked
 			if selected_slot == 1:
 				player.play("idle spear down")
-			elif  selected_slot == 2:
+			elif selected_slot == 2:
 				player.play("idle gun down")
 			else:
 				player.play("idle down")
-	
-	# The following conditions handle moving input + selected item = correct animation
 	elif input_direction.x > 0 and input_direction.y < 0:
 		# Moving diagonally right and up
 		if selected_slot == 1:
 			player.play("spear walk right up")
-		elif  selected_slot == 2:
+		elif selected_slot == 2:
 			player.play("run gun right up")
 		else:
 			player.play("walk right up")
-		# Update last_direction for future idle animation reference
 		last_direction = "right up"
-
 	elif input_direction.x > 0 and input_direction.y > 0:
 		# Moving diagonally right and down
 		if selected_slot == 1:
 			player.play("spear walk right down")
-		elif  selected_slot == 2:
+		elif selected_slot == 2:
 			player.play("run gun right down")
 		else:
 			player.play("walk right down")
-		
 		last_direction = "right down"
-
 	elif input_direction.x < 0 and input_direction.y < 0:
 		# Moving diagonally left and up
 		if selected_slot == 1:
 			player.play("spear walk left up")
-		elif  selected_slot == 2:
+		elif selected_slot == 2:
 			player.play("run gun left up")
 		else:
-			player.play("walk left up")#
+			player.play("walk left up")
 		last_direction = "left up"
-
 	elif input_direction.x < 0 and input_direction.y > 0:
 		# Moving diagonally left and down
 		if selected_slot == 1:
 			player.play("spear walk left down")
-		elif  selected_slot == 2:
+		elif selected_slot == 2:
 			player.play("run gun left down")
 		else:
-			player.play("walk left down")#
+			player.play("walk left down")
 		last_direction = "left down"
 	elif input_direction.x > 0 and input_direction.y == 0:
-
 		if selected_slot == 1:
 			player.play("spear walk right down")
-		elif  selected_slot == 2:
+		elif selected_slot == 2:
 			player.play("run gun right down")
 		else:
-
 			player.play("walk right down")
 		last_direction = "right"
 	elif input_direction.x < 0 and input_direction.y == 0:
-
 		if selected_slot == 1:
 			player.play("spear walk left down")
-		elif  selected_slot == 2:
+		elif selected_slot == 2:
 			player.play("run gun left down")
 		else:
-
 			player.play("walk left down")
 		last_direction = "left"
-
 	elif input_direction.y > 0:
 		# Moving down only
 		if selected_slot == 1:
 			player.play("spear walk down")
-		elif  selected_slot == 2:
+		elif selected_slot == 2:
 			player.play("run gun down")
 		else:
 			player.play("walk down")
 		last_direction = "down"
-
 	elif input_direction.y < 0:
 		# Moving up only
 		if selected_slot == 1:
@@ -148,15 +144,15 @@ func get_input():
 		else:
 			player.play("walk up")
 		last_direction = "up"
-		
+
+	# Handle gun shooting input
 	if Input.is_action_just_pressed("attack") or Input.is_action_pressed("attack"):
 		if selected_slot == 2:
 			shoot()
 
-
-
 func _physics_process(delta: float) -> void:
 	get_input()
+	spear_attack()
 	move_and_slide()
 
 func add_items(stats):
@@ -224,3 +220,76 @@ func angle_to_direction(angle: float) -> String:
 func cd_gun():
 	await get_tree().create_timer(0.05).timeout
 	cd = true
+
+func spear_attack():
+	var selected_slot = hotbar.current_index
+	# Only trigger attack if not already attacking and correct slot is selected
+	if Input.is_action_just_pressed("attack") and selected_slot == 1 and not is_attacking:
+		is_attacking = true  # Set attack flag
+		# Play the correct spear attack animation based on last_direction
+		match last_direction:
+			"up":
+				player.play("attack spear up")
+			"right up":
+				player.play("attack spear up right")
+			"left up":
+				player.play("attack spear up left")
+			"left down":
+				player.play("attack spear down")
+			"right down":
+				player.play("attack spear down right")
+			_:
+				player.play("attack spear down")
+
+func _on_animation_finished():
+	# Only reset attack state if the finished animation is an attack
+	if player.animation.begins_with("attack spear"):
+		is_attacking = false
+		# Immediately play the correct idle animation after attack
+		_play_idle_animation()
+
+func _play_idle_animation():
+	var selected_slot = hotbar.current_index
+	match last_direction:
+		"right up":
+			if selected_slot == 1:
+				player.play("idle spear right up")
+			elif selected_slot == 2:
+				player.play("idle gun up")
+			else:
+				player.play("idle right up")
+		"left up":
+			if selected_slot == 1:
+				player.play("idle spear left up")
+			elif selected_slot == 2:
+				player.play("idle gun left up")
+			else:
+				player.play("idle left up")
+		"left down":
+			if selected_slot == 1:
+				player.play("idle spear left down")
+			elif selected_slot == 2:
+				player.play("idle gun left")
+			else:
+				player.play("idle left down")
+		"right down":
+			if selected_slot == 1:
+				player.play("idle spear right down")
+			elif selected_slot == 2:
+				player.play("idle gun right down")
+			else:
+				player.play("idle right down")
+		"up":
+			if selected_slot == 1:
+				player.play("idle spear up")
+			elif selected_slot == 2:
+				player.play("idle gun up")
+			else:
+				player.play("idle up")
+		_:
+			if selected_slot == 1:
+				player.play("idle spear down")
+			elif selected_slot == 2:
+				player.play("idle gun down")
+			else:
+				player.play("idle down")

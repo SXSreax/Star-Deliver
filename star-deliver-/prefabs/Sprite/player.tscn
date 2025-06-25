@@ -1782,7 +1782,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3ddwg")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack spear down",
 "speed": 10.0
 }, {
@@ -1811,7 +1811,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ncnrw")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack spear down left",
 "speed": 10.0
 }, {
@@ -1840,7 +1840,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mlcxv")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack spear down right",
 "speed": 10.0
 }, {
@@ -1869,7 +1869,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0bhy7")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack spear left",
 "speed": 10.0
 }, {
@@ -1898,7 +1898,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3sp8e")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack spear right",
 "speed": 10.0
 }, {
@@ -1927,7 +1927,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_iqwm3")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack spear up",
 "speed": 10.0
 }, {
@@ -1956,7 +1956,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uwjnb")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack spear up left",
 "speed": 10.0
 }, {
@@ -1985,7 +1985,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2e4ri")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack spear up right",
 "speed": 10.0
 }, {
@@ -2014,7 +2014,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4eirr")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle down",
 "speed": 5.0
 }, {
@@ -2043,7 +2043,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dmj5p")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle gun down",
 "speed": 5.0
 }, {
@@ -2072,7 +2072,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rqknb")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle gun left",
 "speed": 5.0
 }, {
@@ -2101,7 +2101,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cfpox")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle gun left up",
 "speed": 5.0
 }, {
@@ -2130,7 +2130,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0wuw8")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle gun right down",
 "speed": 5.0
 }, {
@@ -2159,7 +2159,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i3hhu")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle gun up",
 "speed": 5.0
 }, {
@@ -2188,7 +2188,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cqqs4")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle left down",
 "speed": 5.0
 }, {
@@ -2217,7 +2217,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_575ok")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle left up",
 "speed": 5.0
 }, {
@@ -2246,7 +2246,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oosp6")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle right down",
 "speed": 5.0
 }, {
@@ -2275,7 +2275,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pticf")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle right up",
 "speed": 5.0
 }, {
@@ -2304,7 +2304,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_07gmf")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle spear down",
 "speed": 5.0
 }, {
@@ -2333,7 +2333,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_34m5i")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle spear left",
 "speed": 5.0
 }, {
@@ -2362,7 +2362,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3ujc4")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle spear left down",
 "speed": 5.0
 }, {
@@ -2391,7 +2391,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hnkj4")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle spear left up",
 "speed": 5.0
 }, {
@@ -2420,7 +2420,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_53hfi")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle spear right",
 "speed": 5.0
 }, {
@@ -2449,7 +2449,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jte7j")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle spear right down",
 "speed": 5.0
 }, {
@@ -2478,7 +2478,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jjvhq")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle spear right up",
 "speed": 5.0
 }, {
@@ -2507,7 +2507,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gaxig")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle spear up",
 "speed": 5.0
 }, {
@@ -2536,7 +2536,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_g733f")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle up",
 "speed": 5.0
 }, {
@@ -2544,7 +2544,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_6hmkf")
 }],
-"loop": true,
+"loop": false,
 "name": &"package",
 "speed": 5.0
 }, {
@@ -3319,7 +3319,7 @@ script = ExtResource("1_qw7p6")
 position = Vector2(4, 0)
 scale = Vector2(1.00305, 0.952255)
 sprite_frames = SubResource("SpriteFrames_qw7p6")
-animation = &"idle right down"
+animation = &"attack spear down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 0)
