@@ -3,8 +3,10 @@ extends CharacterBody2D
 @onready var hotbar: HBoxContainer = $UI/Hotbar
 @onready var player: AnimatedSprite2D = $player
 @onready var slots = $UI/Hotbar.get_children()
-@export var speed = 400
-var last_direction = "right up"
+
+@export var speed = 200
+var last_direction =  "right up"
+
 var bullet = preload("res://prefabs/bullet.tscn")
 var hp = 100
 var cd = true
@@ -15,6 +17,14 @@ var is_attacking = false
 func _ready():
 	# Connect animation finished signal to reset attack state
 	player.connect("animation_finished", Callable(self, "_on_animation_finished"))
+
+func _physics_process(delta: float) -> void:
+	if hp == 0: 
+		queue_free()
+		get_tree().change_scene_to_file("res://prefabs/losing.tscn")
+	get_input()
+	move_and_slide()
+
 
 func get_input():
 	# Only handle movement/idle animations if not attacking
@@ -150,10 +160,8 @@ func get_input():
 		if selected_slot == 2:
 			shoot()
 
-func _physics_process(delta: float) -> void:
-	get_input()
-	spear_attack()
-	move_and_slide()
+
+
 
 func add_items(stats):
 	hotbar.add_item(stats)
@@ -183,7 +191,7 @@ func shoot():
 			"left":
 				dir_vec = Vector2(-1, 0)
 			"left up":
-				dir_vec = Vector2(-0.707, -0.707)
+				dir_vec = Vector2(-0.707, -0.707) 
 			"up":
 				dir_vec = Vector2(0, -1)
 			"right up":
@@ -221,75 +229,12 @@ func cd_gun():
 	await get_tree().create_timer(0.05).timeout
 	cd = true
 
-func spear_attack():
-	var selected_slot = hotbar.current_index
-	# Only trigger attack if not already attacking and correct slot is selected
-	if Input.is_action_just_pressed("attack") and selected_slot == 1 and not is_attacking:
-		is_attacking = true  # Set attack flag
-		# Play the correct spear attack animation based on last_direction
-		match last_direction:
-			"up":
-				player.play("attack spear up")
-			"right up":
-				player.play("attack spear up right")
-			"left up":
-				player.play("attack spear up left")
-			"left down":
-				player.play("attack spear down")
-			"right down":
-				player.play("attack spear down right")
-			_:
-				player.play("attack spear down")
 
-func _on_animation_finished():
-	# Only reset attack state if the finished animation is an attack
-	if player.animation.begins_with("attack spear"):
-		is_attacking = false
-		# Immediately play the correct idle animation after attack
-		_play_idle_animation()
 
-func _play_idle_animation():
-	var selected_slot = hotbar.current_index
-	match last_direction:
-		"right up":
-			if selected_slot == 1:
-				player.play("idle spear right up")
-			elif selected_slot == 2:
-				player.play("idle gun up")
-			else:
-				player.play("idle right up")
-		"left up":
-			if selected_slot == 1:
-				player.play("idle spear left up")
-			elif selected_slot == 2:
-				player.play("idle gun left up")
-			else:
-				player.play("idle left up")
-		"left down":
-			if selected_slot == 1:
-				player.play("idle spear left down")
-			elif selected_slot == 2:
-				player.play("idle gun left")
-			else:
-				player.play("idle left down")
-		"right down":
-			if selected_slot == 1:
-				player.play("idle spear right down")
-			elif selected_slot == 2:
-				player.play("idle gun right down")
-			else:
-				player.play("idle right down")
-		"up":
-			if selected_slot == 1:
-				player.play("idle spear up")
-			elif selected_slot == 2:
-				player.play("idle gun up")
-			else:
-				player.play("idle up")
-		_:
-			if selected_slot == 1:
-				player.play("idle spear down")
-			elif selected_slot == 2:
-				player.play("idle gun down")
-			else:
-				player.play("idle down")
+func _on_hurt_box_body_entered(body: Node2D) -> void:
+	print(body.name)
+
+
+func _on_hurt_box_body_exited(body: Node2D) -> void:
+	pass # Replace with function body.
+

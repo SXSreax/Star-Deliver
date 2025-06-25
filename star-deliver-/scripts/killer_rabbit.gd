@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var player = $"../Player"
 @onready var raycast: RayCast2D = $AnimatedSprite2D/RayCast2D
 
-var speed = 100
+var speed = 75
 var hp = 30
 
 func _physics_process(delta: float) -> void:

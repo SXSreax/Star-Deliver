@@ -3304,8 +3304,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1t5oy"]
-radius = 7.0
-height = 26.0
+radius = 5.0
+height = 18.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xo08b"]
 radius = 6.0
@@ -3319,7 +3319,9 @@ script = ExtResource("1_qw7p6")
 position = Vector2(4, 0)
 scale = Vector2(1.00305, 0.952255)
 sprite_frames = SubResource("SpriteFrames_qw7p6")
-animation = &"attack spear down"
+
+animation = &"attack spear left"
+
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 0)
@@ -3365,7 +3367,12 @@ stats = ExtResource("8_ytkp7")
 position = Vector2(4, 0)
 
 [node name="hurt box" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 5
 
 [node name="hurt box" type="CollisionShape2D" parent="hurt box"]
 position = Vector2(4, 0)
 shape = SubResource("CapsuleShape2D_xo08b")
+
+[connection signal="body_entered" from="hurt box" to="." method="_on_hurt_box_body_entered"]
+[connection signal="body_exited" from="hurt box" to="." method="_on_hurt_box_body_exited"]

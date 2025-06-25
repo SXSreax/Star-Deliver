@@ -12,6 +12,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		did_player_enter = false
+		print("you exit")
 
 func _physics_process(delta: float) -> void:
 	if did_player_enter and Input.is_action_just_pressed("interact"):
