@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var sprite = $Sprite2D
+#@onready var sprite = $Sprite2D
 var image_paths = [
 	"res://assets/Intro Slides/01.png",
 	"res://assets/Intro Slides/02.png",

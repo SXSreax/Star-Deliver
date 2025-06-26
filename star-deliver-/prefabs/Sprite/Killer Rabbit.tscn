@@ -168,7 +168,7 @@ height = 20.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_6pw5o"]
 radius = 7.0
 
-[node name="KillerRabbit" type="CharacterBody2D"]
+[node name="KillerRabbit" type="CharacterBody2D" groups=["enemies"]]
 position = Vector2(4, -2)
 script = ExtResource("1_ag87b")
 

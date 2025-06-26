@@ -53,7 +53,7 @@ height = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1pedr"]
 
-[node name="Slime" type="CharacterBody2D"]
+[node name="Slime" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_76br0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

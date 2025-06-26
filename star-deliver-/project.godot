@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Star Deliver"
-run/main_scene="uid://ttk7hvoen5xk"
+run/main_scene="uid://butqwx8kw70u3"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[global_group]
+
+enemies=""
 
 [input]
 
