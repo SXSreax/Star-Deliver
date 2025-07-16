@@ -7,7 +7,7 @@ var speed = 75
 var hp = 50 
 
 func _physics_process(delta: float) -> void:
-	if hp == 0:
+	if hp == 0 or hp < 0:
 		queue_free()
 	
 	var direction = (player.global_position - raycast.global_position).normalized()
@@ -26,6 +26,9 @@ func _physics_process(delta: float) -> void:
 func _on_hurt_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("bullets"):
 		hp -= 10
+		
+func take_damage(amount):
+	hp -= amount
 	
 	
 	# Replace with function body.

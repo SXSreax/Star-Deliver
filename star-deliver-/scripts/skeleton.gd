@@ -4,6 +4,9 @@ const speed = 200
 @onready var player: CharacterBody2D = $"../Player"
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
+var hp = 75
+
+
 func makepath() -> void:
 	navigation_agent_2d.target_position = player.global_position
 	print("made path {player}".format([navigation_agent_2d.target_position]))
@@ -18,3 +21,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	makepath() 
+	
+func take_damage(amount):
+	hp -= amount

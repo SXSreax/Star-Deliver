@@ -2,6 +2,8 @@ extends CharacterBody2D
 @onready var hotbar: HBoxContainer = $UI/Hotbar
 @onready var player: AnimatedSprite2D = $player
 @onready var slots = $UI/Hotbar.get_children()
+@onready var spear_sprite: Sprite2D = $SpearSprite
+@onready var spear_hitbox: Area2D = $SpearHitbox
 @export var speed = 200
 var last_direction =  "right up"
 var bullet = preload("res://prefabs/bullet.tscn")
@@ -265,35 +267,47 @@ func _on_hurt_box_body_exited(body: Node2D) -> void:
 
 func spear_attack():
 	var selected_slot = hotbar.current_index
-	# Only trigger attack if not already attacking and correct slot is selected
 	if Input.is_action_just_pressed("attack") and selected_slot == 1 and not is_attacking:
-		is_attacking = true  # Set attack flag
-		# Play the correct spear attack animation based on last_direction
-		match last_direction:
+		is_attacking = true
+
+		var mouse_pos = get_global_mouse_position()
+		var to_mouse = (mouse_pos - global_position).normalized()
+		var angle = to_mouse.angle()
+		var direction = angle_to_direction(angle)
+
+		# Set hitbox direction and enable it
+		spear_hitbox.global_position = global_position + to_mouse * 2
+		spear_hitbox.rotation = angle
+		spear_hitbox.monitoring = true
+
+		# Play animation as before
+		match direction:
+			"right":
+				player.play("attack spear right")
+			"right down":
+				player.play("attack spear down right")
+			"down":
+				player.play("attack spear down")
+			"left down":
+				player.play("attack spear down left")
+			"left":
+				player.play("attack spear left")
+			"left up":
+				player.play("attack spear up left")
 			"up":
 				player.play("attack spear up")
 			"right up":
 				player.play("attack spear up right")
-			"left up":
-				player.play("attack spear up left")
-			"right":
-				player.play("attack spear right")
-			"left":
-				player.play("attack spear left")
-			"left down":
-				player.play("attack spear down left")
-			"right down":
-				player.play("attack spear down right")
 			_:
 				player.play("attack spear down")
-		_on_animation_finished()
+		
 
 func _on_animation_finished():
 	# Only reset attack state if the finished animation is an attack
 	if player.animation.begins_with("attack spear"):
 		# Wait a short moment before allowing next attack (adjust 0.1 as needed)
-		await get_tree().create_timer(0.7).timeout
 		is_attacking = false
+		spear_hitbox.monitoring = false # disable hitbox after attack
 		_play_idle_animation()
 
 func _play_idle_animation():
