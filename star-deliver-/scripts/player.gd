@@ -386,7 +386,7 @@ func _ready() -> void:
 # It helps user to find the direction of the receiver	
 func _process(delta):
 	if receiver:
-		# Uses the player.global_position to get the direction and rotate the arrow 
+		# Add PI/2 because it shows the direction 90 degree away from the actual direction
 		# relative to the player's location
-		var dir = (receiver.global_position - player.global_position).normalized()
-		compass_arrow.rotation = dir.angle()
+		var dir = (receiver.global_position - global_position).normalized()
+		compass_arrow.rotation = dir.angle() + PI/2
