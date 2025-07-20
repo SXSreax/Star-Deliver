@@ -1,4 +1,6 @@
-[gd_scene load_steps=489 format=3 uid="uid://b2pfpmm65bioe"]
+
+[gd_scene load_steps=488 format=3 uid="uid://b2pfpmm65bioe"]
+
 
 [ext_resource type="Script" uid="uid://dsffd0se3kl7p" path="res://scripts/player.gd" id="1_qw7p6"]
 [ext_resource type="Texture2D" uid="uid://d2vg0i8o8vrd" path="res://assets/player/player/Attack/Spear/attack_spear.png" id="2_s3rk2"]
@@ -58,7 +60,8 @@
 [ext_resource type="Texture2D" uid="uid://coayuawujmusp" path="res://assets/player/player/Run/Gun/Run_Gun_right_down.png" id="33_sds66"]
 [ext_resource type="Texture2D" uid="uid://bmr1b2yjgopx4" path="res://assets/player/player/Run/Gun/Run_Gun_right_up.png" id="34_7ad8y"]
 [ext_resource type="Texture2D" uid="uid://cnpoluh751tqt" path="res://assets/player/player/Run/Gun/Run_Gun_up.png" id="35_06huw"]
-[ext_resource type="Texture2D" uid="uid://c7r1remmnvi42" path="res://assets/atlases/arrow_north_atlas.tres" id="59_pdhvl"]
+
+[ext_resource type="Script" path="res://scripts/spear_hitbox.gd" id="59_pdhvl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1t5oy"]
 atlas = ExtResource("2_s3rk2")
@@ -3324,18 +3327,20 @@ shadow_offset = Vector2(50, 50)
 radius = 6.0
 height = 22.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pdhvl"]
+radius = 5.0
+height = 20.0
+
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(-4, 0)
 script = ExtResource("1_qw7p6")
 
 [node name="player" type="AnimatedSprite2D" parent="."]
-position = Vector2(4, 0)
+position = Vector2(7.62939e-06, 0)
 scale = Vector2(1.00305, 0.952255)
 sprite_frames = SubResource("SpriteFrames_qw7p6")
 animation = &"attack spear right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, 0)
 shape = SubResource("CapsuleShape2D_1t5oy")
 
 [node name="Camera2D2" type="Camera2D" parent="."]
@@ -3441,5 +3446,16 @@ position = Vector2(4, 0)
 [node name="hurt box" type="Area2D" parent="."]
 
 [node name="hurt box" type="CollisionShape2D" parent="hurt box"]
-position = Vector2(4, 0)
 shape = SubResource("CapsuleShape2D_xo08b")
+
+[node name="SpearHitbox" type="Area2D" parent="."]
+monitoring = false
+script = ExtResource("59_pdhvl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpearHitbox"]
+position = Vector2(18, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_pdhvl")
+
+[connection signal="animation_finished" from="player" to="." method="_on_animation_finished"]
+[connection signal="body_entered" from="SpearHitbox" to="SpearHitbox" method="_on_body_entered"]
