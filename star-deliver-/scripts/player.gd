@@ -8,6 +8,9 @@ var bullet = preload("res://prefabs/bullet.tscn")
 var hp = 100 
 var cd = true
 var is_attacking = false
+@onready var compass_arrow = $UI/CompassContainer/CompassArrowContainer/CompassArrow
+@onready var receiver: CharacterBody2D = $"../Receiver"
+
 
 
 
@@ -355,3 +358,21 @@ func _play_idle_animation():
 				player.play("idle gun down")
 			else:
 				player.play("idle down")
+				
+func _ready() -> void:
+	var current_scene = get_tree().current_scene
+	# Check if the scene is home.tscn; if it is, hide the compass arrow
+	# We don’t need a compass arrow in the mission hub
+	if current_scene.scene_file_path == "res://prefabs/Maps/home.tscn":
+		compass_arrow.visible = false
+	else:
+		compass_arrow.visible = true
+				
+# The function for the change the direction of the compass
+# It helps user to find the direction of the receiver	
+func _process(delta):
+	if receiver:
+		# Uses the player.global_position to get the direction and rotate the arrow 
+		# relative to the player's location
+		var dir = (receiver.global_position - player.global_position).normalized()
+		compass_arrow.rotation = dir.angle()

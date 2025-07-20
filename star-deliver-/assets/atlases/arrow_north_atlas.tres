@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://c7r1remmnvi42"]
+
+[ext_resource type="Texture2D" uid="uid://x2hwaophv51b" path="res://assets/compassArrow.png" id="1_tfg85"]
+
+[resource]
+atlas = ExtResource("1_tfg85")
+region = Rect2(352, 96, 288, 832)

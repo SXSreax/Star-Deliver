@@ -1,4 +1,4 @@
-[gd_scene load_steps=486 format=3 uid="uid://b2pfpmm65bioe"]
+[gd_scene load_steps=489 format=3 uid="uid://b2pfpmm65bioe"]
 
 [ext_resource type="Script" uid="uid://dsffd0se3kl7p" path="res://scripts/player.gd" id="1_qw7p6"]
 [ext_resource type="Texture2D" uid="uid://d2vg0i8o8vrd" path="res://assets/player/player/Attack/Spear/attack_spear.png" id="2_s3rk2"]
@@ -58,6 +58,7 @@
 [ext_resource type="Texture2D" uid="uid://coayuawujmusp" path="res://assets/player/player/Run/Gun/Run_Gun_right_down.png" id="33_sds66"]
 [ext_resource type="Texture2D" uid="uid://bmr1b2yjgopx4" path="res://assets/player/player/Run/Gun/Run_Gun_right_up.png" id="34_7ad8y"]
 [ext_resource type="Texture2D" uid="uid://cnpoluh751tqt" path="res://assets/player/player/Run/Gun/Run_Gun_up.png" id="35_06huw"]
+[ext_resource type="Texture2D" uid="uid://c7r1remmnvi42" path="res://assets/atlases/arrow_north_atlas.tres" id="59_pdhvl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1t5oy"]
 atlas = ExtResource("2_s3rk2")
@@ -3307,6 +3308,18 @@ animations = [{
 radius = 7.0
 height = 26.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pdhvl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ltlad"]
+border_width_left = 10
+border_width_bottom = 10
+corner_radius_top_left = 1000
+corner_radius_top_right = 1000
+corner_radius_bottom_right = 1000
+corner_radius_bottom_left = 1000
+shadow_color = Color(0, 0, 0, 0.933333)
+shadow_offset = Vector2(50, 50)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xo08b"]
 radius = 6.0
 height = 22.0
@@ -3360,6 +3373,67 @@ stats = ExtResource("6_j7tl3")
 [node name="slot4" parent="UI/Hotbar" instance=ExtResource("3_2abrm")]
 layout_mode = 2
 stats = ExtResource("8_ytkp7")
+
+[node name="CompassContainer" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -202.0
+offset_right = -2.0
+offset_bottom = 200.0
+grow_horizontal = 0
+
+[node name="CompassArrowContainer" type="Control" parent="UI/CompassContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -95.0
+offset_right = 99.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="Panel" parent="UI/CompassContainer/CompassArrowContainer"]
+visible = false
+material = SubResource("ShaderMaterial_pdhvl")
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -35.0
+offset_right = 17.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ltlad")
+
+[node name="CompassArrow" type="TextureRect" parent="UI/CompassContainer/CompassArrowContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.582
+offset_left = -153.0
+offset_top = -639.0
+offset_right = 135.0
+offset_bottom = 184.8
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 6.28319
+scale = Vector2(0.08, 0.08)
+pivot_offset = Vector2(144, 650)
+texture = ExtResource("59_pdhvl")
+stretch_mode = 3
 
 [node name="Weapons" type="Node2D" parent="."]
 position = Vector2(4, 0)

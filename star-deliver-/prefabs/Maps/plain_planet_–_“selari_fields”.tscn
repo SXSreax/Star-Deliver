@@ -1099,5 +1099,5 @@ position = Vector2(2792, 2441)
 [node name="KillerRabbit18" parent="." instance=ExtResource("16_2sjjl")]
 position = Vector2(3776, 1593)
 
-[node name="Reciever" parent="." instance=ExtResource("17_kgex7")]
+[node name="Receiver" parent="." instance=ExtResource("17_kgex7")]
 position = Vector2(3248, 1912)
