@@ -176,8 +176,7 @@ script = ExtResource("1_ag87b")
 position = Vector2(-4, -5)
 scale = Vector2(0.8125, 0.875)
 sprite_frames = SubResource("SpriteFrames_yee43")
-animation = &"idle"
-frame_progress = 0.613697
+animation = &"Running"
 
 [node name="RayCast2D" type="RayCast2D" parent="AnimatedSprite2D"]
 position = Vector2(0, 9.14286)

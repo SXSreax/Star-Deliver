@@ -1,9 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://gubf6bk7cc7p"]
+[gd_scene load_steps=30 format=3 uid="uid://gubf6bk7cc7p"]
 
 [ext_resource type="Script" uid="uid://drn8f38thmp87" path="res://scripts/slime.gd" id="1_76br0"]
 [ext_resource type="Texture2D" uid="uid://cajvcv63yk62q" path="res://assets/ItchIo G.Lerf 2.0 Slime Pack/ItchIo G.Lerf 2.0 Slime Pack/Spritesheets_OriginalSize/Neutral slime/Slime_Idle.png" id="1_s77ef"]
 [ext_resource type="Texture2D" uid="uid://dt8iot54c3e2j" path="res://assets/ItchIo G.Lerf 2.0 Slime Pack/ItchIo G.Lerf 2.0 Slime Pack/Spritesheets_OriginalSize/Neutral slime/Slime_Attack.png" id="2_1pedr"]
 [ext_resource type="Texture2D" uid="uid://b16vydnuc2te3" path="res://assets/ItchIo G.Lerf 2.0 Slime Pack/ItchIo G.Lerf 2.0 Slime Pack/Spritesheets_OriginalSize/Neutral slime/Slime_Death.png" id="3_ud62j"]
+[ext_resource type="Texture2D" uid="uid://cnutcd8cjtoyb" path="res://assets/ItchIo G.Lerf 2.0 Slime Pack/ItchIo G.Lerf 2.0 Slime Pack/Spritesheets_OriginalSize/Neutral slime/Slime_Hurt.png" id="4_pfgpn"]
+[ext_resource type="Texture2D" uid="uid://dmypgyo3l54j6" path="res://assets/ItchIo G.Lerf 2.0 Slime Pack/ItchIo G.Lerf 2.0 Slime Pack/Spritesheets_OriginalSize/Neutral slime/Slime_Walk.png" id="6_wc2y8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pfgpn"]
 atlas = ExtResource("2_1pedr")
@@ -45,6 +47,14 @@ region = Rect2(96, 0, 32, 32)
 atlas = ExtResource("3_ud62j")
 region = Rect2(128, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr8mj"]
+atlas = ExtResource("4_pfgpn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxbqr"]
+atlas = ExtResource("4_pfgpn")
+region = Rect2(32, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_76br0"]
 atlas = ExtResource("1_s77ef")
 region = Rect2(0, 0, 32, 32)
@@ -60,6 +70,18 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ud62j"]
 atlas = ExtResource("1_s77ef")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v0gd"]
+atlas = ExtResource("6_wc2y8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ucjt"]
+atlas = ExtResource("6_wc2y8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdcfe"]
+atlas = ExtResource("6_wc2y8")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kuyny"]
 animations = [{
@@ -99,8 +121,19 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sa53d")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr8mj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxbqr")
+}],
+"loop": true,
+"name": &"hurt",
 "speed": 5.0
 }, {
 "frames": [{
@@ -119,6 +152,20 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v0gd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ucjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdcfe")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_76br0"]
@@ -136,7 +183,7 @@ script = ExtResource("1_76br0")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_kuyny")
-animation = &"idle"
+animation = &"death"
 
 [node name="RayCast2D" type="RayCast2D" parent="AnimatedSprite2D"]
 position = Vector2(0, 7)
