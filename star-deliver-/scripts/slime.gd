@@ -15,19 +15,14 @@ var hp = 50
 
 # Direction of movement and dying status
 var direction: Vector2 = Vector2.ZERO
-var is_dying = false
 
 
 func _physics_process(delta: float) -> void:
-	# Skip all logic if enemy is already dying
-	if is_dying:
-		return
-
 	# If health drops to 0 or below, start death sequence
 	if hp <= 0:
-		is_dying = true
-		velocity = Vector2.ZERO  # Stop moving
-		sprite.play("death")     # Play death animation
+		sprite.play("death")
+		await $AnimatedSprite2D.animation_finished
+		queue_free()
 		return  # Exit now so animation can start
 
 	# Calculate direction to player for raycast and movement
@@ -69,10 +64,3 @@ func update_animation(dir: Vector2) -> void:
 		# Moving down
 		sprite.play("walk_down")
 		sprite.flip_h = false
-
-
-# Triggered when any animation finishes
-func _on_AnimatedSprite2D_animation_finished():
-	# Only queue_free after death animation ends
-	if is_dying and sprite.animation == "death":
-		queue_free()  # Safely remove enemy from scene
