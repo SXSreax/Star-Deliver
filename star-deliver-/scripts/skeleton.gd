@@ -100,7 +100,7 @@ func die() -> void:
 	await sprite.animation_finished
 	queue_free()
 
-
+# TODO: Hurt box is not completed 
 func _on_hurt_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("bullets"):
 		hp -= 10

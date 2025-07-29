@@ -1,18 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcomkmoo8hoxj"]
+[gd_scene load_steps=4 format=3 uid="uid://bcomkmoo8hoxj"]
 
 [ext_resource type="Script" uid="uid://dqaix3snwcovm" path="res://scripts/crab.gd" id="1_7a5rv"]
-[ext_resource type="Texture2D" uid="uid://bqe27ejnxj0o6" path="res://icon.svg" id="1_w28a4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7a5rv"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_w28a4")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvjb4"]
 size = Vector2(38, 38)
