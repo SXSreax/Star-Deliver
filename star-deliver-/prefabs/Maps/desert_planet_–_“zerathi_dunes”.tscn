@@ -871,6 +871,7 @@ layer_5/tile_data = PackedInt32Array(3735750, 393217, 2, 3735749, 393217, 2, 386
 position = Vector2(888, 464)
 
 [node name="Crab" parent="." instance=ExtResource("4_yforj")]
+visible = false
 position = Vector2(800, 417)
 
 [node name="Skeleton" parent="." instance=ExtResource("5_4fjye")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bahb2f8kt0l1k"]
+[gd_scene load_steps=40 format=3 uid="uid://bahb2f8kt0l1k"]
 
 [ext_resource type="Script" uid="uid://dowh4ayepxk5b" path="res://scripts/skeleton.gd" id="1_xpfnd"]
 [ext_resource type="Texture2D" uid="uid://8o2bqo1tyd24" path="res://assets/Monsters_Creatures_Fantasy/Monsters_Creatures_Fantasy/Skeleton/Attack.png" id="2_ssoom"]
@@ -146,6 +146,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e1156")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mijw1")
 }],
 "loop": true,
 "name": &"attack",
@@ -244,6 +247,13 @@ animations = [{
 radius = 6.25
 height = 22.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ssoom"]
+height = 22.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x81ns"]
+radius = 8.0
+height = 28.0
+
 [node name="Skeleton" type="CharacterBody2D"]
 script = ExtResource("1_xpfnd")
 
@@ -251,18 +261,34 @@ script = ExtResource("1_xpfnd")
 position = Vector2(-2.38419e-07, 2.38419e-07)
 scale = Vector2(0.53, 0.479449)
 sprite_frames = SubResource("SpriteFrames_w7p7q")
-animation = &"walk"
-frame_progress = 0.24667
+animation = &"attack"
+frame = 8
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 1)
 shape = SubResource("CapsuleShape2D_xpfnd")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 debug_path_custom_color = Color(0.733002, 2.75549e-06, 6.73831e-07, 1)
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
 autostart = true
 
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(4, -1)
+shape = SubResource("CapsuleShape2D_ssoom")
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(4, 0)
+shape = SubResource("CapsuleShape2D_x81ns")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
