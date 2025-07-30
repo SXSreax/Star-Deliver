@@ -1,3 +1,3 @@
-[gd_scene load_steps=0 format=3 uid="uid://ir5py0pm1yf7"]
+[gd_scene format=3 uid="uid://ir5py0pm1yf7"]
 
 [node name="arrow" type="Sprite2D"]
