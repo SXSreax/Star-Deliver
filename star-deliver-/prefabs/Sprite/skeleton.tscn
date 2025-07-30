@@ -251,8 +251,8 @@ height = 22.0
 height = 22.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x81ns"]
-radius = 8.0
-height = 28.0
+radius = 6.0
+height = 16.0
 
 [node name="Skeleton" type="CharacterBody2D"]
 script = ExtResource("1_xpfnd")
@@ -261,9 +261,7 @@ script = ExtResource("1_xpfnd")
 position = Vector2(-2.38419e-07, 2.38419e-07)
 scale = Vector2(0.53, 0.479449)
 sprite_frames = SubResource("SpriteFrames_w7p7q")
-animation = &"attack"
-frame = 8
-frame_progress = 1.0
+animation = &"death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 1)
@@ -283,6 +281,8 @@ position = Vector2(4, -1)
 shape = SubResource("CapsuleShape2D_ssoom")
 
 [node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(4, 0)
