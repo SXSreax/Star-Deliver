@@ -3306,8 +3306,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1t5oy"]
-radius = 7.0
-height = 26.0
+radius = 6.0
+height = 24.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pdhvl"]
 
@@ -3326,8 +3326,7 @@ atlas = ExtResource("59_ltlad")
 region = Rect2(352, 96, 288, 832)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xo08b"]
-radius = 6.0
-height = 22.0
+radius = 8.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pdhvl"]
 radius = 5.0

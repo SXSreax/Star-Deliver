@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqhx5q8kxr0jn"
-valid=false
+uid="uid://rdt06ivjgr7"
+path="res://.godot/imported/SpiderWalkingSide2.png-0a47841e3850d1c30c7df5b68a6cba11.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/tronchungo3/__MACOSX/._tronchungo3.png"
+source_file="res://assets/SpiderPack/SpiderPack/WalkingPurple2/SpiderWalkingSide2.png"
+dest_files=["res://.godot/imported/SpiderWalkingSide2.png-0a47841e3850d1c30c7df5b68a6cba11.ctex"]
 
 [params]
 

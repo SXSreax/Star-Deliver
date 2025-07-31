@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck7ckkf816fbl"
-path="res://.godot/imported/tronchungo3.png-279cddd1c8f6775332285c71cbad50e3.ctex"
+uid="uid://b6o2maoua7njn"
+path="res://.godot/imported/SpiderWalking2.png-f458f8d1991d403420d370c3b5a4662b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tronchungo3/tronchungo3.png"
-dest_files=["res://.godot/imported/tronchungo3.png-279cddd1c8f6775332285c71cbad50e3.ctex"]
+source_file="res://assets/SpiderPack/SpiderPack/WalkingPurple/SpiderWalking2.png"
+dest_files=["res://.godot/imported/SpiderWalking2.png-f458f8d1991d403420d370c3b5a4662b.ctex"]
 
 [params]
 

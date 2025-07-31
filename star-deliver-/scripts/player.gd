@@ -259,7 +259,9 @@ func cd_gun():
 
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:
+	print("q")
 	if body.is_in_group("enemies"):
+		print("q")
 		hp -= 10
 
 
