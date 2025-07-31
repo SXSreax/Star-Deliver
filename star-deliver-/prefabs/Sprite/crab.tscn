@@ -1,27 +1,190 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcomkmoo8hoxj"]
+[gd_scene load_steps=23 format=3 uid="uid://bcomkmoo8hoxj"]
 
 [ext_resource type="Script" uid="uid://dqaix3snwcovm" path="res://scripts/crab.gd" id="1_7a5rv"]
+[ext_resource type="Texture2D" uid="uid://bx04hqrclknsr" path="res://assets/Crab Sprite Sheet.png" id="2_7a5rv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7a5rv"]
+atlas = ExtResource("2_7a5rv")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pp4tn"]
+atlas = ExtResource("2_7a5rv")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_juq1h"]
+atlas = ExtResource("2_7a5rv")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_giasm"]
+atlas = ExtResource("2_7a5rv")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sjth"]
+atlas = ExtResource("2_7a5rv")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqevg"]
+atlas = ExtResource("2_7a5rv")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ea8mw"]
+atlas = ExtResource("2_7a5rv")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5tie"]
+atlas = ExtResource("2_7a5rv")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvjb4"]
+atlas = ExtResource("2_7a5rv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mrd2"]
+atlas = ExtResource("2_7a5rv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui4kw"]
+atlas = ExtResource("2_7a5rv")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5dfq"]
+atlas = ExtResource("2_7a5rv")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6m3c"]
+atlas = ExtResource("2_7a5rv")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_426kv"]
+atlas = ExtResource("2_7a5rv")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_furth"]
+atlas = ExtResource("2_7a5rv")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdcyf"]
+atlas = ExtResource("2_7a5rv")
+region = Rect2(96, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7a5rv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7a5rv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pp4tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_juq1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_giasm")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sjth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqevg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ea8mw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5tie")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"dying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvjb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mrd2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ui4kw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5dfq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6m3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_426kv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_furth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdcyf")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 7.0
+}]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvjb4"]
-size = Vector2(38, 38)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7a5rv"]
+size = Vector2(14, 7)
 
-[node name="Crab" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7a5rv"]
+height = 22.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uvjb4"]
+radius = 3.0
+height = 6.0
+
+[node name="Crab" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_7a5rv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-self_modulate = Color(0.570301, 0.565136, 0.101641, 1)
-scale = Vector2(0.304688, 0.304688)
+light_mask = 5
+visibility_layer = 5
+position = Vector2(0, -8)
+scale = Vector2(0.756836, 0.756836)
 sprite_frames = SubResource("SpriteFrames_7a5rv")
+animation = &"dying"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_uvjb4")
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_7a5rv")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.01
 autostart = true
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" groups=["enemies"]]
+shape = SubResource("CapsuleShape2D_7a5rv")
+
+[node name="HurtBox" type="Area2D" parent="." groups=["enemies"]]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_uvjb4")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
