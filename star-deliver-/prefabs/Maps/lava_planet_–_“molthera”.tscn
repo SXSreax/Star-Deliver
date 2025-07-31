@@ -45,6 +45,19 @@ texture = ExtResource("1_fp10s")
 3:11/animation_frame_5/duration = 1.0
 3:11/animation_frame_6/duration = 1.0
 3:11/0 = 0
+4:11/animation_columns = 7
+4:11/animation_separation = Vector2i(7, 0)
+4:11/animation_frame_0/duration = 1.0
+4:11/animation_frame_1/duration = 1.0
+4:11/animation_frame_2/duration = 1.0
+4:11/animation_frame_3/duration = 1.0
+4:11/animation_frame_4/duration = 1.0
+4:11/animation_frame_5/duration = 1.0
+4:11/animation_frame_6/duration = 1.0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_pkt5h"]
 terrain_set_0/mode = 0
@@ -57,4 +70,3 @@ sources/0 = SubResource("TileSetAtlasSource_p06cp")
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_pkt5h")
 format = 2
-layer_0/tile_data = PackedInt32Array(0, 131072, 11)

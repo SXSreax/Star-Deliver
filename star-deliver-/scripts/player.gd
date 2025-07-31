@@ -17,7 +17,7 @@ var is_attacking = false
 
 
 func _physics_process(delta: float) -> void:
-	if hp == 0: 
+	if hp <= 0: 
 		queue_free()
 		get_tree().change_scene_to_file("res://prefabs/losing.tscn")
 	get_input()
