@@ -870,7 +870,6 @@ layer_5/tile_data = PackedInt32Array(3735750, 393217, 2, 3735749, 393217, 2, 386
 
 [node name="Player" parent="." instance=ExtResource("3_718wu")]
 position = Vector2(888, 464)
-speed = 200
 
 [node name="Spider" parent="." instance=ExtResource("5_yforj")]
 position = Vector2(617, 639)

@@ -870,7 +870,7 @@ layer_5/tile_data = PackedInt32Array(3735750, 393217, 2, 3735749, 393217, 2, 386
 
 [node name="Player" parent="." instance=ExtResource("3_718wu")]
 position = Vector2(888, 464)
-speed = 200
+speed = null
 
 [node name="Spider" parent="." instance=ExtResource("5_yforj")]
 position = Vector2(617, 639)
@@ -878,5 +878,5 @@ position = Vector2(617, 639)
 [node name="Snake" parent="." instance=ExtResource("6_4fjye")]
 position = Vector2(1065, 336)
 
-[node name="Receiver" parent="." instance=ExtResource("6_0d40e")]
-position = Vector2(4420, 538)
+[node name="Reciever" parent="." instance=ExtResource("6_0d40e")]
+position = Vector2(4436, 556)

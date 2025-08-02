@@ -16,6 +16,7 @@ var is_attacking = false
 
 
 
+
 func _physics_process(delta: float) -> void:
 	if hp <= 0: 
 		queue_free()

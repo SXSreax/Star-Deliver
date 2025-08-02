@@ -20,7 +20,7 @@ size = Vector2(40, 40)
 [sub_resource type="CircleShape2D" id="CircleShape2D_i05yc"]
 radius = 40.0125
 
-[node name="Reciever" type="CharacterBody2D"]
+[node name="Receiver" type="CharacterBody2D"]
 script = ExtResource("1_i05yc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
