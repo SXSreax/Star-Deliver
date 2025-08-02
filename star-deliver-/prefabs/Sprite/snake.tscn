@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://di508rc4aofal"]
+[gd_scene load_steps=22 format=3 uid="uid://di508rc4aofal"]
 
+[ext_resource type="Script" uid="uid://0cdtgxmiq3xl" path="res://scripts/snake.gd" id="1_0g5hk"]
 [ext_resource type="Texture2D" uid="uid://44dnhsc6y65n" path="res://assets/snake.png" id="1_l6b0t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0g5hk"]
@@ -143,14 +144,63 @@ animations = [{
 radius = 7.0
 height = 60.0
 
-[node name="Snake" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l6b0t"]
+radius = 19.0
+height = 72.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0g5hk"]
+radius = 8.0
+height = 60.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0g5hk"]
+radius = 407.623
+
+[node name="Snake" type="CharacterBody2D" groups=["enemies"]]
+scale = Vector2(0.476031, 0.476031)
+script = ExtResource("1_0g5hk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fp531")
-animation = &"attack"
-frame_progress = 0.477626
+animation = &"walk"
+frame_progress = 0.25449
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 5
+visibility_layer = 5
 position = Vector2(1, 10)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_5ufml")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="AttackArea" type="Area2D" parent="." groups=["enemies"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(2, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_l6b0t")
+
+[node name="HurtBox" type="Area2D" parent="." groups=["enemies"]]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(2, 10)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_0g5hk")
+
+[node name="DashDetectArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DashDetectArea"]
+shape = SubResource("CircleShape2D_0g5hk")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="body_entered" from="DashDetectArea" to="." method="_on_dash_detect_area_body_entered"]
+[connection signal="body_exited" from="DashDetectArea" to="." method="_on_dash_detect_area_body_exited"]
