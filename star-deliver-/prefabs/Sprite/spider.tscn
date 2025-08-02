@@ -1,5 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://b4sokydeoh11h"]
+[gd_scene load_steps=31 format=3 uid="uid://b4sokydeoh11h"]
 
+[ext_resource type="Script" uid="uid://bsd0jbgw1yebj" path="res://scripts/spider.gd" id="1_3mspp"]
 [ext_resource type="Texture2D" uid="uid://cfq75xguaumpe" path="res://assets/SpiderPack/SpiderPack/IdlePurple2/SpiderIdleFront1.png" id="1_gxnnq"]
 [ext_resource type="Texture2D" uid="uid://bqt087c6afgmo" path="res://assets/SpiderPack/SpiderPack/IdlePurple2/SpiderIdleFront2.png" id="2_frwtj"]
 [ext_resource type="Texture2D" uid="uid://dxveag72x2564" path="res://assets/SpiderPack/SpiderPack/IdlePurple2/SpiderIdleFront3.png" id="3_a5e4p"]
@@ -27,6 +28,11 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2s7o2"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_gxnnq")
@@ -41,24 +47,7 @@ animations = [{
 "texture": ExtResource("4_nhpb5")
 }],
 "loop": true,
-"name": &"down_idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_yplts")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_1gfpb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_xdexo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_71m2f")
-}],
-"loop": true,
-"name": &"down_walk",
+"name": &"idle_down",
 "speed": 5.0
 }, {
 "frames": [{
@@ -75,24 +64,7 @@ animations = [{
 "texture": ExtResource("12_0fokg")
 }],
 "loop": true,
-"name": &"right_idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("13_ecs4t")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_3mspp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_33nse")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_0fokg")
-}],
-"loop": true,
-"name": &"right_walk",
+"name": &"idle_right",
 "speed": 5.0
 }, {
 "frames": [{
@@ -109,7 +81,41 @@ animations = [{
 "texture": ExtResource("16_j2bvw")
 }],
 "loop": true,
-"name": &"up_idle",
+"name": &"idle_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_yplts")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1gfpb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xdexo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_71m2f")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_ecs4t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_3mspp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_33nse")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_0fokg")
+}],
+"loop": true,
+"name": &"walk_right",
 "speed": 5.0
 }, {
 "frames": [{
@@ -126,16 +132,13 @@ animations = [{
 "texture": ExtResource("24_j2bvw")
 }],
 "loop": true,
-"name": &"up_walk",
+"name": &"walk_up",
 "speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iujnq"]
 radius = 8.0
 height = 18.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ecs4t"]
-radius = 15.1327
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ojkfa"]
 radius = 6.0
@@ -144,12 +147,15 @@ height = 14.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_llww0"]
 radius = 209.002
 
-[node name="Spider" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_3mspp"]
+radius = 11.0
+
+[node name="Spider" type="CharacterBody2D" groups=["enemies"]]
+script = ExtResource("1_3mspp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2s7o2")
-animation = &"up_walk"
-frame_progress = 0.476718
+animation = &"idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 5
@@ -158,16 +164,6 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_iujnq")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
-autostart = true
-
-[node name="AttackArea" type="Area2D" parent="." groups=["enemies"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-rotation = 1.5708
-shape = SubResource("CircleShape2D_ecs4t")
 
 [node name="HurtBox" type="Area2D" parent="." groups=["enemies"]]
 collision_layer = 5
@@ -182,3 +178,19 @@ shape = SubResource("CapsuleShape2D_ojkfa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DashDetectArea"]
 shape = SubResource("CircleShape2D_llww0")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_3mspp")
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="body_entered" from="DashDetectArea" to="." method="_on_dash_detect_area_body_entered"]
+[connection signal="body_exited" from="DashDetectArea" to="." method="_on_dash_detect_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]

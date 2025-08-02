@@ -1,10 +1,9 @@
-[gd_scene load_steps=69 format=3 uid="uid://4edpw3ltimm"]
+[gd_scene load_steps=68 format=3 uid="uid://4edpw3ltimm"]
 
 [ext_resource type="Texture2D" uid="uid://bnaqs6gbocg36" path="res://assets/Pixel Lands Desert Demo/Pixel Lands Desert Demo/desert_demo_terrain.png" id="1_omb4r"]
 [ext_resource type="Texture2D" uid="uid://dppgduf1qr8p2" path="res://assets/Pixel Lands Desert Demo/Pixel Lands Desert Demo/desert_demo_objects.png" id="2_718wu"]
 [ext_resource type="PackedScene" uid="uid://b2pfpmm65bioe" path="res://prefabs/Sprite/player.tscn" id="3_718wu"]
 [ext_resource type="PackedScene" uid="uid://b4sokydeoh11h" path="res://prefabs/Sprite/spider.tscn" id="5_yforj"]
-[ext_resource type="PackedScene" uid="uid://di508rc4aofal" path="res://prefabs/Sprite/snake.tscn" id="6_4fjye"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_718wu"]
 tile_data = PackedInt32Array(0, 589825, 0, 65536, 589825, 1, 1, 655361, 0, 65537, 655361, 1)
@@ -869,9 +868,6 @@ layer_5/tile_data = PackedInt32Array(3735750, 393217, 2, 3735749, 393217, 2, 386
 
 [node name="Player" parent="." instance=ExtResource("3_718wu")]
 position = Vector2(888, 464)
-
-[node name="Snake" parent="." instance=ExtResource("6_4fjye")]
-position = Vector2(1051, 611)
 
 [node name="Spider" parent="." instance=ExtResource("5_yforj")]
 position = Vector2(617, 639)
