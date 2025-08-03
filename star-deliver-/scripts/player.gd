@@ -14,9 +14,6 @@ var is_attacking = false
 @onready var receiver: CharacterBody2D = $"../Receiver"
 
 
-
-
-
 func _physics_process(delta: float) -> void:
 	if hp <= 0: 
 		queue_free()
@@ -24,7 +21,6 @@ func _physics_process(delta: float) -> void:
 	get_input()
 	move_and_slide()
 	spear_attack()
-
 
 
 func get_input():
