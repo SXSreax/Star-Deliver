@@ -1,4 +1,5 @@
 extends CharacterBody2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var did_player_enter = false
 var counter = 0
@@ -36,3 +37,14 @@ func fade_mission_label(times):
 		var tween = create_tween()
 		tween.tween_property(mission_label, "modulate:a", to_alpha, duration)
 		await tween.finished
+
+func _ready():
+	var current_scene = get_tree().current_scene.name
+	if current_scene == 'DesertPlanet':
+		sprite.play("desert_receiver")
+	elif current_scene == 'IcePlanet':
+		sprite.play("ice_receiver")
+	elif current_scene == 'PlainPlanet':
+		sprite.play("plain_receiver")
+	elif current_scene == 'LavaPlanet':
+		sprite.play("lave_receiver")

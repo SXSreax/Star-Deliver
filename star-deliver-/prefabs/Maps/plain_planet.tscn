@@ -952,7 +952,7 @@ sources/13 = SubResource("TileSetAtlasSource_owdy1")
 pattern_0 = SubResource("TileMapPattern_nrkne")
 pattern_1 = SubResource("TileMapPattern_2sjjl")
 
-[node name="Plain Planet – “Selari Fields”" type="Node2D"]
+[node name="PlainPlanet" type="Node2D"]
 position = Vector2(-2037, -973)
 
 [node name="TileMap" type="TileMap" parent="."]
