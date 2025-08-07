@@ -5,6 +5,7 @@ var is_ = false
 var tp = true
 
 @onready var teleport_label = $TeleportLabel
+@onready var receiver = $"../Receiver"
 
 func _physics_process(delta: float) -> void:
 	if is_: 
@@ -14,7 +15,16 @@ func _physics_process(delta: float) -> void:
 					tp = false
 					show_teleport_message()
 					await fade_teleport_label(3)
-					get_tree().change_scene_to_file("res://prefabs/Maps/plain_planet_–_“selari_fields”.tscn")
+					if Global.map_progress == 1:
+						get_tree().change_scene_to_file("res://prefabs/Maps/plain_planet.tscn")
+					elif Global.map_progress == 2:
+						get_tree().change_scene_to_file("res://prefabs/Maps/desert_planet.tscn")
+					elif Global.map_progress == 3:
+						get_tree().change_scene_to_file("res://prefabs/Maps/jungle_planet.tscn")
+					elif Global.map_progress == 4:
+						get_tree().change_scene_to_file("res://prefabs/Maps/ice_planet.tscn")
+					elif Global.map_progress == 5:
+						get_tree().change_scene_to_file("res://prefabs/Maps/lava_planet.tscn")
 					
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

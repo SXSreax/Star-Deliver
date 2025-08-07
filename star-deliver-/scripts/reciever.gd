@@ -4,6 +4,7 @@ extends CharacterBody2D
 var did_player_enter = false
 var counter = 0
 @onready var mission_label = $Label
+var map_progress := 1 # Start at 1, or load from a save if needed
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
@@ -26,6 +27,7 @@ func show_mission_complete_message():
 	mission_label.visible = false
 	counter += 1
 	if counter == 1: 
+		Global.map_progress += 1
 		await get_tree().create_timer(1).timeout
 		get_tree().change_scene_to_file("res://prefabs/Maps/home.tscn")
 
