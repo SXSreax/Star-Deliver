@@ -8,6 +8,7 @@ const DASH_DURATION = 0.3  # Duration for dash boost
 # Enemy stats
 var hp = 50
 var threshold = 2.0  # Distance to target before stopping
+var follow = false
 
 # State flags
 var attacking = false
@@ -34,20 +35,25 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		return
 
-	var next_pos = navigation_agent_2d.get_next_path_position()
-	var direction = next_pos - global_position
+	# Only follow the player if detected
+	if follow:
+		var next_pos = navigation_agent_2d.get_next_path_position()
+		var direction = next_pos - global_position
 
-	if direction.length() > threshold:
-		var move_dir = direction.normalized()
-		var current_speed: float = DASH_SPEED if dashing else SPEED
-		velocity = move_dir * current_speed
-		move_and_slide()
-		update_animation(player.global_position - global_position)
+		if direction.length() > threshold:
+			var move_dir = direction.normalized()
+			var current_speed: float = DASH_SPEED if dashing else SPEED
+			velocity = move_dir * current_speed
+			move_and_slide()
+			update_animation(player.global_position - global_position)
 
-		if dashing:
-			print("DASHING at speed:", current_speed)
+			if dashing:
+				print("DASHING at speed:", current_speed)
+		else:
+			# Stop if close enough to target
+			velocity = Vector2.ZERO
+			sprite.play("walk")
 	else:
-		# Stop if close enough to target
 		velocity = Vector2.ZERO
 		sprite.play("walk")
 
@@ -136,3 +142,12 @@ func die() -> void:
 		sprite.play("death")
 		await sprite.animation_finished
 		queue_free()
+
+
+func _on_detection_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		follow = true
+
+func _on_detection_body_exited(body: Node2D) -> void:
+	if body.name == "Player":
+		follow = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bahb2f8kt0l1k"]
+[gd_scene load_steps=41 format=3 uid="uid://bahb2f8kt0l1k"]
 
 [ext_resource type="Script" uid="uid://dowh4ayepxk5b" path="res://scripts/skeleton.gd" id="1_xpfnd"]
 [ext_resource type="Texture2D" uid="uid://8o2bqo1tyd24" path="res://assets/Monsters_Creatures_Fantasy/Monsters_Creatures_Fantasy/Skeleton/Attack.png" id="2_ssoom"]
@@ -254,6 +254,9 @@ height = 22.0
 radius = 6.0
 height = 16.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ssoom"]
+radius = 83.1976
+
 [node name="Skeleton" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_xpfnd")
 
@@ -288,7 +291,17 @@ collision_mask = 5
 position = Vector2(4, 0)
 shape = SubResource("CapsuleShape2D_x81ns")
 
+[node name="detection" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
+scale = Vector2(3.94244, -3.90575)
+shape = SubResource("CircleShape2D_ssoom")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="detection" to="." method="_on_detection_body_exited"]

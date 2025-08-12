@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://di508rc4aofal"]
+[gd_scene load_steps=23 format=3 uid="uid://di508rc4aofal"]
 
 [ext_resource type="Script" uid="uid://0cdtgxmiq3xl" path="res://scripts/snake.gd" id="1_0g5hk"]
 [ext_resource type="Texture2D" uid="uid://44dnhsc6y65n" path="res://assets/snake.png" id="1_l6b0t"]
@@ -155,6 +155,9 @@ height = 60.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_0g5hk"]
 radius = 407.623
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4vpf2"]
+radius = 83.1976
+
 [node name="Snake" type="CharacterBody2D" groups=["enemies"]]
 scale = Vector2(0.476031, 0.476031)
 script = ExtResource("1_0g5hk")
@@ -198,9 +201,19 @@ shape = SubResource("CapsuleShape2D_0g5hk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DashDetectArea"]
 shape = SubResource("CircleShape2D_0g5hk")
 
+[node name="detection" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
+scale = Vector2(3.94244, -3.90575)
+shape = SubResource("CircleShape2D_4vpf2")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="body_entered" from="DashDetectArea" to="." method="_on_dash_detect_area_body_entered"]
 [connection signal="body_exited" from="DashDetectArea" to="." method="_on_dash_detect_area_body_exited"]
+[connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="detection" to="." method="_on_detection_body_exited"]

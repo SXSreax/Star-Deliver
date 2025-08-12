@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bpoyisfk4vc7l"]
+[gd_scene load_steps=27 format=3 uid="uid://bpoyisfk4vc7l"]
 
 [ext_resource type="Texture2D" uid="uid://uniajg6x27kf" path="res://assets/evil tree real/death.png" id="1_1aqt0"]
 [ext_resource type="Script" uid="uid://bbrgiqeh7f5vj" path="res://scripts/evil_tree.gd" id="1_e27da"]
@@ -154,6 +154,9 @@ height = 28.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_e27da"]
 radius = 209.002
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_pe84n"]
+radius = 83.1976
+
 [node name="EvilTree" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_e27da")
 
@@ -189,7 +192,17 @@ shape = SubResource("CircleShape2D_e27da")
 wait_time = 0.1
 autostart = true
 
+[node name="detection" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
+scale = Vector2(3.94244, -3.90575)
+shape = SubResource("CircleShape2D_pe84n")
+
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="body_entered" from="DashDetectArea" to="." method="_on_dash_detect_area_body_entered"]
 [connection signal="body_exited" from="DashDetectArea" to="." method="_on_dash_detect_area_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="detection" to="." method="_on_detection_body_exited"]

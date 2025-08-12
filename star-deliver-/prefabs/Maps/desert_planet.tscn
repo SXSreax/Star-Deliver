@@ -874,9 +874,6 @@ position = Vector2(1182, 519)
 [node name="Receiver" parent="." instance=ExtResource("6_6vwmk")]
 position = Vector2(4420, 538)
 
-[node name="Skeleton" parent="." instance=ExtResource("5_rg6ul")]
-position = Vector2(1734, 761)
-
 [node name="Crab" parent="." instance=ExtResource("6_l4mlk")]
 position = Vector2(1390, 946)
 
@@ -898,9 +895,6 @@ position = Vector2(2679, 2229)
 [node name="Skeleton7" parent="." instance=ExtResource("5_rg6ul")]
 position = Vector2(689, 1143)
 
-[node name="Skeleton8" parent="." instance=ExtResource("5_rg6ul")]
-position = Vector2(893, 852)
-
 [node name="Skeleton9" parent="." instance=ExtResource("5_rg6ul")]
 position = Vector2(3560, 1435)
 
@@ -917,16 +911,13 @@ position = Vector2(616, 2904)
 position = Vector2(1543, 2975)
 
 [node name="Skeleton14" parent="." instance=ExtResource("5_rg6ul")]
-position = Vector2(2356, 2751)
+position = Vector2(2356, 2513)
 
 [node name="Skeleton15" parent="." instance=ExtResource("5_rg6ul")]
 position = Vector2(4740, 1513)
 
 [node name="Skeleton16" parent="." instance=ExtResource("5_rg6ul")]
 position = Vector2(1691, 2565)
-
-[node name="Skeleton17" parent="." instance=ExtResource("5_rg6ul")]
-position = Vector2(3377, 519)
 
 [node name="Skeleton18" parent="." instance=ExtResource("5_rg6ul")]
 position = Vector2(2970, 536)
@@ -952,44 +943,20 @@ position = Vector2(4723, 3070)
 [node name="Skeleton25" parent="." instance=ExtResource("5_rg6ul")]
 position = Vector2(3979, 2992)
 
-[node name="Skeleton26" parent="." instance=ExtResource("5_rg6ul")]
-position = Vector2(2720, 3226)
-
 [node name="Crab2" parent="." instance=ExtResource("6_l4mlk")]
 position = Vector2(1100, 3152)
 
 [node name="Crab3" parent="." instance=ExtResource("6_l4mlk")]
-position = Vector2(2156, 3038)
-
-[node name="Crab4" parent="." instance=ExtResource("6_l4mlk")]
-position = Vector2(1494, 2500)
-
-[node name="Crab5" parent="." instance=ExtResource("6_l4mlk")]
-position = Vector2(1476, 2562)
-
-[node name="Crab6" parent="." instance=ExtResource("6_l4mlk")]
-position = Vector2(1438, 2531)
-
-[node name="Crab7" parent="." instance=ExtResource("6_l4mlk")]
-position = Vector2(696, 2541)
+position = Vector2(2639, 3132)
 
 [node name="Crab8" parent="." instance=ExtResource("6_l4mlk")]
 position = Vector2(686, 2620)
-
-[node name="Crab9" parent="." instance=ExtResource("6_l4mlk")]
-position = Vector2(1192, 1941)
-
-[node name="Crab10" parent="." instance=ExtResource("6_l4mlk")]
-position = Vector2(1175, 1901)
 
 [node name="Crab11" parent="." instance=ExtResource("6_l4mlk")]
 position = Vector2(1149, 1950)
 
 [node name="Crab12" parent="." instance=ExtResource("6_l4mlk")]
 position = Vector2(843, 1620)
-
-[node name="Crab13" parent="." instance=ExtResource("6_l4mlk")]
-position = Vector2(928, 1653)
 
 [node name="Crab14" parent="." instance=ExtResource("6_l4mlk")]
 position = Vector2(4423, 1695)
@@ -1000,38 +967,14 @@ position = Vector2(4446, 2329)
 [node name="Crab16" parent="." instance=ExtResource("6_l4mlk")]
 position = Vector2(3467, 2687)
 
-[node name="Crab17" parent="." instance=ExtResource("6_l4mlk")]
-position = Vector2(3384, 2701)
-
-[node name="Crab18" parent="." instance=ExtResource("6_l4mlk")]
-position = Vector2(3375, 2761)
-
 [node name="Crab19" parent="." instance=ExtResource("6_l4mlk")]
 position = Vector2(3403, 624)
-
-[node name="Crab20" parent="." instance=ExtResource("6_l4mlk")]
-position = Vector2(3269, 634)
 
 [node name="Crab21" parent="." instance=ExtResource("6_l4mlk")]
 position = Vector2(2451, 762)
 
-[node name="Crab22" parent="." instance=ExtResource("6_l4mlk")]
-position = Vector2(2543, 840)
-
-[node name="Crab23" parent="." instance=ExtResource("6_l4mlk")]
-position = Vector2(2562, 744)
-
 [node name="Crab24" parent="." instance=ExtResource("6_l4mlk")]
 position = Vector2(2883, 2012)
-
-[node name="Crab25" parent="." instance=ExtResource("6_l4mlk")]
-position = Vector2(2851, 1897)
-
-[node name="Crab26" parent="." instance=ExtResource("6_l4mlk")]
-position = Vector2(2801, 1925)
-
-[node name="Crab27" parent="." instance=ExtResource("6_l4mlk")]
-position = Vector2(2281, 3000)
 
 [node name="Crab28" parent="." instance=ExtResource("6_l4mlk")]
 position = Vector2(2217, 2899)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bcomkmoo8hoxj"]
+[gd_scene load_steps=24 format=3 uid="uid://bcomkmoo8hoxj"]
 
 [ext_resource type="Script" uid="uid://dqaix3snwcovm" path="res://scripts/crab.gd" id="1_7a5rv"]
 [ext_resource type="Texture2D" uid="uid://bx04hqrclknsr" path="res://assets/Crab Sprite Sheet.png" id="2_7a5rv"]
@@ -151,6 +151,9 @@ height = 22.0
 radius = 3.0
 height = 6.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7a5rv"]
+radius = 83.1976
+
 [node name="Crab" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_7a5rv")
 
@@ -187,4 +190,14 @@ collision_mask = 5
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_uvjb4")
 
+[node name="detection" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
+scale = Vector2(3.94244, -3.90575)
+shape = SubResource("CircleShape2D_7a5rv")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="detection" to="." method="_on_detection_body_exited"]
