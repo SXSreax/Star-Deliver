@@ -2252,3 +2252,18 @@ layer_2/tile_data = PackedInt32Array(1179668, 3997697, 20, 1179669, 4063233, 20,
 
 [node name="Player" parent="." instance=ExtResource("2_2vnre")]
 position = Vector2(336, 415)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 708.0
+offset_top = 219.0
+offset_right = 845.0
+offset_bottom = 242.0
+text = "Press f to interact"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 326.0
+offset_top = 326.0
+offset_right = 585.0
+offset_bottom = 389.0
+text = "A W S D or Arrow
+to move around"

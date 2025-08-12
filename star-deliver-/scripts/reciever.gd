@@ -50,3 +50,5 @@ func _ready():
 		sprite.play("plain_receiver")
 	elif current_scene == 'LavaPlanet':
 		sprite.play("lave_receiver")
+	else:
+		sprite.play("jungle_reciever")

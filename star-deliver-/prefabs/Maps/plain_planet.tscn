@@ -1097,7 +1097,30 @@ position = Vector2(2792, 2441)
 position = Vector2(3776, 1593)
 
 [node name="Player" parent="." instance=ExtResource("14_owdy1")]
-position = Vector2(3158, 1877)
+position = Vector2(26, 26)
 
 [node name="Receiver" parent="." instance=ExtResource("17_kgex7")]
 position = Vector2(3275, 1878)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -139.0
+offset_top = -42.0
+offset_right = 192.0
+offset_bottom = 7.0
+text = "Left mouse button to attack
+ for all weapon"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -99.0
+offset_top = 50.0
+offset_right = 148.0
+offset_bottom = 73.0
+text = "1234 to swap items or weapons "
+
+[node name="Label3" type="Label" parent="."]
+offset_left = -67.0
+offset_top = 79.0
+offset_right = 110.0
+offset_bottom = 102.0
+text = "use your mouse to aim"

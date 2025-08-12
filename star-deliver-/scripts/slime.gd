@@ -58,9 +58,9 @@ func update_animation(dir: Vector2) -> void:
 		sprite.flip_h = dir.x < 0  # Flip horizontally if moving left
 	elif dir.y < 0:
 		# Moving up
-		sprite.play("walk_up")
+		#sprite.play("walk_up")
 		sprite.flip_h = false
 	elif dir.y > 0:
 		# Moving down
-		sprite.play("walk_down")
+		#sprite.play("walk_down")
 		sprite.flip_h = false

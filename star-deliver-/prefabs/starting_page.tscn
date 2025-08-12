@@ -173,8 +173,6 @@ offset_right = 27.0
 offset_bottom = 15.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Camera2D" type="Camera2D" parent="Exit"]
-
 [node name="Setting" type="AnimatedSprite2D" parent="."]
 position = Vector2(41, 166)
 scale = Vector2(2.55556, 2.55556)
@@ -195,10 +193,10 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -663.0
-offset_top = -303.0
-offset_right = 679.0
-offset_bottom = 492.0
+offset_left = -618.0
+offset_top = -317.0
+offset_right = 724.0
+offset_bottom = 478.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
@@ -212,6 +210,10 @@ texture = ExtResource("3_w54mp")
 position = Vector2(66, -127)
 scale = Vector2(0.631313, 0.631313)
 texture = ExtResource("4_dij54")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(38, 74)
+zoom = Vector2(1.7, 1.7)
 
 [connection signal="pressed" from="Start/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Exit/Exit" to="." method="_on_exit_pressed"]

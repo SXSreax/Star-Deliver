@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://bgxquoc4glc0e"]
+[gd_scene load_steps=18 format=3 uid="uid://bgxquoc4glc0e"]
 
 [ext_resource type="Texture2D" uid="uid://cupy5nowb1pk5" path="res://assets/R2105059/Characters/100%/Snowman_01_idle (32x32).png" id="1_lafxp"]
 [ext_resource type="Texture2D" uid="uid://dxpk3yck1wtry" path="res://assets/R2105059/Tileset/100%/01 - RPG snow tileset (full) v1.0.png" id="1_mv1od"]
 [ext_resource type="Texture2D" uid="uid://r2m4wa7hxv2q" path="res://assets/R2105059/Characters/100%/Snowman_02_idle (32x32).png" id="2_hqoob"]
 [ext_resource type="Texture2D" uid="uid://pdhcnoat8i0u" path="res://assets/R2105059/Characters/100%/Santa_01_idle (32x32).png" id="4_wswud"]
 [ext_resource type="PackedScene" uid="uid://b2pfpmm65bioe" path="res://prefabs/Sprite/player.tscn" id="5_hqoob"]
+[ext_resource type="PackedScene" uid="uid://b6oj5vlti06dx" path="res://prefabs/Sprite/receiver.tscn" id="6_wswud"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_hqoob"]
 tile_data = PackedInt32Array(0, 786434, 4, 65536, 786434, 5, 131072, 786434, 6, 1, 851970, 4, 65537, 851970, 5, 131073, 851970, 6, 2, 917506, 4, 65538, 917506, 5, 131074, 917506, 6)
@@ -1113,3 +1114,6 @@ layer_4/z_index = 2
 
 [node name="Player" parent="." instance=ExtResource("5_hqoob")]
 position = Vector2(490, 413)
+
+[node name="Receiver" parent="." instance=ExtResource("6_wswud")]
+position = Vector2(4953, 573)

@@ -50,7 +50,7 @@ position = Vector2(574, 333)
 texture = ExtResource("2_rpf0p")
 
 [node name="Camera2D" type="Camera2D" parent="Slide"]
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(1.9, 1.9)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -310.0
