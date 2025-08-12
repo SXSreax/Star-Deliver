@@ -138,6 +138,4 @@ func detect_death():
 
 func die() -> void:
 	if death:
-		sprite.play("death")
-		await sprite.animation_finished
 		queue_free()

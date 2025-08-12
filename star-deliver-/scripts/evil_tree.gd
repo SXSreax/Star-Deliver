@@ -59,7 +59,7 @@ func update_animation(move_dir: Vector2) -> void:
 
 	# Flip sprite based on movement direction (right vs left)
 	if abs(move_dir.x) > abs(move_dir.y):
-		sprite.flip_h = move_dir.x > 0
+		sprite.flip_h = move_dir.x < 0
 	else:
 		sprite.flip_h = false
 
