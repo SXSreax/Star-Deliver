@@ -1,4 +1,4 @@
-[gd_scene load_steps=492 format=3 uid="uid://b2pfpmm65bioe"]
+[gd_scene load_steps=493 format=3 uid="uid://b2pfpmm65bioe"]
 
 [ext_resource type="Script" uid="uid://dsffd0se3kl7p" path="res://scripts/player.gd" id="1_qw7p6"]
 [ext_resource type="Texture2D" uid="uid://d2vg0i8o8vrd" path="res://assets/player/player/Attack/Spear/attack_spear.png" id="2_s3rk2"]
@@ -3333,6 +3333,13 @@ height = 22.0
 radius = 5.0
 height = 20.0
 
+[sub_resource type="FontFile" id="FontFile_ltlad"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_qw7p6")
 
@@ -3460,6 +3467,18 @@ script = ExtResource("59_pdhvl")
 position = Vector2(18, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_pdhvl")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_right = 4.0
+offset_bottom = 27.0
+
+[node name="Button" type="Button" parent="."]
+offset_left = 71.0
+offset_top = -76.0
+offset_right = 116.0
+offset_bottom = -45.0
+theme_override_fonts/font = SubResource("FontFile_ltlad")
+text = "hhhh"
 
 [connection signal="animation_finished" from="player" to="." method="_on_animation_finished"]
 [connection signal="body_entered" from="hurt box" to="." method="_on_hurt_box_body_entered"]
