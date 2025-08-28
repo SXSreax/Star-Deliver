@@ -1,6 +1,6 @@
-[gd_scene load_steps=38 format=3 uid="uid://c0214ekt1yqaq"]
+[gd_scene load_steps=38 format=3 uid="uid://c50qqvg5s1745"]
 
-[ext_resource type="Script" uid="uid://bpv3e085ro7pt" path="res://scripts/viking.gd" id="1_txl0q"]
+[ext_resource type="Script" path="res://scripts/viking.gd" id="1_txl0q"]
 [ext_resource type="Texture2D" uid="uid://cnb12tq8cicb7" path="res://assets/viking_axe_pack/death.png" id="2_c5rlp"]
 [ext_resource type="Texture2D" uid="uid://cysjea6tmkxmx" path="res://assets/viking_axe_pack/idle.png" id="3_0powb"]
 [ext_resource type="Texture2D" uid="uid://bqa80mcg2gha3" path="res://assets/viking_axe_pack/attack_1.png" id="3_fpox5"]
@@ -229,7 +229,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5p851")
 }],
-"loop": true,
+"loop": false,
 "name": &"fight_2",
 "speed": 5.0
 }]
@@ -242,7 +242,7 @@ script = ExtResource("1_txl0q")
 [node name="VikingAnim" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_qf8w6")
-animation = &"death"
+animation = &"idle"
 
 [node name="VikingAttackAnims" type="AnimatedSprite2D" parent="."]
 position = Vector2(10, -11)
