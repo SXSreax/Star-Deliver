@@ -1,18 +1,7 @@
-<<<<<<< HEAD
-[gd_scene load_steps=30 format=3 uid="uid://c0214ekt1yqaq"]
+[gd_scene load_steps=30 format=3 uid="uid://bfts2qfj78ad1"]
 
 [ext_resource type="Script" uid="uid://bpv3e085ro7pt" path="res://scripts/viking.gd" id="1_txl0q"]
 [ext_resource type="Texture2D" uid="uid://bie5utdn12ygt" path="res://assets/viking_axe_pack/viking_all.png" id="2_c5rlp"]
-=======
-[gd_scene load_steps=38 format=3 uid="uid://c50qqvg5s1745"]
-
-[ext_resource type="Script" path="res://scripts/viking.gd" id="1_txl0q"]
-[ext_resource type="Texture2D" uid="uid://cnb12tq8cicb7" path="res://assets/viking_axe_pack/death.png" id="2_c5rlp"]
-[ext_resource type="Texture2D" uid="uid://cysjea6tmkxmx" path="res://assets/viking_axe_pack/idle.png" id="3_0powb"]
-[ext_resource type="Texture2D" uid="uid://bqa80mcg2gha3" path="res://assets/viking_axe_pack/attack_1.png" id="3_fpox5"]
-[ext_resource type="Texture2D" uid="uid://cp756lwc3valv" path="res://assets/viking_axe_pack/run.png" id="4_8ec1p"]
-[ext_resource type="Texture2D" uid="uid://dticq4c7mfmis" path="res://assets/viking_axe_pack/attack_2.png" id="4_c5rlp"]
->>>>>>> ff635d657745f05dd2519925e4308cf905ed9ecd
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0powb"]
 atlas = ExtResource("2_c5rlp")
@@ -193,15 +182,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1psik")
 }],
-<<<<<<< HEAD
 "loop": true,
 "name": &"run",
 "speed": 7.0
-=======
-"loop": false,
-"name": &"fight_2",
-"speed": 5.0
->>>>>>> ff635d657745f05dd2519925e4308cf905ed9ecd
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vr6ek"]
@@ -220,17 +203,8 @@ script = ExtResource("1_txl0q")
 [node name="anim" type="AnimatedSprite2D" parent="."]
 position = Vector2(-5, -4)
 sprite_frames = SubResource("SpriteFrames_qf8w6")
-<<<<<<< HEAD
 animation = &"attack"
 frame_progress = 0.731555
-=======
-animation = &"idle"
-
-[node name="VikingAttackAnims" type="AnimatedSprite2D" parent="."]
-position = Vector2(10, -11)
-sprite_frames = SubResource("SpriteFrames_wnx5t")
-animation = &"fight_2"
->>>>>>> ff635d657745f05dd2519925e4308cf905ed9ecd
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
