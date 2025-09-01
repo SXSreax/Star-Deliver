@@ -12,7 +12,7 @@ var cd = true
 var is_attacking = false
 @onready var compass_arrow = $UI/CompassContainer/CompassArrowContainer/CompassArrow
 @onready var receiver: CharacterBody2D = $"../Receiver"
-
+@onready var camera: Camera2D = get_tree().get_first_node_in_group("camera")
 
 func _physics_process(delta: float) -> void:
 	if hp <= 0: 
@@ -230,6 +230,7 @@ func shoot():
 		bullet_1.dir = to_mouse.angle() # exact angle to mouse
 		bullet_1.rota = bullet_1.dir
 		get_parent().add_child(bullet_1)
+		camera.trigger_shake()
 		cd_gun()
 
 func angle_to_direction(angle: float) -> String:

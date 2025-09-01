@@ -22,6 +22,7 @@ Global="*res://scripts/Global.gd"
 [global_group]
 
 enemies=""
+camera=""
 
 [input]
 
