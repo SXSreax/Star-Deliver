@@ -131,10 +131,13 @@ func _on_hurt_box_body_entered(body: Node2D) -> void:
 		hp -= 10
 		print("Hit! HP:", hp)
 		detect_death()
+		Global.add_score(20)
+
 
 func take_damage(amount):
 	hp -= amount
 	detect_death()
+	Global.add_score(20)
 
 func detect_death():
 	if hp <= 0:

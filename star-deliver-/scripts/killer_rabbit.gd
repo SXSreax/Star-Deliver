@@ -30,9 +30,11 @@ func _physics_process(delta: float) -> void:
 func _on_hurt_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("bullets"):
 		hp -= 10  # Reduce health when hit by a bullet
+		Global.add_score(5)
 		
 func take_damage(amount):
 	hp -= amount  # Custom damage function
+	Global.add_score(5)
 
 # Play walking animation based on movement direction
 func update_animation(dir: Vector2) -> void:

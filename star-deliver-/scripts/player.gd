@@ -27,6 +27,8 @@ func _ready() -> void:
 				
 
 
+var score = 0
+
 func _physics_process(delta: float) -> void:
 	health_bar.value = hp
 	if hp <= 0: 
@@ -244,6 +246,10 @@ func shoot():
 		bullet_1.dir = to_mouse.angle() # exact angle to mouse
 		bullet_1.rota = bullet_1.dir
 		get_parent().add_child(bullet_1)
+<<<<<<< HEAD
+=======
+		camera.trigger_shake(1)
+>>>>>>> c84fbbb5b2da7d5e22eac22f23dbfa53d963ca0e
 		cd_gun()
 
 func angle_to_direction(angle: float) -> String:
@@ -274,6 +280,8 @@ func _on_hurt_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
 		print("q")
 		hp -= 10
+		camera.trigger_shake(3)
+		
 
 
 func _on_hurt_box_body_exited(body: Node2D) -> void:
