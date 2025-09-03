@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bfts2qfj78ad1"]
+[gd_scene load_steps=30 format=3 uid="uid://c50qqvg5s1745"]
 
 [ext_resource type="Script" uid="uid://bpv3e085ro7pt" path="res://scripts/viking.gd" id="1_txl0q"]
 [ext_resource type="Texture2D" uid="uid://bie5utdn12ygt" path="res://assets/viking_axe_pack/viking_all.png" id="2_c5rlp"]

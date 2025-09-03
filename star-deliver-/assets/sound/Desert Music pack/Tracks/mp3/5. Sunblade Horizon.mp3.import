@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dlxug13ox3tpa"
+path="res://.godot/imported/5. Sunblade Horizon.mp3-a6bcbf7758d59bda7d287326d71678fe.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/Desert Music pack/Tracks/mp3/5. Sunblade Horizon.mp3"
+dest_files=["res://.godot/imported/5. Sunblade Horizon.mp3-a6bcbf7758d59bda7d287326d71678fe.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b06a3ruj04fxs"
+path="res://.godot/imported/3. Whispers in the Sand.mp3-3227ccc43d6c4462452ce4611fd55bb5.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/Desert Music pack/Loops/mp3/3. Whispers in the Sand.mp3"
+dest_files=["res://.godot/imported/3. Whispers in the Sand.mp3-3227ccc43d6c4462452ce4611fd55bb5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dixrvi37gjubi"
+path="res://.godot/imported/5. Sunblade Horizon.ogg-b44c2c0ffb3b15c0ad4de07a78656101.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sound/Desert Music pack/Tracks/ogg/5. Sunblade Horizon.ogg"
+dest_files=["res://.godot/imported/5. Sunblade Horizon.ogg-b44c2c0ffb3b15c0ad4de07a78656101.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

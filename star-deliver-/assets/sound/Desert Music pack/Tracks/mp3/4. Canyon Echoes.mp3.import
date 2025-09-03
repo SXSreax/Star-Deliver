@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://sh0kfka4uoyg"
+path="res://.godot/imported/4. Canyon Echoes.mp3-ec8fde715ad8fad17e4604d8b1e3487f.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/Desert Music pack/Tracks/mp3/4. Canyon Echoes.mp3"
+dest_files=["res://.godot/imported/4. Canyon Echoes.mp3-ec8fde715ad8fad17e4604d8b1e3487f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

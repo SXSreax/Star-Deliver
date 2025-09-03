@@ -3,11 +3,13 @@ extends CharacterBody2D
 @onready var player = $"../Player"
 @onready var raycast: RayCast2D = $AnimatedSprite2D/RayCast2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var health_bar: ProgressBar = $HealthBar
 
 var speed = 75
 var hp = 30
 
 func _physics_process(delta: float) -> void:
+	health_bar.value = hp
 	if hp == 0 or hp < 0:
 		queue_free()  # Remove the enemy if health reaches zero
 	

@@ -9,6 +9,9 @@ extends CharacterBody2D
 # Enemy's sprite node to play animations
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+@onready var health_bar: ProgressBar = $HealthBar
+
+
 # Movement speed and health
 var speed = 75
 var hp = 50
@@ -17,7 +20,12 @@ var hp = 50
 var direction: Vector2 = Vector2.ZERO
 
 
+func _ready() -> void:
+	health_bar.value = hp
+
+
 func _physics_process(delta: float) -> void:
+	health_bar.value = hp
 	# If health drops to 0 or below, start death sequence
 	if hp <= 0:
 		sprite.play("death")

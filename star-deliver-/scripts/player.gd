@@ -7,14 +7,28 @@ extends CharacterBody2D
 @export var speed = 200
 var last_direction =  "right up"
 var bullet = preload("res://prefabs/bullet.tscn")
-var hp = 100 
+var hp = 99.5
 var cd = true
 var is_attacking = false
 @onready var compass_arrow = $UI/CompassContainer/CompassArrowContainer/CompassArrow
 @onready var receiver: CharacterBody2D = $"../Receiver"
-@onready var camera: Camera2D = get_tree().get_first_node_in_group("camera")
+@onready var health_bar: ProgressBar = $health_bar
+
+
+func _ready() -> void:
+	health_bar.value = hp
+	var current_scene = get_tree().current_scene
+	# Check if the scene is home.tscn; if it is, hide the compass arrow
+	# We don’t need a compass arrow in the mission hub
+	if current_scene.scene_file_path == "res://prefabs/Maps/home.tscn":
+		compass_arrow.visible = false
+	else:
+		compass_arrow.visible = true
+				
+
 
 func _physics_process(delta: float) -> void:
+	health_bar.value = hp
 	if hp <= 0: 
 		queue_free()
 		get_tree().change_scene_to_file("res://prefabs/losing.tscn")
@@ -230,7 +244,6 @@ func shoot():
 		bullet_1.dir = to_mouse.angle() # exact angle to mouse
 		bullet_1.rota = bullet_1.dir
 		get_parent().add_child(bullet_1)
-		camera.trigger_shake()
 		cd_gun()
 
 func angle_to_direction(angle: float) -> String:
@@ -372,15 +385,6 @@ func _play_idle_animation():
 				player.play("idle gun down")
 			else:
 				player.play("idle down")
-				
-func _ready() -> void:
-	var current_scene = get_tree().current_scene
-	# Check if the scene is home.tscn; if it is, hide the compass arrow
-	# We don’t need a compass arrow in the mission hub
-	if current_scene.scene_file_path == "res://prefabs/Maps/home.tscn":
-		compass_arrow.visible = false
-	else:
-		compass_arrow.visible = true
 				
 # The function for the change the direction of the compass
 # It helps user to find the direction of the receiver	

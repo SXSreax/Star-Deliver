@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cvve1pan2au3t"
+path="res://.godot/imported/6. Ash and Oasis.wav-54ad6f084ac34dcce7d745e74e5bd24d.sample"
+
+[deps]
+
+source_file="res://assets/sound/Desert Music pack/Loops/wav/6. Ash and Oasis.wav"
+dest_files=["res://.godot/imported/6. Ash and Oasis.wav-54ad6f084ac34dcce7d745e74e5bd24d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cdo2kemb6nus5"]
+[gd_scene load_steps=30 format=3 uid="uid://cdo2kemb6nus5"]
 
 [ext_resource type="Script" uid="uid://ksphs2x8jspt" path="res://scripts/killer_rabbit.gd" id="1_ag87b"]
 [ext_resource type="Texture2D" uid="uid://d2rqbvrj55wkj" path="res://assets/AllBunniesFree/AllBunniesFree/DemonicBunny/Running.png" id="1_hbm8f"]
@@ -168,6 +168,12 @@ height = 20.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_6pw5o"]
 radius = 7.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ag87b"]
+bg_color = Color(0.00820202, 0.00820203, 0.00820202, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6pw5o"]
+bg_color = Color(0.97485, 0, 0.0677444, 1)
+
 [node name="KillerRabbit" type="CharacterBody2D" groups=["enemies"]]
 position = Vector2(4, -2)
 script = ExtResource("1_ag87b")
@@ -203,5 +209,15 @@ collision_mask = 4
 [node name="hurt box2" type="CollisionShape2D" parent="hurt box"]
 position = Vector2(-4, 3)
 shape = SubResource("CircleShape2D_6pw5o")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -21.0
+offset_top = -13.0
+offset_right = 13.0
+offset_bottom = -9.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ag87b")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6pw5o")
+max_value = 30.0
+show_percentage = false
 
 [connection signal="body_entered" from="hurt box" to="." method="_on_hurt_box_body_entered"]

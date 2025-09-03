@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dapv2k3ykvkfr" path="res://assets/Cute_Fantasy_Free/Cute_Fantasy_Free/Outdoor decoration/Outdoor_Decor_Free.png" id="6_nrkne"]
 [ext_resource type="Texture2D" uid="uid://dh6gdryrufkn7" path="res://assets/Cute_Fantasy_Free/Cute_Fantasy_Free/Tiles/Path_Tile.png" id="7_owdy1"]
 [ext_resource type="Texture2D" uid="uid://ceucf5kxhwj8n" path="res://assets/Cute_Fantasy_Free/Cute_Fantasy_Free/Tiles/Water_Middle.png" id="8_nrkne"]
-[ext_resource type="PackedScene" uid="uid://b2pfpmm65bioe" path="res://prefabs/Sprite/player.tscn" id="14_owdy1"]
+[ext_resource type="PackedScene" uid="uid://sy7dd2cj2t26" path="res://prefabs/Sprite/player.tscn" id="14_owdy1"]
 [ext_resource type="PackedScene" uid="uid://gubf6bk7cc7p" path="res://prefabs/Sprite/Slime.tscn" id="15_nrkne"]
 [ext_resource type="PackedScene" uid="uid://cdo2kemb6nus5" path="res://prefabs/Sprite/Killer Rabbit.tscn" id="16_2sjjl"]
 [ext_resource type="PackedScene" uid="uid://b6oj5vlti06dx" path="res://prefabs/Sprite/receiver.tscn" id="17_kgex7"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b8ffdslb8e76h"
+path="res://.godot/imported/6. Ash and Oasis.ogg-a1a860275b16d7f6d210102d08df9b7c.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sound/Desert Music pack/Loops/ogg/6. Ash and Oasis.ogg"
+dest_files=["res://.godot/imported/6. Ash and Oasis.ogg-a1a860275b16d7f6d210102d08df9b7c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

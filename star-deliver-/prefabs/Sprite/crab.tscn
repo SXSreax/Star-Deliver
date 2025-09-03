@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bcomkmoo8hoxj"]
+[gd_scene load_steps=26 format=3 uid="uid://bcomkmoo8hoxj"]
 
 [ext_resource type="Script" uid="uid://dqaix3snwcovm" path="res://scripts/crab.gd" id="1_7a5rv"]
 [ext_resource type="Texture2D" uid="uid://bx04hqrclknsr" path="res://assets/Crab Sprite Sheet.png" id="2_7a5rv"]
@@ -154,6 +154,12 @@ height = 6.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_7a5rv"]
 radius = 83.1976
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7a5rv"]
+bg_color = Color(0.00820202, 0.00820203, 0.00820202, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uvjb4"]
+bg_color = Color(0.97485, 0, 0.0677444, 1)
+
 [node name="Crab" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_7a5rv")
 
@@ -197,6 +203,16 @@ collision_mask = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
 scale = Vector2(3.94244, -3.90575)
 shape = SubResource("CircleShape2D_7a5rv")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -17.0
+offset_top = -11.0
+offset_right = 17.0
+offset_bottom = -7.0
+theme_override_styles/background = SubResource("StyleBoxFlat_7a5rv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_uvjb4")
+value = 5.0
+show_percentage = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]

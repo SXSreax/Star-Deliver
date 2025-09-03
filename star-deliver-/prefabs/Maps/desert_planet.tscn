@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bnaqs6gbocg36" path="res://assets/Pixel Lands Desert Demo/Pixel Lands Desert Demo/desert_demo_terrain.png" id="1_l4mlk"]
 [ext_resource type="Texture2D" uid="uid://dppgduf1qr8p2" path="res://assets/Pixel Lands Desert Demo/Pixel Lands Desert Demo/desert_demo_objects.png" id="2_1yybn"]
-[ext_resource type="PackedScene" uid="uid://b2pfpmm65bioe" path="res://prefabs/Sprite/player.tscn" id="3_rx8br"]
+[ext_resource type="PackedScene" uid="uid://sy7dd2cj2t26" path="res://prefabs/Sprite/player.tscn" id="3_rx8br"]
 [ext_resource type="PackedScene" uid="uid://bahb2f8kt0l1k" path="res://prefabs/Sprite/skeleton.tscn" id="5_rg6ul"]
 [ext_resource type="PackedScene" uid="uid://b6oj5vlti06dx" path="res://prefabs/Sprite/receiver.tscn" id="6_6vwmk"]
 [ext_resource type="PackedScene" uid="uid://bcomkmoo8hoxj" path="res://prefabs/Sprite/crab.tscn" id="6_l4mlk"]

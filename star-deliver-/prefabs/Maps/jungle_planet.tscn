@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dys4fd0q8hvkr" path="res://assets/tf_jungle/tf_jungle_tileset.png" id="1_0fmst"]
 [ext_resource type="Texture2D" uid="uid://jcncq03pg278" path="res://assets/tf_jungle/rpgmaker/RM_1/tf_jungle_b.png" id="2_utm5e"]
-[ext_resource type="PackedScene" uid="uid://b2pfpmm65bioe" path="res://prefabs/Sprite/player.tscn" id="3_yikj1"]
+[ext_resource type="PackedScene" uid="uid://sy7dd2cj2t26" path="res://prefabs/Sprite/player.tscn" id="3_yikj1"]
 [ext_resource type="PackedScene" uid="uid://b6oj5vlti06dx" path="res://prefabs/Sprite/receiver.tscn" id="4_kkg83"]
 [ext_resource type="PackedScene" uid="uid://di508rc4aofal" path="res://prefabs/Sprite/snake.tscn" id="5_h6546"]
 [ext_resource type="PackedScene" uid="uid://b4sokydeoh11h" path="res://prefabs/Sprite/spider.tscn" id="6_15vvf"]

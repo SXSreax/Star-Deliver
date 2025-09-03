@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bvtfjin27n8fn"]
 
 [ext_resource type="Texture2D" uid="uid://cli8iuah5iqmq" path="res://assets/TileMap_SF/TileMap_SF/tileset_sf.png" id="1_mpl3c"]
-[ext_resource type="PackedScene" uid="uid://b2pfpmm65bioe" path="res://prefabs/Sprite/player.tscn" id="2_2vnre"]
+[ext_resource type="PackedScene" uid="uid://sy7dd2cj2t26" path="res://prefabs/Sprite/player.tscn" id="2_2vnre"]
 [ext_resource type="PackedScene" uid="uid://sj281iiv1ntb" path="res://prefabs/package pickup.tscn" id="2_ikl1d"]
 [ext_resource type="PackedScene" uid="uid://dx4c5mtdjbxmm" path="res://prefabs/mission_hub.tscn" id="3_ycwqc"]
 
