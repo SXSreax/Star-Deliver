@@ -1,12 +1,11 @@
 extends Camera2D
 
-@export var max_shake: float = 1.0
 @export var shake_fade: float = 1.0
 
 var _shake_strength: float = 0.0
 
-func trigger_shake() -> void:
-	_shake_strength =  max_shake	
+func trigger_shake(shake: float) -> void:
+	_shake_strength =  shake	
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

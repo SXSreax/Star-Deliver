@@ -110,6 +110,7 @@ func _on_hurt_box_body_entered(body: Node2D) -> void:
 	# Take damage on bullet collision
 	if body.is_in_group("bullets"):
 		hp -= 10
+		Global.add_score(10)
 		print("Hit! HP:", hp)
 		detect_death()
 
@@ -117,6 +118,7 @@ func take_damage(amount):
 	# Generic damage handler
 	hp -= amount
 	detect_death()
+	Global.add_score(10)
 
 
 func _on_detection_body_entered(body: Node2D) -> void:

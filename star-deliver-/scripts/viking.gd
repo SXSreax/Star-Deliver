@@ -199,12 +199,14 @@ func _on_timer_timeout() -> void:
 func take_damage(amount: int) -> void:
 	if dead: return
 	hp -= amount
+	Global.add_score(30)
 	if hp <= 0:
 		_die()
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("bullets"):
 		take_damage(10)
+		Global.add_score(30)
 
 func _die() -> void:
 	dead = true
