@@ -58,9 +58,9 @@
 [ext_resource type="Texture2D" uid="uid://coayuawujmusp" path="res://assets/player/player/Run/Gun/Run_Gun_right_down.png" id="33_sds66"]
 [ext_resource type="Texture2D" uid="uid://bmr1b2yjgopx4" path="res://assets/player/player/Run/Gun/Run_Gun_right_up.png" id="34_7ad8y"]
 [ext_resource type="Texture2D" uid="uid://cnpoluh751tqt" path="res://assets/player/player/Run/Gun/Run_Gun_up.png" id="35_06huw"]
-[ext_resource type="Script" path="res://scripts/camera_shake.gd" id="53_cqqs4"]
+[ext_resource type="Script" uid="uid://btjxwxcw05wp5" path="res://scripts/camera_shake.gd" id="53_cqqs4"]
 [ext_resource type="Texture2D" uid="uid://dywfopmhuqf53" path="res://assets/compassArrow.png" id="59_ltlad"]
-[ext_resource type="Script" uid="uid://bq82xyxdtnotl" path="res://scripts/spear_hitbox.gd" id="59_pdhvl"]
+[ext_resource type="Script" path="res://scripts/spear_hitbox.gd" id="59_pdhvl"]
 [ext_resource type="Texture2D" uid="uid://bbkdnf331nb2j" path="res://assets/Health UI.png" id="62_5cvn0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1t5oy"]

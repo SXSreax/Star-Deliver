@@ -13,7 +13,7 @@ var is_attacking = false
 @onready var compass_arrow = $UI/CompassContainer/CompassArrowContainer/CompassArrow
 @onready var receiver: CharacterBody2D = $"../Receiver"
 @onready var health_bar: ProgressBar = $health_bar
-
+@onready var camera: Camera2D = get_tree().get_first_node_in_group("camera")
 
 func _ready() -> void:
 	health_bar.value = hp
@@ -246,10 +246,7 @@ func shoot():
 		bullet_1.dir = to_mouse.angle() # exact angle to mouse
 		bullet_1.rota = bullet_1.dir
 		get_parent().add_child(bullet_1)
-<<<<<<< HEAD
-=======
 		camera.trigger_shake(1)
->>>>>>> c84fbbb5b2da7d5e22eac22f23dbfa53d963ca0e
 		cd_gun()
 
 func angle_to_direction(angle: float) -> String:
