@@ -1098,7 +1098,6 @@ position = Vector2(3776, 1593)
 
 [node name="Player" parent="." instance=ExtResource("14_owdy1")]
 position = Vector2(26, 26)
-speed = null
 
 [node name="Receiver" parent="." instance=ExtResource("17_kgex7")]
 position = Vector2(3275, 1878)

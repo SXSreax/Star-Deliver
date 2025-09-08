@@ -14,10 +14,6 @@ var is_attacking = false
 @onready var receiver: CharacterBody2D = $"../Receiver"
 @onready var health_bar: ProgressBar = $health_bar
 @onready var camera: Camera2D = get_tree().get_first_node_in_group("camera")
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
 func _ready() -> void:
 	health_bar.value = hp

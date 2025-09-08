@@ -870,7 +870,6 @@ layer_5/tile_data = PackedInt32Array(3735750, 393217, 2, 3735749, 393217, 2, 386
 
 [node name="Player" parent="." instance=ExtResource("3_rx8br")]
 position = Vector2(1182, 519)
-speed = null
 
 [node name="Receiver" parent="." instance=ExtResource("6_6vwmk")]
 position = Vector2(4420, 538)
