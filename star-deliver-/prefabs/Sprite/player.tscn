@@ -1,4 +1,4 @@
-[gd_scene load_steps=498 format=3 uid="uid://sy7dd2cj2t26"]
+[gd_scene load_steps=502 format=3 uid="uid://sy7dd2cj2t26"]
 
 [ext_resource type="Script" uid="uid://dsffd0se3kl7p" path="res://scripts/player.gd" id="1_qw7p6"]
 [ext_resource type="Texture2D" uid="uid://d2vg0i8o8vrd" path="res://assets/player/player/Attack/Spear/attack_spear.png" id="2_s3rk2"]
@@ -60,8 +60,11 @@
 [ext_resource type="Texture2D" uid="uid://cnpoluh751tqt" path="res://assets/player/player/Run/Gun/Run_Gun_up.png" id="35_06huw"]
 [ext_resource type="Script" uid="uid://btjxwxcw05wp5" path="res://scripts/camera_shake.gd" id="53_cqqs4"]
 [ext_resource type="Texture2D" uid="uid://dywfopmhuqf53" path="res://assets/compassArrow.png" id="59_ltlad"]
-[ext_resource type="Script" uid="uid://bq82xyxdtnotl" path="res://scripts/spear_hitbox.gd" id="59_pdhvl"]
+[ext_resource type="Script" path="res://scripts/spear_hitbox.gd" id="59_pdhvl"]
 [ext_resource type="Texture2D" uid="uid://bbkdnf331nb2j" path="res://assets/Health UI.png" id="62_5cvn0"]
+[ext_resource type="Script" uid="uid://bn4y05qnfgt76" path="res://scripts/score_ui.gd" id="63_06huw"]
+[ext_resource type="Texture2D" uid="uid://cbh4uuhnhb8iu" path="res://assets/unit-icon.png" id="63_sds66"]
+[ext_resource type="FontFile" uid="uid://c72iwp4u27tiy" path="res://assets/FONTS/static/Orbitron-Medium.ttf" id="65_y50qg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1t5oy"]
 atlas = ExtResource("2_s3rk2")
@@ -3363,6 +3366,8 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dyp6g"]
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_qw7p6")
 
@@ -3509,6 +3514,44 @@ position = Vector2(-9, 3)
 scale = Vector2(0.4375, 0.4375)
 sprite_frames = SubResource("SpriteFrames_buebl")
 animation = &"health"
+
+[node name="ScoreUI" type="Control" parent="."]
+light_mask = 1023
+visibility_layer = 1023
+z_index = 100
+layout_mode = 3
+anchors_preset = 0
+offset_left = -248.0
+offset_top = -133.0
+offset_right = -208.0
+offset_bottom = -93.0
+script = ExtResource("63_06huw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScoreUI"]
+visibility_layer = 3
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScoreUI/HBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("63_sds66")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ScoreUI/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("65_y50qg")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxTexture_dyp6g")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="animation_finished" from="player" to="." method="_on_animation_finished"]
 [connection signal="body_entered" from="hurt box" to="." method="_on_hurt_box_body_entered"]
