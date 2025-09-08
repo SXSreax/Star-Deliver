@@ -7,6 +7,7 @@ extends Node2D
 
 func _ready():
 	$ColorRect.color.a = 0.0
+	AudioManager.play("Start menu")
 
 func _on_start_pressed() -> void:
 	Start.play("start")

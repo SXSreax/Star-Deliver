@@ -2252,6 +2252,7 @@ layer_2/tile_data = PackedInt32Array(1179668, 3997697, 20, 1179669, 4063233, 20,
 
 [node name="Player" parent="." instance=ExtResource("2_2vnre")]
 position = Vector2(336, 415)
+speed = null
 
 [node name="Label" type="Label" parent="."]
 offset_left = 708.0

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyxedggrmtgat"]
+
+[ext_resource type="Script" uid="uid://b1y73l51ib64o" path="res://scripts/audio_manager.gd" id="1_73uix"]
+[ext_resource type="AudioStream" uid="uid://dktrsng266som" path="res://assets/sound/menu.mp3" id="2_hju6s"]
+
+[node name="Audio Manager" type="Node" node_paths=PackedStringArray("clips")]
+process_mode = 3
+script = ExtResource("1_73uix")
+clips = NodePath("Node")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Start menu" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("2_hju6s")

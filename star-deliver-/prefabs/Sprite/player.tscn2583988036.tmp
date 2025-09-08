@@ -3493,8 +3493,6 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_pdhvl")
 
 [node name="health_bar" type="ProgressBar" parent="."]
-visibility_layer = 1023
-z_index = 10
 offset_left = -248.0
 offset_top = -129.0
 offset_right = -129.0

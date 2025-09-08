@@ -3365,6 +3365,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_qw7p6")
+speed = null
 
 [node name="player" type="AnimatedSprite2D" parent="."]
 position = Vector2(7.62939e-06, 0)
@@ -3493,8 +3494,6 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_pdhvl")
 
 [node name="health_bar" type="ProgressBar" parent="."]
-visibility_layer = 1023
-z_index = 10
 offset_left = -248.0
 offset_top = -129.0
 offset_right = -129.0
