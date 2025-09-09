@@ -172,7 +172,7 @@ radius = 7.0
 bg_color = Color(0.00820202, 0.00820203, 0.00820202, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6pw5o"]
-bg_color = Color(0.97485, 0, 0.0677444, 1)
+bg_color = Color(0.503336, 0.287442, 0.190371, 1)
 
 [node name="KillerRabbit" type="CharacterBody2D" groups=["enemies"]]
 position = Vector2(4, -2)

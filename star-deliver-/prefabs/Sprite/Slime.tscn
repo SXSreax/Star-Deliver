@@ -184,7 +184,7 @@ height = 24.0
 bg_color = Color(0.00820202, 0.00820203, 0.00820202, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wc2y8"]
-bg_color = Color(0.97485, 0, 0.0677444, 1)
+bg_color = Color(0.128128, 0.629547, 0, 1)
 
 [node name="Slime" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_76br0")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b4sokydeoh11h"]
+[gd_scene load_steps=34 format=3 uid="uid://b4sokydeoh11h"]
 
 [ext_resource type="Script" uid="uid://bsd0jbgw1yebj" path="res://scripts/spider.gd" id="1_3mspp"]
 [ext_resource type="Texture2D" uid="uid://cfq75xguaumpe" path="res://assets/SpiderPack/SpiderPack/IdlePurple2/SpiderIdleFront1.png" id="1_gxnnq"]
@@ -148,6 +148,12 @@ radius = 11.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_33nse"]
 radius = 83.1976
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3mspp"]
+bg_color = Color(0.00820202, 0.00820203, 0.00820202, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33nse"]
+bg_color = Color(0.544266, 0.00323785, 0.879365, 1)
+
 [node name="Spider" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_3mspp")
 
@@ -193,6 +199,17 @@ collision_mask = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
 scale = Vector2(3.94244, -3.90575)
 shape = SubResource("CircleShape2D_33nse")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -13.0
+offset_top = -19.0
+offset_right = 21.0
+offset_bottom = -15.0
+theme_override_styles/background = SubResource("StyleBoxFlat_3mspp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_33nse")
+max_value = 50.0
+value = 5.0
+show_percentage = false
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="body_entered" from="DashDetectArea" to="." method="_on_dash_detect_area_body_entered"]

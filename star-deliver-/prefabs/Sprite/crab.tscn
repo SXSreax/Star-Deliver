@@ -158,7 +158,7 @@ radius = 83.1976
 bg_color = Color(0.00820202, 0.00820203, 0.00820202, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uvjb4"]
-bg_color = Color(0.97485, 0, 0.0677444, 1)
+bg_color = Color(0.922822, 0.772907, 0, 1)
 
 [node name="Crab" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_7a5rv")
@@ -211,6 +211,7 @@ offset_right = 17.0
 offset_bottom = -7.0
 theme_override_styles/background = SubResource("StyleBoxFlat_7a5rv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_uvjb4")
+max_value = 50.0
 value = 5.0
 show_percentage = false
 

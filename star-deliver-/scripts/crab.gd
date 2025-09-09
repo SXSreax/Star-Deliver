@@ -7,6 +7,7 @@ const SPEED = 150
 @onready var player: CharacterBody2D = $"../Player"
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var health_bar: ProgressBar = $HealthBar
 
 # Enemy health
 var hp = 50
@@ -29,6 +30,7 @@ func make_path() -> void:
 	navigation_agent_2d.target_position = player.global_position
 
 func _physics_process(delta: float) -> void:
+	health_bar.value = hp
 	# Prevent movement during attack or death
 	if attacking or death:
 		velocity = Vector2.ZERO

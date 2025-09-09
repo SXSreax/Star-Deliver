@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bpoyisfk4vc7l"]
+[gd_scene load_steps=29 format=3 uid="uid://bpoyisfk4vc7l"]
 
 [ext_resource type="Texture2D" uid="uid://uniajg6x27kf" path="res://assets/evil tree real/death.png" id="1_1aqt0"]
 [ext_resource type="Script" uid="uid://bbrgiqeh7f5vj" path="res://scripts/evil_tree.gd" id="1_e27da"]
@@ -157,6 +157,12 @@ radius = 209.002
 [sub_resource type="CircleShape2D" id="CircleShape2D_pe84n"]
 radius = 83.1976
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e27da"]
+bg_color = Color(0.00820202, 0.00820203, 0.00820202, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pe84n"]
+bg_color = Color(0.37386, 0.262051, 0.160266, 1)
+
 [node name="EvilTree" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_e27da")
 
@@ -199,6 +205,17 @@ collision_mask = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
 scale = Vector2(3.94244, -3.90575)
 shape = SubResource("CircleShape2D_pe84n")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -13.0
+offset_top = -19.0
+offset_right = 21.0
+offset_bottom = -15.0
+theme_override_styles/background = SubResource("StyleBoxFlat_e27da")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pe84n")
+max_value = 200.0
+value = 5.0
+show_percentage = false
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="body_entered" from="DashDetectArea" to="." method="_on_dash_detect_area_body_entered"]

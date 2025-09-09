@@ -23,6 +23,7 @@ var last_direction: Vector2 = Vector2.DOWN
 @onready var player: CharacterBody2D = $"../Player"
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var health_bar: ProgressBar = $HealthBar
 
 func _ready() -> void:
 	navigation_agent_2d.target_position = player.global_position
@@ -32,6 +33,7 @@ func make_path() -> void:
 	navigation_agent_2d.target_position = player.global_position
 
 func _physics_process(delta: float) -> void:
+	health_bar.value = hp
 	if attacking or death:
 		velocity = Vector2.ZERO
 		return

@@ -261,7 +261,7 @@ radius = 83.1976
 bg_color = Color(0.00820202, 0.00820203, 0.00820202, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x81ns"]
-bg_color = Color(0.97485, 0, 0.0677444, 1)
+bg_color = Color(1, 1, 1, 1)
 
 [node name="Skeleton" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_xpfnd")
@@ -312,7 +312,7 @@ offset_right = 21.0
 offset_bottom = -15.0
 theme_override_styles/background = SubResource("StyleBoxFlat_ssoom")
 theme_override_styles/fill = SubResource("StyleBoxFlat_x81ns")
-value = 5.0
+max_value = 75.0
 show_percentage = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
