@@ -12,8 +12,8 @@ var cd = true
 var is_attacking = false
 @onready var compass_arrow = $UI/CompassContainer/CompassArrowContainer/CompassArrow
 @onready var receiver: CharacterBody2D = $"../Receiver"
-@onready var health_bar: ProgressBar = $health_bar
 @onready var camera: Camera2D = get_tree().get_first_node_in_group("camera")
+@onready var health_bar: ProgressBar = $health_bar
 
 func _ready() -> void:
 	health_bar.value = hp
