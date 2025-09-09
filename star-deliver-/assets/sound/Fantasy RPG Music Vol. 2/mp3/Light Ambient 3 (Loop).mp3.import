@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cmk2hvm4ucn5l"
+path="res://.godot/imported/Light Ambient 3 (Loop).mp3-638cd7ff465a1a9754b48bcb35be2027.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/Fantasy RPG Music Vol. 2/mp3/Light Ambient 3 (Loop).mp3"
+dest_files=["res://.godot/imported/Light Ambient 3 (Loop).mp3-638cd7ff465a1a9754b48bcb35be2027.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

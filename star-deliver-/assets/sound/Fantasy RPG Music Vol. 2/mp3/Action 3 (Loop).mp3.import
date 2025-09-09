@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bvq0fe4wmtnh0"
+path="res://.godot/imported/Action 3 (Loop).mp3-923f8dc1c3ecd4465212e764ea465fa4.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/Fantasy RPG Music Vol. 2/mp3/Action 3 (Loop).mp3"
+dest_files=["res://.godot/imported/Action 3 (Loop).mp3-923f8dc1c3ecd4465212e764ea465fa4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

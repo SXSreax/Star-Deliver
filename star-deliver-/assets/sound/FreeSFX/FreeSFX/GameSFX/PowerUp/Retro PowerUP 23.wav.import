@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c11h5x75tcigl"
+path="res://.godot/imported/Retro PowerUP 23.wav-8caf9881a22e62adf647f0cedf03581b.sample"
+
+[deps]
+
+source_file="res://assets/sound/FreeSFX/FreeSFX/GameSFX/PowerUp/Retro PowerUP 23.wav"
+dest_files=["res://.godot/imported/Retro PowerUP 23.wav-8caf9881a22e62adf647f0cedf03581b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

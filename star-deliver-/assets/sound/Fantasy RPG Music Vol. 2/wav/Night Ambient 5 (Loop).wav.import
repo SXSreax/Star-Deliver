@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b4c822bl3xhef"
+path="res://.godot/imported/Night Ambient 5 (Loop).wav-00718ee8b53702a5bba31b670311097c.sample"
+
+[deps]
+
+source_file="res://assets/sound/Fantasy RPG Music Vol. 2/wav/Night Ambient 5 (Loop).wav"
+dest_files=["res://.godot/imported/Night Ambient 5 (Loop).wav-00718ee8b53702a5bba31b670311097c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dvy6jlb1vfdbf"
+path="res://.godot/imported/Night Ambient 1.ogg-6a87f1c18853ebd40696e356838ebac2.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sound/Fantasy RPG Music Vol. 2/ogg/Night Ambient 1.ogg"
+dest_files=["res://.godot/imported/Night Ambient 1.ogg-6a87f1c18853ebd40696e356838ebac2.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

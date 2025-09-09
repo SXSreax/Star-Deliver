@@ -212,6 +212,9 @@ func shoot():
 		var bullet_1 = bullet.instantiate()
 		cd = false
 
+		# Play gun sound effect
+		AudioManager.play_sfx("gun")
+
 		# Get mouse position in world coordinates
 		var mouse_pos = get_global_mouse_position()
 		var to_mouse = (mouse_pos - global_position).normalized()
@@ -300,6 +303,8 @@ func spear_attack():
 		spear_hitbox.global_position = global_position + to_mouse * 2
 		spear_hitbox.rotation = angle
 		spear_hitbox.monitoring = true
+		
+		AudioManager.play_sfx("spear")
 
 		# Play animation as before
 		match direction:

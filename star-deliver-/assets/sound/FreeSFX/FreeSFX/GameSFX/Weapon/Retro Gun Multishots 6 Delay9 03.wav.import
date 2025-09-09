@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bvkw4pq426g64"
+path="res://.godot/imported/Retro Gun Multishots 6 Delay9 03.wav-4a177df2b1289c49b8058cd5acd64124.sample"
+
+[deps]
+
+source_file="res://assets/sound/FreeSFX/FreeSFX/GameSFX/Weapon/Retro Gun Multishots 6 Delay9 03.wav"
+dest_files=["res://.godot/imported/Retro Gun Multishots 6 Delay9 03.wav-4a177df2b1289c49b8058cd5acd64124.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

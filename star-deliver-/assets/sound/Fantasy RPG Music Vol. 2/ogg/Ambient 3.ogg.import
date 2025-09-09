@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cyouf447fwivf"
+path="res://.godot/imported/Ambient 3.ogg-0ae06d5aa04f228a7905ed4593d4f95f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sound/Fantasy RPG Music Vol. 2/ogg/Ambient 3.ogg"
+dest_files=["res://.godot/imported/Ambient 3.ogg-0ae06d5aa04f228a7905ed4593d4f95f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

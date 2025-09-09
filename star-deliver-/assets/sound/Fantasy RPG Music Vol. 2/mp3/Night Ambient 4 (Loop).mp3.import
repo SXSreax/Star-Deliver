@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://fjhlohdry3bm"
+path="res://.godot/imported/Night Ambient 4 (Loop).mp3-904065d12f5758c91074c0ff2818eefc.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/Fantasy RPG Music Vol. 2/mp3/Night Ambient 4 (Loop).mp3"
+dest_files=["res://.godot/imported/Night Ambient 4 (Loop).mp3-904065d12f5758c91074c0ff2818eefc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyxedggrmtgat"]
+[gd_scene load_steps=9 format=3 uid="uid://cyxedggrmtgat"]
 
 [ext_resource type="Script" uid="uid://b1y73l51ib64o" path="res://scripts/audio_manager.gd" id="1_73uix"]
 [ext_resource type="AudioStream" uid="uid://dktrsng266som" path="res://assets/sound/menu.mp3" id="2_hju6s"]
+[ext_resource type="AudioStream" uid="uid://cjcyp06fvcr00" path="res://assets/sound/Fantasy RPG Music Vol. 2/mp3/Ambient 7.mp3" id="3_dn1u1"]
+[ext_resource type="AudioStream" uid="uid://5xoj2e36fq6w" path="res://assets/sound/Desert Music pack/Loops/mp3/6. Ash and Oasis.mp3" id="4_6hqem"]
+[ext_resource type="AudioStream" uid="uid://cdch45r8gckka" path="res://assets/sound/Fantasy RPG Music Vol. 2/mp3/Light Ambient 1 (Loop).mp3" id="5_4jimw"]
+[ext_resource type="AudioStream" uid="uid://c838rgptjmuqf" path="res://assets/sound/Fantasy RPG Music Vol. 2/mp3/Ambient 3.mp3" id="6_xjk7e"]
+[ext_resource type="AudioStream" uid="uid://cav1wsxp8jp2a" path="res://assets/sound/sounds/weapons/shoot2.wav" id="7_xjk7e"]
+[ext_resource type="AudioStream" uid="uid://doy5i3hi6epek" path="res://assets/sound/sounds/weapons/spear_thrust-6-382403.mp3" id="8_g7wom"]
 
 [node name="Audio Manager" type="Node" node_paths=PackedStringArray("clips")]
 process_mode = 3
@@ -12,3 +18,24 @@ clips = NodePath("Node")
 
 [node name="Start menu" type="AudioStreamPlayer" parent="Node"]
 stream = ExtResource("2_hju6s")
+
+[node name="map 1" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("3_dn1u1")
+
+[node name="map 2" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("4_6hqem")
+
+[node name="map 3" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("5_4jimw")
+
+[node name="map 4" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("6_xjk7e")
+
+[node name="gun" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("7_xjk7e")
+
+[node name="spear" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("8_g7wom")
+volume_db = -10.0
+
+[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="Node"]

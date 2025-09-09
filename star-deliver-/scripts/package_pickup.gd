@@ -16,14 +16,19 @@ func _physics_process(delta: float) -> void:
 					show_teleport_message()
 					await fade_teleport_label(3)
 					if Global.map_progress == 1:
+						AudioManager.play("map 1")
 						get_tree().change_scene_to_file("res://prefabs/Maps/plain_planet.tscn")
 					elif Global.map_progress == 2:
+						AudioManager.play("map 2")
 						get_tree().change_scene_to_file("res://prefabs/Maps/desert_planet.tscn")
 					elif Global.map_progress == 3:
+						AudioManager.play("map 3")
 						get_tree().change_scene_to_file("res://prefabs/Maps/jungle_planet.tscn")
 					elif Global.map_progress == 4:
+						AudioManager.play("map 4")
 						get_tree().change_scene_to_file("res://prefabs/Maps/ice_planet.tscn")
 					elif Global.map_progress == 5:
+						AudioManager.play("map 5")
 						get_tree().change_scene_to_file("res://prefabs/Maps/lava_planet.tscn")
 					
 

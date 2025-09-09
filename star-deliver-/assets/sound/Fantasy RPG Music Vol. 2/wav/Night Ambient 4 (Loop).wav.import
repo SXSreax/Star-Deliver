@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://t4dd2hfdigj5"
+path="res://.godot/imported/Night Ambient 4 (Loop).wav-9eefb154f5ab92d4dcb5cf1d95f4a2fe.sample"
+
+[deps]
+
+source_file="res://assets/sound/Fantasy RPG Music Vol. 2/wav/Night Ambient 4 (Loop).wav"
+dest_files=["res://.godot/imported/Night Ambient 4 (Loop).wav-9eefb154f5ab92d4dcb5cf1d95f4a2fe.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

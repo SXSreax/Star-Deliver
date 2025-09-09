@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c1dbh1rlaat5p"
+path="res://.godot/imported/Retro Instrument - choir bass - C00.wav-e4006049f72a2108cd7abdb78d1b479a.sample"
+
+[deps]
+
+source_file="res://assets/sound/FreeSFX/FreeSFX/Instruments/Retro Instrument - choir bass - C00.wav"
+dest_files=["res://.godot/imported/Retro Instrument - choir bass - C00.wav-e4006049f72a2108cd7abdb78d1b479a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
