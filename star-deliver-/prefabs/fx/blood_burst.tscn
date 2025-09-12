@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq85i8enlemkn"]
+
+[ext_resource type="Texture2D" uid="uid://cwcdewij2matv" path="res://assets/NEw pack blood/NEw pack blood/1_100x100px.png" id="1_lvfg8"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pncw5"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 6
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d3w2i"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+anim_speed_max = 20.0
+anim_offset_max = 0.0736
+
+[node name="BloodBurst" type="Node2D"]
+
+[node name="Particles" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_pncw5")
+emitting = false
+amount = 67
+texture = ExtResource("1_lvfg8")
+lifetime = 2.1
+one_shot = true
+explosiveness = 1.0
+randomness = 0.4
+fixed_fps = 36
+process_material = SubResource("ParticleProcessMaterial_d3w2i")
