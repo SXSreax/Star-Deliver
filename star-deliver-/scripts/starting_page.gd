@@ -8,6 +8,7 @@ extends Node2D
 func _ready():
 	$ColorRect.color.a = 0.0
 	AudioManager.play("Start menu")
+	Global._set_custom_cursor("res://assets/cursor/finger_cursor.png", 0.1)
 
 func _on_start_pressed() -> void:
 	Start.play("start")

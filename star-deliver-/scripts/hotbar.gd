@@ -33,10 +33,12 @@ func set_focus():
 
 # Handle mouse-click selection from slot.gd
 func _on_slot_clicked(index: int) -> void:
+	Global._set_custom_cursor("res://assets/cursor/finger_cursor.png", 0.08)
 	current_index = index
-
+	
 # Handle user input to control hotbar navigation
 func _input(event):
+
 
 	# Scroll down: move to next slot or wrap to first
 	if event.is_action_pressed("scroll_down"):

@@ -52,6 +52,15 @@ func get_input():
 	# Prevent movement/idle animation override during attack
 	if is_attacking:
 		return
+		
+	match selected_slot:
+		1:
+			Global._set_custom_cursor("res://assets/cursor/spear_cursor.png", 0.08)
+		2:
+			Global._set_custom_cursor("res://assets/cursor/gun_cursor_blue.png", 0.08)
+		_:
+			Global._set_custom_cursor("res://assets/cursor/package_new.png", 0.08)
+	
 
 	# If there's no input, play an idle animation depending on last direction faced
 	if input_direction == Vector2.ZERO:
