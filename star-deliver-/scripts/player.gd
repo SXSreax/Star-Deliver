@@ -9,12 +9,15 @@ var last_direction =  "right up"
 var bullet = preload("res://prefabs/bullet.tscn")
 var hp = 99.5
 var cd = true
+var cd_heal = false
 var is_attacking = false
 var hurt_tem = hp
+var can_heal = true
 @onready var compass_arrow = $UI/CompassContainer/CompassArrowContainer/CompassArrow
 @onready var receiver: CharacterBody2D = $"../Receiver"
 @onready var camera: Camera2D = get_tree().get_first_node_in_group("camera")
 @onready var health_bar: ProgressBar = $health_bar
+var last_selected_slot = -1  # Initialize to an invalid slot
 
 func _ready() -> void:
 	health_bar.value = hp
@@ -36,16 +39,32 @@ var walking_position: float = 0.0
 func _physics_process(delta: float) -> void:
 	health_bar.value = hp
 	
-	if hurt_tem == hp:
-		pass
-	else:
+	if hurt_tem > hp:
 		AudioManager.play_sfx("hurt")
 		hurt_tem = hp
+		
+	if cd_heal == false:
+		if Input.is_action_just_pressed("interact") and hp < 99.5:
+			med_kit()
 	
 	if hp <= 0: 
 		AudioManager.play_sfx("dying")
 		queue_free()
 		get_tree().change_scene_to_file("res://prefabs/losing.tscn")
+	
+	var selected_slot = hotbar.current_index
+	
+	# Only update the cursor if the selected slot changes
+	if selected_slot != last_selected_slot:
+		match selected_slot:
+			1:
+				Global._set_custom_cursor("res://assets/cursor/spear_cursor.png", 0.08)
+			2:
+				Global._set_custom_cursor("res://assets/cursor/gun_cursor_blue.png", 0.08)
+			_:
+				Global._set_custom_cursor("res://assets/cursor/package_new.png", 0.08)
+		last_selected_slot = selected_slot  # Update the last selected slot
+	
 	get_input()
 	move_and_slide()
 	spear_attack()
@@ -64,14 +83,6 @@ func get_input():
 	# Prevent movement/idle animation override during attack
 	if is_attacking:
 		return
-		
-	match selected_slot:
-		1:
-			Global._set_custom_cursor("res://assets/cursor/spear_cursor.png", 0.08)
-		2:
-			Global._set_custom_cursor("res://assets/cursor/gun_cursor_blue.png", 0.08)
-		_:
-			Global._set_custom_cursor("res://assets/cursor/package_new.png", 0.08)
 			
 	# Walking SFX control
 	if input_direction != Vector2.ZERO:
@@ -87,7 +98,6 @@ func get_input():
 				walking_position = walking_stream.get_playback_position()
 				walking_stream.stop()
 			was_moving = false
-	
 
 	# If there's no input, play an idle animation depending on last direction faced
 	if input_direction == Vector2.ZERO:
@@ -322,8 +332,7 @@ func _on_hurt_box_body_entered(body: Node2D) -> void:
 
 func _on_hurt_box_body_exited(body: Node2D) -> void:
 	pass # Replace with function body.
-
-
+	
 
 func spear_attack():
 	var selected_slot = hotbar.current_index
@@ -431,7 +440,18 @@ func _play_idle_animation():
 				player.play("idle gun down")
 			else:
 				player.play("idle down")
-				
+
+
+func med_kit():
+	can_heal = false
+	hp = hp + 5 
+	cd_heal = true
+	await get_tree().create_timer(5.0).timeout
+	cd_heal = false
+
+
+
+
 # The function for the change the direction of the compass
 # It helps user to find the direction of the receiver	
 func _process(delta):
