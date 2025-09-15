@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cyxedggrmtgat"]
+[gd_scene load_steps=13 format=3 uid="uid://cyxedggrmtgat"]
 
 [ext_resource type="Script" uid="uid://b1y73l51ib64o" path="res://scripts/audio_manager.gd" id="1_73uix"]
 [ext_resource type="AudioStream" uid="uid://dktrsng266som" path="res://assets/sound/menu.mp3" id="2_hju6s"]
@@ -8,6 +8,10 @@
 [ext_resource type="AudioStream" uid="uid://c838rgptjmuqf" path="res://assets/sound/Fantasy RPG Music Vol. 2/mp3/Ambient 3.mp3" id="6_xjk7e"]
 [ext_resource type="AudioStream" uid="uid://cav1wsxp8jp2a" path="res://assets/sound/sounds/weapons/shoot2.wav" id="7_xjk7e"]
 [ext_resource type="AudioStream" uid="uid://doy5i3hi6epek" path="res://assets/sound/sounds/weapons/spear_thrust-6-382403.mp3" id="8_g7wom"]
+[ext_resource type="AudioStream" uid="uid://cyiaokf2j7a7u" path="res://assets/sound/interact.mp3" id="9_g7wom"]
+[ext_resource type="AudioStream" uid="uid://csa4rbjaqhj7q" path="res://assets/sound/death.mp3" id="9_xqjjb"]
+[ext_resource type="AudioStream" uid="uid://bcj6jo5ni77sb" path="res://assets/sound/hurt 1.mp3" id="10_l8l6h"]
+[ext_resource type="AudioStream" uid="uid://d12o56y08hd6v" path="res://assets/sound/walking.mp3" id="10_m2wsa"]
 
 [node name="Audio Manager" type="Node" node_paths=PackedStringArray("clips")]
 process_mode = 3
@@ -31,6 +35,8 @@ stream = ExtResource("5_4jimw")
 [node name="map 4" type="AudioStreamPlayer" parent="Node"]
 stream = ExtResource("6_xjk7e")
 
+[node name="End scene" type="AudioStreamPlayer" parent="Node"]
+
 [node name="gun" type="AudioStreamPlayer" parent="Node"]
 stream = ExtResource("7_xjk7e")
 
@@ -38,4 +44,17 @@ stream = ExtResource("7_xjk7e")
 stream = ExtResource("8_g7wom")
 volume_db = -10.0
 
-[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="Node"]
+[node name="interact" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("9_g7wom")
+
+[node name="walking" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("10_m2wsa")
+
+[node name="dying" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("9_xqjjb")
+volume_db = -5.0
+
+[node name="hurt" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("10_l8l6h")
+
+[node name="enime dying" type="AudioStreamPlayer" parent="Node"]

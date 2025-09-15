@@ -10,6 +10,7 @@ var bullet = preload("res://prefabs/bullet.tscn")
 var hp = 99.5
 var cd = true
 var is_attacking = false
+var hurt_tem = hp
 @onready var compass_arrow = $UI/CompassContainer/CompassArrowContainer/CompassArrow
 @onready var receiver: CharacterBody2D = $"../Receiver"
 @onready var camera: Camera2D = get_tree().get_first_node_in_group("camera")
@@ -28,10 +29,21 @@ func _ready() -> void:
 
 
 var score = 0
+var was_moving = false
+var walking_stream: AudioStreamPlayer = null
+var walking_position: float = 0.0
 
 func _physics_process(delta: float) -> void:
 	health_bar.value = hp
+	
+	if hurt_tem == hp:
+		pass
+	else:
+		AudioManager.play_sfx("hurt")
+		hurt_tem = hp
+	
 	if hp <= 0: 
+		AudioManager.play_sfx("dying")
 		queue_free()
 		get_tree().change_scene_to_file("res://prefabs/losing.tscn")
 	get_input()
@@ -60,6 +72,21 @@ func get_input():
 			Global._set_custom_cursor("res://assets/cursor/gun_cursor_blue.png", 0.08)
 		_:
 			Global._set_custom_cursor("res://assets/cursor/package_new.png", 0.08)
+			
+	# Walking SFX control
+	if input_direction != Vector2.ZERO:
+		if not was_moving:
+			if walking_stream == null:
+				walking_stream = AudioManager.clips.get_node("walking")
+			if not walking_stream.playing:
+				walking_stream.play(walking_position)
+			was_moving = true
+	else:
+		if was_moving:
+			if walking_stream and walking_stream.playing:
+				walking_position = walking_stream.get_playback_position()
+				walking_stream.stop()
+			was_moving = false
 	
 
 	# If there's no input, play an idle animation depending on last direction faced

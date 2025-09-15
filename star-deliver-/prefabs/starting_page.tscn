@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://butqwx8kw70u3"]
+[gd_scene load_steps=16 format=3 uid="uid://butqwx8kw70u3"]
 
 [ext_resource type="Texture2D" uid="uid://5g0my1odxui1" path="res://assets/BUTTONS PACK/sci_fi_buttons.png" id="1_bn56d"]
 [ext_resource type="Script" uid="uid://crkhlw2hn33ck" path="res://scripts/starting_page.gd" id="1_pos1t"]
@@ -67,35 +67,6 @@ animations = [{
 "loop": false,
 "name": &"exit",
 "speed": 10.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pos1t"]
-atlas = ExtResource("1_bn56d")
-region = Rect2(2, 110, 106, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5bbeh"]
-atlas = ExtResource("1_bn56d")
-region = Rect2(108, 110, 106, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w53pk"]
-atlas = ExtResource("1_bn56d")
-region = Rect2(214, 110, 106, 36)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_2ggao"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pos1t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5bbeh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w53pk")
-}],
-"loop": false,
-"name": &"Setting",
-"speed": 5.0
 }]
 
 [sub_resource type="Animation" id="Animation_pos1t"]
@@ -173,20 +144,6 @@ offset_right = 27.0
 offset_bottom = 15.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Setting" type="AnimatedSprite2D" parent="."]
-position = Vector2(41, 166)
-scale = Vector2(2.55556, 2.55556)
-sprite_frames = SubResource("SpriteFrames_2ggao")
-animation = &"Setting"
-metadata/_edit_group_ = true
-
-[node name="Setting" type="Button" parent="Setting"]
-show_behind_parent = true
-offset_left = -52.0
-offset_top = -15.0
-offset_right = 52.0
-offset_bottom = 16.0
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_dij54")
@@ -217,4 +174,3 @@ zoom = Vector2(1.7, 1.7)
 
 [connection signal="pressed" from="Start/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Exit/Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="Setting/Setting" to="." method="_on_setting_pressed"]

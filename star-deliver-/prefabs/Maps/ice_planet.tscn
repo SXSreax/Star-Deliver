@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bgxquoc4glc0e"]
+[gd_scene load_steps=20 format=3 uid="uid://bgxquoc4glc0e"]
 
 [ext_resource type="Texture2D" uid="uid://cupy5nowb1pk5" path="res://assets/R2105059/Characters/100%/Snowman_01_idle (32x32).png" id="1_lafxp"]
 [ext_resource type="Texture2D" uid="uid://dxpk3yck1wtry" path="res://assets/R2105059/Tileset/100%/01 - RPG snow tileset (full) v1.0.png" id="1_mv1od"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://pdhcnoat8i0u" path="res://assets/R2105059/Characters/100%/Santa_01_idle (32x32).png" id="4_wswud"]
 [ext_resource type="PackedScene" uid="uid://sy7dd2cj2t26" path="res://prefabs/Sprite/player.tscn" id="5_hqoob"]
 [ext_resource type="PackedScene" uid="uid://b6oj5vlti06dx" path="res://prefabs/Sprite/receiver.tscn" id="6_wswud"]
+[ext_resource type="PackedScene" uid="uid://bf55tqj4t7hfw" path="res://prefabs/Sprite/golems.tscn" id="7_matbk"]
+[ext_resource type="PackedScene" uid="uid://c50qqvg5s1745" path="res://prefabs/Sprite/viking.tscn" id="8_ovr6e"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_hqoob"]
 tile_data = PackedInt32Array(0, 786434, 4, 65536, 786434, 5, 131072, 786434, 6, 1, 851970, 4, 65537, 851970, 5, 131073, 851970, 6, 2, 917506, 4, 65538, 917506, 5, 131074, 917506, 6)
@@ -1117,3 +1119,9 @@ position = Vector2(490, 413)
 
 [node name="Receiver" parent="." instance=ExtResource("6_wswud")]
 position = Vector2(4953, 573)
+
+[node name="Golems" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(728, 457)
+
+[node name="Viking" parent="." instance=ExtResource("8_ovr6e")]
+position = Vector2(615, 473)

@@ -9,6 +9,7 @@ func _physics_process(delta: float) -> void:
 	if is_: 
 		if cd:
 			if Input.is_action_just_pressed("interact"):
+				AudioManager.play_sfx("interact")
 				cd_()
 				show_mission_message()
 

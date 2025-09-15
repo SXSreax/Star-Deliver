@@ -12,6 +12,7 @@ func _physics_process(delta: float) -> void:
 		if tp:  
 			if cd:
 				if Input.is_action_just_pressed("interact"):
+					AudioManager.play_sfx("interact")
 					tp = false
 					show_teleport_message()
 					await fade_teleport_label(3)

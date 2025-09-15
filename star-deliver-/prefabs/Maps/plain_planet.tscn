@@ -1111,6 +1111,14 @@ text = "Left mouse button to attack
  for all weapon"
 horizontal_alignment = 1
 
+[node name="Label" type="Label" parent="Label"]
+offset_left = 3244.0
+offset_top = 1868.0
+offset_right = 3575.0
+offset_bottom = 1936.0
+text = "Press F to interact"
+horizontal_alignment = 1
+
 [node name="Label2" type="Label" parent="."]
 offset_left = -99.0
 offset_top = 50.0
