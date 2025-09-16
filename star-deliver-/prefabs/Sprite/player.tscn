@@ -3331,8 +3331,8 @@ atlas = ExtResource("59_ltlad")
 region = Rect2(352, 96, 288, 832)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xo08b"]
-radius = 8.0
-height = 22.0
+radius = 7.0
+height = 26.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pdhvl"]
 radius = 9.0
