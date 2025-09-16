@@ -1,19 +1,27 @@
 extends Camera2D
 
-@export var shake_fade: float = 1.0
+# --- Configuration ---
+@export var shake_fade: float = 1.0  # How quickly the shake fades (higher = faster).
 
-var _shake_strength: float = 0.0
-
-func trigger_shake(shake: float) -> void:
-	_shake_strength =  shake	
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+# --- Runtime state ---
+var _shake_strength: float = 0.0     # Current shake intensity.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Trigger a shake with a given strength.
+func trigger_shake(strength: float) -> void:
+	_shake_strength = strength
+
+
 func _process(delta: float) -> void:
-	if _shake_strength > 0:
+	if _shake_strength > 0.0:
+		# Smoothly reduce shake strength over time.
 		_shake_strength = lerp(_shake_strength, 0.0, shake_fade * delta)
-		offset = Vector2(randf_range(-_shake_strength, _shake_strength), randf_range(-_shake_strength, _shake_strength))
+
+		# Apply a random offset within the current strength range.
+		offset = Vector2(
+			randf_range(-_shake_strength, _shake_strength),
+			randf_range(-_shake_strength, _shake_strength)
+		)
+	else:
+		# Reset offset once shake has fully decayed.
+		offset = Vector2.ZERO

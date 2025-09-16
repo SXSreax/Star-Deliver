@@ -1,54 +1,57 @@
 extends CharacterBody2D
 
-# Base and dash movement speeds
-const SPEED = 150
-const DASH_SPEED = 350
-const DASH_DURATION = 0.3  # Duration for dash boost
+# --- Constants --------------------------------------------------------------
+const SPEED: float = 150.0
+const DASH_SPEED: float = 350.0
+const DASH_DURATION: float = 0.3  # Dash boost duration (seconds)
 
-# Enemy stats
-var hp = 50
-var threshold = 2.0  # Distance to target before stopping
-var follow = false
+# --- Stats ------------------------------------------------------------------
+var hp: int = 50
+var threshold: float = 2.0   # Min distance to target before stopping
+var follow: bool = false
 
-# State flags
-var attacking = false
-var death = false
-var dashing = false
-var dash_ready = true  # Controls dash re-triggering when player exits/re-enters detection area
+# --- State flags ------------------------------------------------------------
+var attacking: bool = false
+var death: bool = false
+var dashing: bool = false
+var dash_ready: bool = true   # Reset when player exits/re-enters dash zone
 
-# Node references
+# --- Node references --------------------------------------------------------
 @onready var player: CharacterBody2D = $"../Player"
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_bar: ProgressBar = $HealthBar
 
-# --- Blood FX (ADDED) -------------------------------------------------------
+# --- Blood FX ---------------------------------------------------------------
 @export var blood_fx_scene: PackedScene = preload("res://prefabs/fx/blood_burst.tscn")
 var last_hit_from: Vector2 = Vector2.ZERO
-# ---------------------------------------------------------------------------
+
 
 func _ready() -> void:
+	# Set initial path target
 	navigation_agent_2d.target_position = player.global_position
 	add_to_group("bullets")  # For collision/damage handling
 
+
 func make_path() -> void:
-	# Updates the path to track player's current position
+	# Refresh target to player's position
 	navigation_agent_2d.target_position = player.global_position
 
-func _physics_process(delta: float) -> void:
+
+func _physics_process(_delta: float) -> void:
 	health_bar.value = hp
-	# Prevent movement during attack or after death
+
+	# Prevent movement while attacking or dead
 	if attacking or death:
 		velocity = Vector2.ZERO
 		return
 
-	# Only follow the player if detected
 	if follow:
-		var next_pos = navigation_agent_2d.get_next_path_position()
-		var direction = next_pos - global_position
+		var next_pos: Vector2 = navigation_agent_2d.get_next_path_position()
+		var direction: Vector2 = next_pos - global_position
 
 		if direction.length() > threshold:
-			var move_dir = direction.normalized()
+			var move_dir: Vector2 = direction.normalized()
 			var current_speed: float = DASH_SPEED if dashing else SPEED
 			velocity = move_dir * current_speed
 			move_and_slide()
@@ -57,12 +60,12 @@ func _physics_process(delta: float) -> void:
 			if dashing:
 				print("DASHING at speed:", current_speed)
 		else:
-			# Stop if close enough to target
 			velocity = Vector2.ZERO
 			sprite.play("walk")
 	else:
 		velocity = Vector2.ZERO
 		sprite.play("walk")
+
 
 func update_animation(move_dir: Vector2) -> void:
 	if attacking or death:
@@ -71,114 +74,120 @@ func update_animation(move_dir: Vector2) -> void:
 	if sprite.animation != "walk":
 		sprite.play("walk")
 
-	# Flip sprite based on movement direction (right vs left)
+	# Face right/left depending on movement
 	if abs(move_dir.x) > abs(move_dir.y):
 		sprite.flip_h = move_dir.x > 0
 	else:
 		sprite.flip_h = false
 
+
 func _on_timer_timeout() -> void:
-	# Refresh navigation path periodically
 	make_path()
 
+
 func _on_attack_area_body_entered(body: Node2D) -> void:
-	# Start attack when player enters melee range
 	if body.name == "Player" and not attacking:
 		attacking = true
 		sprite.play("attack")
 
+
 func _on_animated_sprite_2d_animation_finished() -> void:
-	# Resume tracking after attack animation finishes
 	if sprite.animation == "attack":
 		attacking = false
 		make_path()
 
-		var next_pos = navigation_agent_2d.get_next_path_position()
-		var direction = next_pos - global_position
+		var next_pos: Vector2 = navigation_agent_2d.get_next_path_position()
+		var direction: Vector2 = next_pos - global_position
 
 		if direction.length() > threshold:
-			var move_dir = direction.normalized()
+			var move_dir: Vector2 = direction.normalized()
 			velocity = move_dir * SPEED
 			update_animation(move_dir)
+
 
 func _on_attack_area_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		attacking = false
 
+
 func _on_dash_detect_area_body_entered(body: Node2D) -> void:
-	# Begin dash if player enters detection zone and dash is ready
 	if body.name == "Player" and dash_ready:
 		print("Player ENTERED dash area → starting dash")
 		dash_ready = false
 		start_dash()
 
+
 func _on_dash_detect_area_body_exited(body: Node2D) -> void:
-	# Reset dash readiness once player leaves detection zone
 	if body.name == "Player":
 		print("Player EXITED dash area → dash ready again")
 		dash_ready = true
 
-func start_dash():
-	# Temporarily increase movement speed
+
+func start_dash() -> void:
 	dashing = true
 	await get_tree().create_timer(DASH_DURATION).timeout
 	dashing = false
 	print("Dash ended")
 
+
 func _on_hurt_box_body_entered(body: Node2D) -> void:
-	# Take damage when hit by bullets or other projectiles
 	if body.is_in_group("bullets"):
-		last_hit_from = body.global_position   # (ADDED) remember impact source
+		last_hit_from = body.global_position
 		hp -= 10
 		print("Hit! HP:", hp)
 		detect_death()
 		Global.add_score(20)
 
-func take_damage(amount):
-	# Directly reduce HP and check for death
+
+func take_damage(amount: int) -> void:
 	hp -= amount
 	detect_death()
 	Global.add_score(20)
 
-func detect_death():
+
+func detect_death() -> void:
 	if hp <= 0:
 		print("Enemy dead")
 		death = true
 		die()
 
+
 func die() -> void:
-	# Play death animation and remove enemy from scene
 	if death:
-		# --- spawn blood just before death animation (ADDED) ----------------
-		var hit_from := last_hit_from if last_hit_from != Vector2.ZERO \
+		# Spawn blood FX once before death animation
+		var hit_from: Vector2 = (
+			last_hit_from if last_hit_from != Vector2.ZERO
 			else (player.global_position if is_instance_valid(player) else global_position)
+		)
 		_spawn_blood(hit_from)
-		# --------------------------------------------------------------------
+
 		sprite.play("death")
 		await sprite.animation_finished
 		queue_free()
+
 
 func _on_detection_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		follow = true
 
+
 func _on_detection_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		follow = false
 
-# --- Blood FX helper (ADDED) -----------------------------------------------
+
+# --- Blood FX helper --------------------------------------------------------
 func _spawn_blood(hit_from: Vector2) -> void:
 	if blood_fx_scene == null:
 		push_warning("blood_fx_scene is null – assign BloodBurst.tscn in the Inspector.")
 		return
 
-	var fx := blood_fx_scene.instantiate()
-	get_parent().add_child(fx)           # same layer/YSort as enemy
-	fx.global_position = global_position
+	var fx: Node = blood_fx_scene.instantiate()
+	get_parent().add_child(fx)                 # Same layer/YSort as enemy
+	(fx as Node2D).global_position = global_position
 
-	var away := (global_position - hit_from).normalized()
+	var away: Vector2 = (global_position - hit_from).normalized()
 
-	# Root is GPUParticles2D
 	if fx is GPUParticles2D:
 		var p := fx as GPUParticles2D
 		p.z_as_relative = false
@@ -189,10 +198,9 @@ func _spawn_blood(hit_from: Vector2) -> void:
 		p.finished.connect(fx.queue_free, CONNECT_ONE_SHOT)
 		return
 
-	# Root is Node2D with child "Particles" (GPUParticles2D)
-	var p2 := fx.get_node_or_null("Particles") as GPUParticles2D
+	var p2: GPUParticles2D = fx.get_node_or_null("Particles") as GPUParticles2D
 	if p2:
-		fx.rotation = away.angle()
+		(fx as Node2D).rotation = away.angle()
 		p2.z_as_relative = false
 		p2.z_index = max(sprite.z_index + 1, 1)
 		p2.emitting = false
@@ -200,4 +208,3 @@ func _spawn_blood(hit_from: Vector2) -> void:
 		p2.finished.connect(fx.queue_free, CONNECT_ONE_SHOT)
 	else:
 		push_warning("Blood FX scene has no GPUParticles2D at root or child named 'Particles'.")
-# ---------------------------------------------------------------------------

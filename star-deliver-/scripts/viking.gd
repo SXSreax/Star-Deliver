@@ -1,16 +1,16 @@
 extends CharacterBody2D
 
-# ---------- Config ----------
+# --- config ----------------------------------------------------------------
 const SPEED := 180.0
 @export var hp: int = 50
-@export var chase_radius: float = 420.0
-@export var attack_range: float = 56.0
-@export var repath_interval: float = 0.15
-@export var attack_offset_x: float = 26.0
+@export var chase_radius: float = 420.0      # how far the enemy will chase
+@export var attack_range: float = 56.0       # how close to start attack
+@export var repath_interval: float = 0.15    # how often to refresh path
+@export var attack_offset_x: float = 26.0    # how far hitbox is from body
 @export var attack_damage: int = 12
-@export var attack_hit_time: float = 0.20     # active hitbox window
+@export var attack_hit_time: float = 0.20    # window where hitbox is active
 
-# ---------- Nodes ----------
+# --- node refs --------------------------------------------------------------
 @onready var player: CharacterBody2D        = $"../Player"
 @onready var agent: NavigationAgent2D       = $NavigationAgent2D
 @onready var anim: AnimatedSprite2D         = $anim
@@ -19,21 +19,22 @@ const SPEED := 180.0
 @onready var attack_shape: CollisionShape2D = $AttackArea/CollisionShape2D
 @onready var hurtbox: Area2D                = $HurtBox
 
-# ---------- State ----------
-var attacking := false
-var dead := false
-var _repath_acc := 0.0
-var _facing_left := false
-var _threshold := 2.0
+# --- state -----------------------------------------------------------------
+var attacking: bool = false
+var dead: bool = false
+var _repath_acc: float = 0.0
+var _facing_left: bool = false
+var _threshold: float = 2.0   # distance before stopping path movement
 
+# --- lifecycle --------------------------------------------------------------
 func _ready() -> void:
-	# Fallback to group if the path doesn't find the player
+	# If direct player ref failed, try finding by group
 	if player == null:
 		var p := get_tree().get_first_node_in_group("player")
 		if p:
 			player = p
 
-	# Ensure animation loop flags (important!)
+	# Ensure correct looping behavior for animations
 	if anim.sprite_frames.has_animation("idle"):
 		anim.sprite_frames.set_animation_loop("idle", true)
 	if anim.sprite_frames.has_animation("run"):
@@ -43,12 +44,12 @@ func _ready() -> void:
 	if anim.sprite_frames.has_animation("death"):
 		anim.sprite_frames.set_animation_loop("death", false)
 
-	# Hitbox setup
+	# Setup attack hitbox
 	attack_shape.disabled = true
 	attack_area.monitoring = true
 	attack_area.position.x = attack_offset_x
 
-	# Agent defaults
+	# Setup navigation defaults
 	agent.avoidance_enabled = false
 	agent.path_max_distance = 5000.0
 	agent.target_desired_distance = 16.0
@@ -56,7 +57,7 @@ func _ready() -> void:
 	if is_instance_valid(player):
 		agent.target_position = player.global_position
 
-	# Signals
+	# Connect signals
 	timer.wait_time = repath_interval
 	timer.start()
 	if hurtbox.has_signal("body_entered"):
@@ -66,19 +67,24 @@ func _ready() -> void:
 
 	_play_idle()
 
+# --- main loop --------------------------------------------------------------
 func _physics_process(delta: float) -> void:
-	if dead: return
+	if dead:
+		return
 
+	# refresh path target periodically
 	_repath_acc += delta
 	if _repath_acc >= repath_interval and is_instance_valid(player):
 		_repath_acc = 0.0
 		agent.target_position = player.global_position
 
+	# lock movement during attack
 	if attacking:
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
 
+	# no player found
 	if not is_instance_valid(player):
 		velocity = Vector2.ZERO
 		_play_idle()
@@ -86,14 +92,14 @@ func _physics_process(delta: float) -> void:
 
 	var dist := global_position.distance_to(player.global_position)
 
-	# Start attack in range
+	# attack if in range
 	if dist <= attack_range and not attacking:
 		var to_player := (player.global_position - global_position).normalized()
 		_set_facing_from_vector(to_player)
 		_start_attack()
 		return
 
-	# Chase
+	# otherwise chase if within radius
 	if dist <= chase_radius:
 		var next_pos := agent.get_next_path_position()
 		var dir := next_pos - global_position
@@ -113,43 +119,42 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		_play_idle()
 
-# ---------- Facing & Anim ----------
+# --- facing & anim ----------------------------------------------------------
 func _set_facing_from_vector(dir: Vector2) -> void:
-	if abs(dir.x) < 0.001: return
+	if abs(dir.x) < 0.001:
+		return
 	var want_left := dir.x < 0.0
 	if want_left != _facing_left:
 		_facing_left = want_left
 		anim.flip_h = _facing_left
-		attack_area.position.x = (-attack_offset_x) if _facing_left else attack_offset_x
+		attack_area.position.x = -attack_offset_x if _facing_left else attack_offset_x
 
 func _play_run() -> void:
-	if attacking or dead: return
-	if anim.animation != "run":
+	if not (attacking or dead) and anim.animation != "run":
 		anim.play("run")
 
 func _play_idle() -> void:
-	if attacking or dead: return
-	if anim.animation != "idle":
+	if not (attacking or dead) and anim.animation != "idle":
 		anim.play("idle")
 
-# ---------- Attacking ----------
+# --- attacking --------------------------------------------------------------
 func _start_attack() -> void:
-	if attacking or dead: return
+	if attacking or dead:
+		return
 	attacking = true
 	velocity = Vector2.ZERO
 
-	# start attack anim
 	anim.play("attack")
 
-	# enable hitbox during active window
+	# turn hitbox on for active window
 	_attack_hit_on()
 	var off_timer := get_tree().create_timer(attack_hit_time)
 	off_timer.timeout.connect(Callable(self, "_attack_hit_off"))
 
-	# end-of-anim -> exit attack
+	# end attack when anim finishes
 	anim.animation_finished.connect(Callable(self, "_on_attack_anim_finished"), CONNECT_ONE_SHOT)
 
-	# SAFETY: fallback in case the attack clip is (accidentally) looping
+	# fallback if anim is looped or missing
 	var total := _anim_duration("attack")
 	if total <= 0.0:
 		total = attack_hit_time + 0.15
@@ -190,14 +195,15 @@ func _try_damage_player(body: Node2D) -> void:
 		if body.has_method("take_damage"):
 			body.call("take_damage", attack_damage)
 
-# ---------- Timer ----------
+# --- timer -----------------------------------------------------------------
 func _on_timer_timeout() -> void:
 	if is_instance_valid(player):
 		agent.target_position = player.global_position
 
-# ---------- Damage / Death ----------
+# --- damage / death --------------------------------------------------------
 func take_damage(amount: int) -> void:
-	if dead: return
+	if dead:
+		return
 	hp -= amount
 	Global.add_score(30)
 	if hp <= 0:

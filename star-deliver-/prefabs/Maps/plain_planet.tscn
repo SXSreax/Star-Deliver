@@ -1112,6 +1112,7 @@ text = "Left mouse button to attack
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="Label"]
+layout_mode = 0
 offset_left = 3244.0
 offset_top = 1868.0
 offset_right = 3575.0
