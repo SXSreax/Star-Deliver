@@ -1,4 +1,5 @@
 extends CharacterBody2D
+<<<<<<< HEAD
 
 # --- Node references ---
 @onready var hotbar: HBoxContainer = $UI/Hotbar        # Hotbar UI (holds equipped items)
@@ -29,6 +30,27 @@ var was_moving = false                                 # Track movement state fo
 var walking_stream: AudioStreamPlayer = null           # Walking sound player
 var walking_position: float = 0.0                      # Resume walking SFX from last pos
 
+=======
+@onready var hotbar: HBoxContainer = $UI/Hotbar
+@onready var player: AnimatedSprite2D = $player
+@onready var slots = $UI/Hotbar.get_children()
+@onready var spear_sprite: Sprite2D = $SpearSprite
+@onready var spear_hitbox: Area2D = $SpearHitbox
+@export var speed = 200
+var last_direction =  "right up"
+var bullet = preload("res://prefabs/bullet.tscn")
+var hp = 99.5
+var cd = true
+var cd_heal = false
+var is_attacking = false
+var hurt_tem = hp
+var can_heal = true
+@onready var compass_arrow = $UI/CompassContainer/CompassArrowContainer/CompassArrow
+@onready var receiver: CharacterBody2D = $"../Receiver"
+@onready var camera: Camera2D = get_tree().get_first_node_in_group("camera")
+@onready var health_bar: ProgressBar = $health_bar
+var last_selected_slot = -1  # Initialize to an invalid slot
+>>>>>>> 571d8d6c5b74911b91fcc1058c2b152defb6345e
 
 func _ready() -> void:
 	# Initialize health bar
@@ -46,10 +68,17 @@ func _physics_process(delta: float) -> void:
 	# Always update health bar UI
 	health_bar.value = hp
 	
+<<<<<<< HEAD
 	# If HP dropped → play hurt SFX
+=======
+>>>>>>> 571d8d6c5b74911b91fcc1058c2b152defb6345e
 	if hurt_tem > hp:
 		AudioManager.play_sfx("hurt")
 		hurt_tem = hp
+		
+	if cd_heal == false:
+		if Input.is_action_just_pressed("interact") and hp < 99.5:
+			med_kit()
 	
 	# Heal check: press interact when not at max HP, if heal not on cooldown
 	if cd_heal == false:
@@ -62,6 +91,7 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 		get_tree().change_scene_to_file("res://prefabs/losing.tscn")
 	
+<<<<<<< HEAD
 	# Cursor updates only when slot changes (optimisation)
 	var selected_slot = hotbar.current_index
 	if selected_slot != last_selected_slot:
@@ -72,6 +102,21 @@ func _physics_process(delta: float) -> void:
 		last_selected_slot = selected_slot
 	
 	# Core player controls
+=======
+	var selected_slot = hotbar.current_index
+	
+	# Only update the cursor if the selected slot changes
+	if selected_slot != last_selected_slot:
+		match selected_slot:
+			1:
+				Global._set_custom_cursor("res://assets/cursor/spear_cursor.png", 0.08)
+			2:
+				Global._set_custom_cursor("res://assets/cursor/gun_cursor_blue.png", 0.08)
+			_:
+				Global._set_custom_cursor("res://assets/cursor/package_new.png", 0.08)
+		last_selected_slot = selected_slot  # Update the last selected slot
+	
+>>>>>>> 571d8d6c5b74911b91fcc1058c2b152defb6345e
 	get_input()
 	move_and_slide()
 	spear_attack()
@@ -270,7 +315,11 @@ func _on_hurt_box_body_entered(body: Node2D) -> void:
 
 
 func _on_hurt_box_body_exited(body: Node2D) -> void:
+<<<<<<< HEAD
 	pass # Reserved for logic when leaving enemy contact
+=======
+	pass # Replace with function body.
+>>>>>>> 571d8d6c5b74911b91fcc1058c2b152defb6345e
 	
 
 func spear_attack():
@@ -345,6 +394,7 @@ func _play_idle_animation():
 			elif selected_slot == 2: player.play("idle gun up")
 			else: player.play("idle up")
 		_:
+<<<<<<< HEAD
 			if selected_slot == 1: player.play("idle spear down")
 			elif selected_slot == 2: player.play("idle gun down")
 			else: player.play("idle down")
@@ -352,6 +402,17 @@ func _play_idle_animation():
 
 func med_kit():
 	# Heals the player by 5, then locks healing for 5s
+=======
+			if selected_slot == 1:
+				player.play("idle spear down")
+			elif selected_slot == 2:
+				player.play("idle gun down")
+			else:
+				player.play("idle down")
+
+
+func med_kit():
+>>>>>>> 571d8d6c5b74911b91fcc1058c2b152defb6345e
 	can_heal = false
 	hp = hp + 5 
 	cd_heal = true
@@ -359,6 +420,13 @@ func med_kit():
 	cd_heal = false
 
 
+<<<<<<< HEAD
+=======
+
+
+# The function for the change the direction of the compass
+# It helps user to find the direction of the receiver	
+>>>>>>> 571d8d6c5b74911b91fcc1058c2b152defb6345e
 func _process(delta):
 	# Update compass arrow to always point to receiver
 	if receiver:
