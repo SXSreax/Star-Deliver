@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c50qqvg5s1745"]
+[gd_scene load_steps=32 format=3 uid="uid://c50qqvg5s1745"]
 
 [ext_resource type="Script" uid="uid://bpv3e085ro7pt" path="res://scripts/viking.gd" id="1_txl0q"]
 [ext_resource type="Texture2D" uid="uid://bie5utdn12ygt" path="res://assets/viking_axe_pack/viking_all.png" id="2_c5rlp"]
@@ -197,6 +197,12 @@ height = 24.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ec1p"]
 radius = 33.0606
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n363g"]
+bg_color = Color(0.00820202, 0.00820203, 0.00820202, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_txl0q"]
+bg_color = Color(0.503336, 0.287442, 0.190371, 1)
+
 [node name="Viking" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_txl0q")
 
@@ -233,6 +239,16 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 shape = SubResource("CircleShape2D_8ec1p")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -24.0
+offset_top = -25.0
+offset_right = 10.0
+offset_bottom = -21.0
+theme_override_styles/background = SubResource("StyleBoxFlat_n363g")
+theme_override_styles/fill = SubResource("StyleBoxFlat_txl0q")
+max_value = 350.0
+show_percentage = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

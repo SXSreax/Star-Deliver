@@ -35,9 +35,13 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	var current_scene: String = get_tree().current_scene.name
 	# Interact once when player is in range.
 	if did_player_enter and Input.is_action_just_pressed("interact"):
-		show_mission_complete_message()
+		if current_scene == "IcePlanet":
+			get_tree().change_scene_to_file("res://prefabs/end_scene.tscn")
+		else:
+			show_mission_complete_message()
 
 
 func show_mission_complete_message() -> void:

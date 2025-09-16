@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlexl2xbvft2t"]
+[gd_scene load_steps=3 format=3 uid="uid://dlexl2xbvft2t"]
 
 [ext_resource type="Script" uid="uid://c1skg3jjwsmhv" path="res://scripts/losing.gd" id="1_daq4n"]
+[ext_resource type="Texture2D" uid="uid://b2awdlbtkdg0r" path="res://assets/restart page/bg.png" id="2_8rdp5"]
 
 [node name="losing" type="Node2D"]
 script = ExtResource("1_daq4n")
@@ -31,6 +32,12 @@ offset_top = 114.0
 offset_right = 52.0
 offset_bottom = 145.0
 text = "MAIN MENU"
+
+[node name="Background" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(0, 88)
+scale = Vector2(0.428109, 0.424805)
+texture = ExtResource("2_8rdp5")
 
 [connection signal="pressed" from="restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

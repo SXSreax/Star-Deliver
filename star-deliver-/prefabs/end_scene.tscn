@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://35eapfvijave"]
+
+[ext_resource type="Texture2D" uid="uid://b6rrbukgln7hp" path="res://assets/Starting menu/starting page.jpeg" id="1_lfgjk"]
+[ext_resource type="Script" uid="uid://g8rn1kvo5dj2" path="res://scripts/end_scene.gd" id="1_pmb6i"]
+
+[node name="end scene" type="Node2D"]
+script = ExtResource("1_pmb6i")
+
+[node name="Background" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(563, 308)
+scale = Vector2(0.901489, 0.894531)
+texture = ExtResource("1_lfgjk")
+
+[node name="Camera2D" type="Camera2D" parent="Background"]
+zoom = Vector2(1.75, 1.75)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 447.0
+offset_top = 210.0
+offset_right = 677.0
+offset_bottom = 233.0
+text = "GAME OVER
+A LEDGEND HAS BORN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="home" type="Button" parent="."]
+offset_left = 524.0
+offset_top = 293.0
+offset_right = 599.0
+offset_bottom = 324.0
+text = "Home
+"
+
+[node name="exit" type="Button" parent="."]
+offset_left = 523.0
+offset_top = 334.0
+offset_right = 598.0
+offset_bottom = 365.0
+text = "EXIT
+"
+
+[connection signal="pressed" from="home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://bf55tqj4t7hfw"]
+[gd_scene load_steps=59 format=3 uid="uid://bf55tqj4t7hfw"]
 
 [ext_resource type="Script" uid="uid://dlferj6u5dlvb" path="res://scripts/golems.gd" id="1_h76mx"]
 [ext_resource type="Texture2D" uid="uid://wf7b2g413qn8" path="res://assets/Golems/Golems_Free_Version/Golem_1/Blue/White_Swoosh_VFX/Golem_1_attack.png" id="1_yauny"]
@@ -358,13 +358,22 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h76mx"]
+radius = 20.0
+height = 46.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vw0e3"]
 radius = 9.0
 height = 24.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qdi62"]
-radius = 38.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0skpu"]
+radius = 24.0
+height = 48.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h76mx"]
+bg_color = Color(0.00820202, 0.00820203, 0.00820202, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0skpu"]
+bg_color = Color(0.294623, 0.39216, 1, 1)
 
 [node name="Golems" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_h76mx")
@@ -398,7 +407,18 @@ shape = SubResource("CapsuleShape2D_vw0e3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(0, 14)
-shape = SubResource("CircleShape2D_qdi62")
+shape = SubResource("CapsuleShape2D_0skpu")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -17.0
+offset_top = -13.0
+offset_right = 17.0
+offset_bottom = -9.0
+theme_override_styles/background = SubResource("StyleBoxFlat_h76mx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0skpu")
+max_value = 500.0
+value = 20.0
+show_percentage = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

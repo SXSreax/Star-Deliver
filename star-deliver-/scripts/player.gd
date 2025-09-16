@@ -17,6 +17,8 @@ var cd_heal = false                                    # Heal cooldown flag
 var is_attacking = false                               # True when spear is swinging
 var hurt_tem = hp                                      # To detect HP change for hurt SFX
 var can_heal = true                                    # Can player heal?
+var is_shooting = false
+var can_play_shoot_anim = true
 @onready var compass_arrow = $UI/CompassContainer/CompassArrowContainer/CompassArrow  # Compass pointer
 @onready var receiver: CharacterBody2D = $"../Receiver"  # Target to track with compass
 @onready var camera: Camera2D = get_tree().get_first_node_in_group("camera") # Main camera (for screen shake)
@@ -91,59 +93,107 @@ func get_input():
 	# Prevent idle/walk animation override if mid-spear attack
 	if is_attacking:
 		return
-			
-	# --- Walking SFX management ---
-	if input_direction != Vector2.ZERO:
-		if not was_moving:
-			if walking_stream == null:
-				walking_stream = AudioManager.clips.get_node("walking")
-			if not walking_stream.playing:
-				walking_stream.play(walking_position)
-			was_moving = true
-	else:
-		if was_moving:
-			if walking_stream and walking_stream.playing:
-				# Save position to resume from later
-				walking_position = walking_stream.get_playback_position()
-				walking_stream.stop()
-			was_moving = false
 
+	# --- Animation handling for shooting ---
+	if is_shooting and selected_slot == 2:
+		if input_direction == Vector2.ZERO:
+			# Play idle shoot animation based on last_direction
+			match last_direction:
+				"right":
+					player.play("idle shoot right")
+				"right down":
+					player.play("idle shoot right down")
+				"down":
+					player.play("idle shoot down")
+				"left down":
+					player.play("idle shoot left down")
+				"left":
+					player.play("idle shoot left")
+				"left up":
+					player.play("idle shoot left up")
+				"up":
+					player.play("idle shoot up")
+				"right up":
+					player.play("idle shoot right up")
+		else:
+			# Play run shoot animation based on last_direction
+			match last_direction:
+				"right":
+					player.play("run shoot right")
+				"right down":
+					player.play("run shoot right down")
+				"down":
+					player.play("run shoot down")
+				"left down":
+					player.play("run shoot left down")
+				"left":
+					player.play("run shoot left")
+				"left up":
+					player.play("run shoot left up")
+				"up":
+					player.play("run shoot up")
+				"right up":
+					player.play("run shoot right up")
+		return
+	
 	# --- Animation handling ---
 	# If no movement → idle animation (depends on last direction + equipped item)
 	if input_direction == Vector2.ZERO:
 		if not is_attacking:
-			if last_direction == "right up":
-				if selected_slot == 1: player.play("idle spear right up")
-				elif selected_slot == 2: player.play("idle gun up")
-				else: player.play("idle right up")
-			elif last_direction == "left up":
-				if selected_slot == 1: player.play("idle spear left up")
-				elif selected_slot == 2: player.play("idle gun left up")
-				else: player.play("idle left up")
-			elif last_direction == "left down":
-				if selected_slot == 1: player.play("idle spear left down")
-				elif selected_slot == 2: player.play("idle gun left")
-				else: player.play("idle left down")
-			elif last_direction == "right down":
-				if selected_slot == 1: player.play("idle spear right down")
-				elif selected_slot == 2: player.play("idle gun right down")
-				else: player.play("idle right down")
-			elif last_direction == "right":
-				if selected_slot == 1: player.play("idle spear right down")
-				elif selected_slot == 2: player.play("idle gun right down")
-				else: player.play("idle right down")
-			elif last_direction == "left":
-				if selected_slot == 1: player.play("idle spear left down")
-				elif selected_slot == 2: player.play("idle gun left")
-				else: player.play("idle left down")
-			elif last_direction == "up":
-				if selected_slot == 1: player.play("idle spear up")
-				elif selected_slot == 2: player.play("idle gun up")
-				else: player.play("idle up")
+			if selected_slot == 2 and is_shooting:
+				# Play idle shoot animation based on last_direction
+				match last_direction:
+					"right":
+						player.play("idle shoot right")
+					"right down":
+						player.play("idle shoot right down")
+					"down":
+						player.play("idle shoot down")
+					"left down":
+						player.play("idle shoot left down")
+					"left":
+						player.play("idle shoot left")
+					"left up":
+						player.play("idle shoot left up")
+					"up":
+						player.play("idle shoot up")
+					"right up":
+						player.play("idle shoot right up")
 			else:
-				if selected_slot == 1: player.play("idle spear down")
-				elif selected_slot == 2: player.play("idle gun down")
-				else: player.play("idle down")
+				# Normal idle animation logic
+				match last_direction:
+					"right up":
+						if selected_slot == 1: player.play("idle spear right up")
+						elif selected_slot == 2: player.play("idle gun up")
+						else: player.play("idle right up")
+					"left up":
+						if selected_slot == 1: player.play("idle spear left up")
+						elif selected_slot == 2: player.play("idle gun left up")
+						else: player.play("idle left up")
+					"left down":
+						if selected_slot == 1: player.play("idle spear left down")
+						elif selected_slot == 2: player.play("idle gun left")
+						else: player.play("idle left down")
+					"right down":
+						if selected_slot == 1: player.play("idle spear right down")
+						elif selected_slot == 2: player.play("idle gun right down")
+						else: player.play("idle right down")
+					"right":
+						if selected_slot == 1: player.play("idle spear right down")
+						elif selected_slot == 2: player.play("idle gun right down")
+						else: player.play("idle right down")
+					"left":
+						if selected_slot == 1: player.play("idle spear left down")
+						elif selected_slot == 2: player.play("idle gun left")
+						else: player.play("idle left down")
+					"up":
+						if selected_slot == 1: player.play("idle spear up")
+						elif selected_slot == 2: player.play("idle gun up")
+						else: player.play("idle up")
+					_:
+						if selected_slot == 1: player.play("idle spear down")
+						elif selected_slot == 2: player.play("idle gun down")
+						else: player.play("idle down")
 	
 	# If moving → play movement animation based on direction + slot
 	elif input_direction.x > 0 and input_direction.y < 0:
@@ -190,6 +240,7 @@ func get_input():
 
 	elif input_direction.y < 0:
 		if selected_slot == 1: player.play("spear walk up")
+		elif selected_slot == 2: player.play("run gun up")
 		else: player.play("walk up")
 		last_direction = "up"
 		
@@ -207,6 +258,7 @@ func add_items(stats):
 func shoot():
 	# Fire a bullet if gun is not on cooldown
 	if cd:
+		is_shooting = true
 		var bullet_1 = bullet.instantiate()
 		cd = false
 
@@ -216,7 +268,6 @@ func shoot():
 		var to_mouse = (mouse_pos - global_position).normalized()
 		var angle = to_mouse.angle()
 
-		# Convert angle into 8-dir label (for animation / facing)
 		var dir_vec = Vector2.RIGHT
 		var direction = angle_to_direction(angle)
 		match direction:
@@ -231,6 +282,31 @@ func shoot():
 
 		last_direction = direction
 
+		# --- Only play run shoot animation if moving ---
+		if velocity.length() > 0.1:
+			var anim_name = ""
+			match direction:
+				"right":
+					anim_name = "run shoot right"
+				"right down":
+					anim_name = "run shoot right down"
+				"down":
+					anim_name = "run shoot down"
+				"left down":
+					anim_name = "run shoot left down"
+				"left":
+					anim_name = "run shoot left"
+				"left up":
+					anim_name = "run shoot left up"
+				"up":
+					anim_name = "run shoot up"
+				"right up":
+					anim_name = "run shoot right up"
+
+			if player.animation != anim_name and can_play_shoot_anim:
+				player.play(anim_name)
+		# If not moving, do NOT play any animation here; let get_input() handle idle shoot
+
 		# Spawn bullet a little in front of player, toward mouse
 		var spawn_offset = to_mouse * 32
 		bullet_1.pos = global_position + spawn_offset
@@ -239,7 +315,8 @@ func shoot():
 		get_parent().add_child(bullet_1)
 
 		camera.trigger_shake(1)
-		cd_gun()
+		await cd_gun()
+		is_shooting = false
 
 
 func angle_to_direction(angle: float) -> String:

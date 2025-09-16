@@ -1115,13 +1115,127 @@ layer_4/name = "wall"
 layer_4/z_index = 2
 
 [node name="Player" parent="." instance=ExtResource("5_hqoob")]
-position = Vector2(490, 413)
+position = Vector2(491, 458)
 
 [node name="Receiver" parent="." instance=ExtResource("6_wswud")]
 position = Vector2(4953, 573)
 
 [node name="Golems" parent="." instance=ExtResource("7_matbk")]
-position = Vector2(728, 457)
+position = Vector2(4592, 2486)
 
 [node name="Viking" parent="." instance=ExtResource("8_ovr6e")]
-position = Vector2(615, 473)
+position = Vector2(873, 672)
+
+[node name="Golems2" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(2741, 3312)
+
+[node name="Golems3" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(1988, 3802)
+
+[node name="Golems4" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(710, 3808)
+
+[node name="Golems5" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(1645, 1838)
+
+[node name="Golems6" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(2309, 543)
+
+[node name="Golems7" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(1983, 1231)
+
+[node name="Golems8" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(773, 2287)
+
+[node name="Golems9" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(1195, 1237)
+
+[node name="Golems10" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(2705, 1609)
+
+[node name="Golems11" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(377, 3151)
+
+[node name="Golems12" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(1808, 2986)
+
+[node name="Golems13" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(1313, 119)
+
+[node name="Golems14" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(123, 1325)
+
+[node name="Golems15" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(1907, 2371)
+
+[node name="Golems16" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(3660, 2610)
+
+[node name="Golems17" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(2685, 2532)
+
+[node name="Golems18" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(3768, 3182)
+
+[node name="Golems19" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(3916, 3970)
+
+[node name="Golems20" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(2589, 4052)
+
+[node name="Golems21" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(823, 601)
+
+[node name="Golems22" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(5361, 2435)
+
+[node name="Golems23" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(5061, 1482)
+
+[node name="Golems24" parent="." instance=ExtResource("7_matbk")]
+position = Vector2(3502, 1537)
+
+[node name="Viking2" parent="." instance=ExtResource("8_ovr6e")]
+position = Vector2(5338, 2690)
+
+[node name="Viking3" parent="." instance=ExtResource("8_ovr6e")]
+position = Vector2(3937, 409)
+
+[node name="Viking4" parent="." instance=ExtResource("8_ovr6e")]
+position = Vector2(4812, 1326)
+
+[node name="Viking5" parent="." instance=ExtResource("8_ovr6e")]
+position = Vector2(3767, 758)
+
+[node name="Viking6" parent="." instance=ExtResource("8_ovr6e")]
+position = Vector2(3497, 2097)
+
+[node name="Viking7" parent="." instance=ExtResource("8_ovr6e")]
+position = Vector2(3411, 2097)
+
+[node name="Viking8" parent="." instance=ExtResource("8_ovr6e")]
+position = Vector2(3686, 2531)
+
+[node name="Viking9" parent="." instance=ExtResource("8_ovr6e")]
+position = Vector2(3503, 2599)
+
+[node name="Viking10" parent="." instance=ExtResource("8_ovr6e")]
+position = Vector2(3943, 3803)
+
+[node name="Viking11" parent="." instance=ExtResource("8_ovr6e")]
+position = Vector2(3448, 3663)
+
+[node name="Viking12" parent="." instance=ExtResource("8_ovr6e")]
+position = Vector2(1839, 3791)
+
+[node name="Viking13" parent="." instance=ExtResource("8_ovr6e")]
+position = Vector2(1919, 2274)
+
+[node name="Viking14" parent="." instance=ExtResource("8_ovr6e")]
+position = Vector2(1326, 3412)
+
+[node name="Viking15" parent="." instance=ExtResource("8_ovr6e")]
+position = Vector2(1717, 2654)
+
+[node name="Viking16" parent="." instance=ExtResource("8_ovr6e")]
+position = Vector2(2824, 886)

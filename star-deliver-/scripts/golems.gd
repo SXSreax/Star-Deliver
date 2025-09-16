@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 # ---------- Config ----------
 const SPEED: float = 180.0
-@export var hp: int = 50
+@export var hp: int = 500
 @export var chase_radius: float = 420.0
 @export var attack_range: float = 56.0
 @export var repath_interval: float = 0.15
@@ -18,6 +18,7 @@ const SPEED: float = 180.0
 @onready var attack_shape: CollisionShape2D  = $AttackArea/CollisionShape2D
 @onready var hurtbox: Area2D                 = $HurtBox
 @onready var anim: AnimatedSprite2D          = $Anim
+@onready var health_bar: ProgressBar = $HealthBar
 
 # ---------- State ----------
 var attacking: bool = false
@@ -56,8 +57,8 @@ func _ready() -> void:
 	# Agent defaults.
 	agent.avoidance_enabled = false
 	agent.path_max_distance = 5000.0
-	agent.target_desired_distance = 16.0
-	agent.path_desired_distance = 8.0
+	agent.target_desired_distance = 0
+	agent.path_desired_distance = 0
 	if is_instance_valid(player):
 		agent.target_position = player.global_position
 
@@ -73,6 +74,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	health_bar.value = hp
+	
 	if dead:
 		return
 
@@ -81,24 +84,25 @@ func _physics_process(delta: float) -> void:
 		_repath_acc = 0.0
 		agent.target_position = player.global_position
 
-	if attacking:
-		velocity = Vector2.ZERO
-		move_and_slide()
-		return
-
 	if not is_instance_valid(player):
-		velocity = Vector2.ZERO
 		_play_idle()
 		return
 
 	var dist: float = global_position.distance_to(player.global_position)
 
+	# --- Only activate if player is within 300 units ---
+	if dist > 300.0:
+		velocity = Vector2.ZERO
+		if not attacking:
+			_play_idle()
+		return
+
 	# Start attack when within range.
-	if dist <= attack_range and not attacking:
+	if not attacking and dist <= attack_range:
 		var to_player: Vector2 = (player.global_position - global_position).normalized()
 		_set_facing_from_vector(to_player)
 		_start_attack()
-		return
+		# Don't return here! Let movement continue.
 
 	# Chase within radius.
 	if dist <= chase_radius:
@@ -112,13 +116,17 @@ func _physics_process(delta: float) -> void:
 			velocity = move_dir * SPEED
 			move_and_slide()
 			_set_facing_from_vector(move_dir)
-			_play_run()
+			# Only play walk animation if not attacking
+			if not attacking:
+				_play_run()
 		else:
 			velocity = Vector2.ZERO
-			_play_idle()
+			if not attacking:
+				_play_idle()
 	else:
 		velocity = Vector2.ZERO
-		_play_idle()
+		if not attacking:
+			_play_idle()
 
 
 # ---------- Facing & Anim ----------
@@ -151,7 +159,6 @@ func _start_attack() -> void:
 	if attacking or dead:
 		return
 	attacking = true
-	velocity = Vector2.ZERO
 
 	# Start attack animation.
 	anim.play("attack")
